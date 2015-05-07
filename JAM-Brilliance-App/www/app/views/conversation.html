@@ -1,0 +1,55 @@
+﻿<section>
+    <h2>
+        <a data-bind="attr: { href: '#survey/' + otherSurveyId }">
+            <span data-bind="text: otherSurveyName"></span>
+        </a>
+    </h2>
+    <br />
+
+    <table class="conversation-table">
+        <tbody data-bind="foreach: messages">
+            <tr data-bind="if: ToSurveyId==$parent.otherSurveyId">
+                <td>
+                    <div data-bind='html: BodyAsHtml' class="conversation-self"></div>
+                </td>
+            </tr>
+            <tr data-bind="if: ToSurveyId==$parent.otherSurveyId">
+                <td style="text-align: right; padding-right: 10px;">
+                    <span data-bind="text: SendDateFormatted"></span>
+                </td>
+            </tr>
+            <tr data-bind="if: FromSurveyId==$parent.otherSurveyId">
+                <td>
+                    <a data-bind="attr: { href: '#survey/' + $parent.otherSurveyId }">
+                        <img width="50" src="../../Content/images/icon.png" style="float:left;" />
+                    </a>
+                    <div data-bind='html: BodyAsHtml' class="conversation-other" style="margin-left: 10px"></div>
+                </td>
+            </tr>
+            <tr data-bind="if: FromSurveyId==$parent.otherSurveyId">
+                <td style=" padding-left: 10px;">
+                    <span>Från </span>
+                    <span data-bind="text: $parent.otherSurveyName"></span> 
+                    <span> den </span>
+                    <span data-bind="text: SendDateFormatted"></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="conversation-table">
+        <tbody>
+            <tr>
+                <td style="text-align: right;">
+                    <textarea data-bind='value: newMessageBody' id="newMessage" rows="4" autofocus class="conversation-new-message"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <a href="#conversation" class="btn btn-default" data-bind="click: onSendNewMessage">Skicka</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>

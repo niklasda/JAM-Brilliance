@@ -1,0 +1,89 @@
+﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'slick'], function (router, http, ko, app, slick) {
+    "use strict";
+
+    return {
+        survey: ko.observable(),
+        searchResults: ko.observableArray(),
+        searchResults2: [],
+        carousel: ko.observable(true),
+        buildUrl: function (id) {
+            var token = localStorage.getItem("x-brilliance-token");
+            return brilliance.appbaseurl() + "/Mobile/AppPicture/MainPictureDataFor/" + id + "?token=" + token;
+        },
+        rowClick: function (row) {
+            window.location.href = '#conversation/' + row.SurveyId;
+        },
+        setFavourite: function (surveyId) {
+            alert('favourite; '+ surveyId);
+        },
+        startConversation: function (surveyId) {
+            window.location.href = '#conversation/' + surveyId;
+        },
+        showShortSurvey: function (surveyId) {
+            window.location.href = '#survey/' + surveyId;
+        },
+        
+        activate: function () {
+
+            var token = localStorage.getItem("x-brilliance-token");
+            var that = this;
+
+            var postalCode = ""; 
+            
+            http.get(brilliance.appbaseurl() + "/Mobile/AppSearch/Search", 'postalCode=' + postalCode, { 'x-brilliance-token': token })
+            .then(function (response, textStatus) {
+                that.searchResults(response.SearchResults);
+                that.searchResults2 = response.SearchResults;
+
+                $("#carousel").slick({
+                    dots: true,
+                    speed: 500,
+                    mobileFirst: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false
+                });
+
+                $("#carousel").slick("slickRemove", 0);
+                if (!that.searchResults2 || that.searchResults2.length === 0) {
+                    $("#carousel").slick("slickAdd", "<div><h3>Inga sökträffar</h3></div>");
+                } else {
+
+                    that.searchResults2.forEach(function (item) {
+
+                        var i3 = "<i id='favo_" + item.SurveyId + "' class='fa fa-1x fa-heart-o' style='cursor: pointer; margin-left:20px;'></i>";
+                        var i4 = "<i id='mess_" + item.SurveyId + "' class='fa fa-1x fa-envelope-o' style='cursor: pointer; margin-left:20px;'></i>";
+                        var i5 = "<i id='prof_" + item.SurveyId + "' class='fa fa-1x fa-user' style='cursor: pointer ;margin-left:20px;'></i>";
+
+                        var h3 = "<h3>" + item.Name + " " + i3 + " " + i4 + " " + i5 + "</h3>";
+                        var img = "<img width=\"95%\" title=\"\" src=\"" + that.buildUrl(item.SurveyId) + "\" />";
+
+                        $("#carousel").slick("slickAdd", "<div>" + h3 + "<div>" + img + "</div></div>");
+
+                        var vm = ko.dataFor($("#carousel")[0]);
+
+                        $("#favo_" + item.SurveyId).on("click", function () {
+                            vm.setFavourite(item.SurveyId);
+                        });
+                        $("#mess_" + item.SurveyId).on("click", function () {
+                            vm.startConversation(item.SurveyId);
+                        });
+                        $("#prof_" + item.SurveyId).on("click", function () {
+                            vm.showShortSurvey(item.SurveyId);
+                        });
+                    });
+
+                    $("#carousel").slick("slickAdd", "<div><h3>Inga fler sökresultat!</h3><div id='lastSearchHit'></div></div>");
+                    $("#carousel").on("afterChange", function (event, aslick, currentSlide) {
+                        if (aslick.slideCount-1 === currentSlide) {
+                            alert('sista träffen');
+                            $("#lastSearchHit").text('laddar fler...');
+                        }
+                    });
+                }
+
+            }).fail(brilliance.handleErrors);
+
+        }
+    };
+});
