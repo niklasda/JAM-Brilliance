@@ -1,0 +1,12 @@
+﻿/*
+CREATE TABLE dbo.IPLog 
+(
+    IPLogId		INT IDENTITY (1, 1) NOT NULL PRIMARY KEY,
+    IP			NVARCHAR (50)	NOT NULL,
+    UserName	NVARCHAR (50)   NOT NULL,
+    Success		BIT   NOT NULL,
+    LogDate		DATETIME   NOT NULL,
+);
+
+
+*/

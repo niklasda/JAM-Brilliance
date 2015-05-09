@@ -1,0 +1,35 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model MyPageViewModel
+
+@if (Model.IsSurveyComplete)
+{
+    var visitorIcon = "fa-female";
+    if (Model.IsSearchigForMale)
+    {
+        visitorIcon = "fa-male";
+    }
+    <script>
+        $(document).ready(checkCounts('@Url.Action("GetNumbersOf", "Message")'));
+    </script>
+
+    <fieldset>
+        <legend>Mina sidor <i class="fa fa-bolt"></i></legend>
+        &nbsp;
+        <a href="@Url.Action("Search", "Search")">Sök<i style="padding-left: 5px;" class="fa fa-search"></i></a>
+        &nbsp;&nbsp;
+        <a href="@Url.Action("MyMessages", "Message")">Meddelande<i style="padding-left: 5px;" class="fa fa-envelope"></i></a><sup id="MessagesCount">&nbsp;&nbsp;</sup>
+        &nbsp;&nbsp;
+        <a href="@Url.Action("MyVisitors", "Visitor")">Besökare<i style="padding-left: 5px;" class="fa @visitorIcon"></i></a><sup id="VisitorsCount">&nbsp;&nbsp;</sup>
+        &nbsp;&nbsp;
+        <a href="@Url.Action("MyFavourites", "Favourite")">Favoriter<i style="padding-left: 5px;" class="fa fa-heart"></i></a>
+        &nbsp; &nbsp;
+        <a href="@Url.Action("OnlineUsers", "Account")">Online<i style="padding-left: 5px; color: green;" class="fa fa-circle"></i></a><sup id="OnlineCount">&nbsp;&nbsp;</sup>
+        &nbsp; &nbsp;
+        <a href="@Url.Action("MyShortDetails", "Survey")">Min profil<i style="padding-left: 5px;" class="fa fa-list-ul"></i></a>
+        &nbsp;&nbsp;
+        <a href="@Url.Action("MyPictures", "Picture")">Mina bilder<i style="padding-left: 5px;" class="fa fa-file-image-o"></i></a>
+        &nbsp;&nbsp;
+        <a href="@Url.Action("MyActions", "Home")">Inställningar<i style="padding-left: 5px;" class="fa fa-cog"></i></a>
+    </fieldset>
+}

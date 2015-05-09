@@ -1,0 +1,662 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BBA89B2F-489B-439F-AD5C-3C11FA333C92}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>JAM.Brilliance</RootNamespace>
+    <AssemblyName>JAM.Brilliance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <JSLintSkip>\Scripts\jquery-2.1.1.intellisense.js|\Scripts\jquery-2.1.1.js|\Scripts\jquery-2.1.1.min.js|\Scripts\jquery.validate-vsdoc.js|\Scripts\jquery.validate.js|\Scripts\jquery.validate.min.js|\Scripts\jquery.validate.unobtrusive.min.js|\Scripts\jquery.validate.unobtrusive.js|\Scripts\jquery.unobtrusive-ajax.js|\Scripts\jquery.unobtrusive-ajax.min.js|\Content\font-awesome.css|\Content\font-awesome.min.css|\Content\themes\base\tooltip.css|\Content\themes\base\accordion.css|\Content\themes\base\all.css|\Content\themes\base\autocomplete.css|\Content\themes\base\base.css|\Content\themes\base\button.css|\Content\themes\base\core.css|\Content\themes\base\datepicker.css|\Content\themes\base\dialog.css|\Content\themes\base\draggable.css|\Content\themes\base\menu.css|\Content\themes\base\progressbar.css|\Content\themes\base\resizable.css|\Content\themes\base\selectable.css|\Content\themes\base\selectmenu.css|\Content\themes\base\slider.css|\Content\themes\base\sortable.css|\Content\themes\base\spinner.css|\Content\themes\base\tabs.css|\Content\themes\base\theme.css|\Content\PagedList.css|\Scripts\tinymce\|\Scripts\jquery-ui-1.11.2.js|\Scripts\jquery-ui-1.11.2.min.js|\Scripts\jquery-2.1.3.intellisense.js|\Scripts\jquery-2.1.3.js|\Scripts\jquery-2.1.3.min.js|\Scripts\jquery-ui-1.11.3.js|\Scripts\jquery-ui-1.11.3.min.js</JSLintSkip>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.40.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.40\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.4\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.4\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.4\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Refs\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Configuration, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.WindowsAzure.ConfigurationManager.3.1.0\lib\net40\Microsoft.WindowsAzure.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WindowsAzure.Storage.4.3.0\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.3.1.1.140\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.Mvc">
+      <HintPath>..\packages\MiniProfiler.MVC4.3.0.11\lib\net40\MiniProfiler.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.3.2.0.0\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog.Extended, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NLog.Extended.3.2.0.0\lib\net45-full\NLog.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=3.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\structuremap.3.1.4.143\lib\net40\StructureMap.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Web">
+      <HintPath>..\packages\structuremap.web.3.1.0.133\lib\net40\StructureMap.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Spatial, Version=5.6.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.4\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.2.0.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Areas\Mobile\Attributes\ValidateTokenAttribute.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppBaseController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppPictureController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppContactivityController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppSearchController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppSurveyController.cs" />
+    <Compile Include="Areas\Mobile\Controllers\AppAccountController.cs" />
+    <Compile Include="App_GlobalResources\Global.da.designer.cs">
+      <DependentUpon>Global.da.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Global.Designer.cs">
+      <DependentUpon>Global.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Survey\SurveyTexts.en.designer.cs">
+      <DependentUpon>SurveyTexts.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Survey\SurveyTexts.da.designer.cs">
+      <DependentUpon>SurveyTexts.da.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_GlobalResources\Survey\SurveyTexts.designer.cs">
+      <DependentUpon>SurveyTexts.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\MapperConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
+    <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
+    <Compile Include="Areas\Mobile\Models\GetNewMessagesModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\SearchResultModel.cs" />
+    <Compile Include="Areas\Mobile\Models\SignupModel.cs" />
+    <Compile Include="Areas\Mobile\Models\NewMessageModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\ConversationHeadsModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\SurveyModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\MessageModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\StatusModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\ResponseBase.cs" />
+    <Compile Include="Areas\Mobile\Models\TokenModel.cs" />
+    <Compile Include="Areas\Mobile\Models\LoginModel.cs" />
+    <Compile Include="Areas\Mobile\Models\Response\ConversationModel.cs" />
+    <Compile Include="Controllers\AbuseAdminController.cs" />
+    <Compile Include="Controllers\AbuseController.cs" />
+    <Compile Include="Controllers\AccountAdminController.cs" />
+    <Compile Include="Controllers\MaintenanceAdminController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageAdminController.cs" />
+    <Compile Include="Controllers\VisitorController.cs" />
+    <Compile Include="Controllers\FavouriteController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\PictureAdminController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SurveyAdminController.cs" />
+    <Compile Include="Controllers\PictureController.cs" />
+    <Compile Include="Controllers\SurveyController.cs" />
+    <Compile Include="DependencyResolution\ControllerConvention.cs" />
+    <Compile Include="DependencyResolution\DefaultRegistry.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="DependencyResolution\StructureMapScopeModule.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\ChangeNewPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\ViewModels\LogEntryViewModel.cs" />
+    <Compile Include="Models\ViewModels\LogOnViewModel.cs" />
+    <Compile Include="Models\ViewModels\MyPicturesViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShowPictureViewModel.cs" />
+    <Compile Include="Models\ViewModels\PictureViewModel.cs" />
+    <Compile Include="Models\ViewModels\AbuseReportViewModel.cs" />
+    <Compile Include="Models\ViewModels\HistoryEntryViewModel.cs" />
+    <Compile Include="Models\ViewModels\FavouriteViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountsRolesViewModel.cs" />
+    <Compile Include="Models\ViewModels\MyPageViewModel.cs" />
+    <Compile Include="Models\ViewModels\ConversationViewModel.cs" />
+    <Compile Include="Models\ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Models\ViewModels\SendMessageViewModel.cs" />
+    <Compile Include="Models\ViewModels\RoleViewModel.cs" />
+    <Compile Include="Models\ViewModels\AccountViewModel.cs" />
+    <Compile Include="Models\ViewModels\ShortSurveyViewModel.cs" />
+    <Compile Include="Models\ViewModels\WantedSurveyViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyViewModelBase.cs" />
+    <Compile Include="Models\ViewModels\SurveyViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage4ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage3ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage6ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage5ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage2ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SurveyPage1ViewModel.cs" />
+    <Compile Include="Models\ViewModels\SearchResultViewModel.cs" />
+    <Compile Include="Models\ViewModels\SearchAdvCriteriaViewModel.cs" />
+    <Compile Include="Models\ViewModels\SearchCriteriaViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\AgeValidatorAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\banner_pic.jpg" />
+    <Content Include="Content\images\banner_sprites.png" />
+    <Content Include="Content\images\bg1_01.jpg" />
+    <Content Include="Content\images\bg1_11.gif" />
+    <Content Include="Content\images\bg_01.jpg" />
+    <Content Include="Content\images\bg_02.jpg" />
+    <Content Include="Content\images\bg_03.jpg" />
+    <Content Include="Content\images\bg_04.jpg" />
+    <Content Include="Content\images\bg_05.jpg" />
+    <Content Include="Content\images\bg_06.jpg" />
+    <Content Include="Content\images\bg_07.jpg" />
+    <Content Include="Content\images\bg_08.jpg" />
+    <Content Include="Content\images\bg_09.jpg" />
+    <Content Include="Content\images\bg_10.jpg" />
+    <Content Include="Content\images\bg_11.jpg" />
+    <Content Include="Content\images\flags\Arabic.png" />
+    <Content Include="Content\images\flags\Danish.png" />
+    <Content Include="Content\images\flags\Swedish.png" />
+    <Content Include="Content\images\flags\English.png" />
+    <Content Include="Content\images\ja\about_us.jpg" />
+    <Content Include="Content\images\ja\coaching.jpg" />
+    <Content Include="Content\images\ja\dating1.jpg" />
+    <Content Include="Content\images\ja\dating3.jpg" />
+    <Content Include="Content\images\ja\dating4.jpg" />
+    <Content Include="Content\images\ja\dating5.jpg" />
+    <Content Include="Content\images\ja\holdinghands.jpg" />
+    <Content Include="Content\images\homepage_01.jpg" />
+    <Content Include="Content\images\icons\Facebook_32.png" />
+    <Content Include="Content\images\icons\Twitter_32.png" />
+    <Content Include="Content\images\ja\ja1.jpg" />
+    <Content Include="Content\images\ja\ja2.jpg" />
+    <Content Include="Content\images\ja\ja3.jpg" />
+    <Content Include="Content\images\ja\contact_us.jpg" />
+    <Content Include="Content\images\ja\logo.png" />
+    <Content Include="Content\images\ja\missing_en.jpg" />
+    <Content Include="Content\images\ja\missing_sv.jpg" />
+    <Content Include="Content\images\ja\t.png" />
+    <Content Include="Content\images\people\charlotte.jpg" />
+    <Content Include="Content\images\people\emelie.jpg" />
+    <Content Include="Content\images\ja\ja_happy.jpg" />
+    <Content Include="Content\images\ja\ja_normal.jpg" />
+    <Content Include="Content\images\people\linda.jpg" />
+    <Content Include="Content\images\people\nina.jpg" />
+    <Content Include="Content\images\people\nisse.jpg" />
+    <Content Include="Content\images\people\ylva.jpg" />
+    <Content Include="Content\images\subpage2_01.jpg" />
+    <Content Include="Content\images\subpage2_02.jpg" />
+    <Content Include="Content\images\subpage2_03.jpg" />
+    <Content Include="Content\Menu.css" />
+    <Content Include="Content\JamThemeBig.css" />
+    <Content Include="Content\JamThemeSmall.css" />
+    <Content Include="Content\JamTheme.css" />
+    <Content Include="Content\Jam.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Content\images\nav.svg" />
+    <Content Include="Content\StyleSheet1.scss" />
+    <Content Include="Areas\Mobile\Views\web.config" />
+    <None Include="Properties\PublishProfiles\JAM-Brilliance Azure.pubxml">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Scripts\ja\JamListTools.js" />
+    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.3.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.js" />
+    <Content Include="Scripts\jquery-2.1.3.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\ja\JamCounting.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\tinymce\license.txt" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tinymce\themes\modern\theme.js" />
+    <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\tinymce\tinymce.js" />
+    <Content Include="Scripts\tinymce\tinymce.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <None Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
+    <None Include="Scripts\tinymce\langs\readme.md" />
+    <None Include="Settings.StyleCop" />
+    <Content Include="sitemap.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\AccountAdmin\Delete.cshtml" />
+    <Content Include="Views\Survey\Details.cshtml" />
+    <Content Include="Views\SurveyAdmin\Start.cshtml" />
+    <Content Include="Views\Picture\ShowMainPicture.cshtml" />
+    <Content Include="Views\Home\Start.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Home\Coaching.cshtml" />
+    <Content Include="Views\Home\Sharpen.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Search\SearchAdv.cshtml" />
+    <Content Include="Views\AccountAdmin\Start.cshtml" />
+    <Content Include="Views\Shared\Header.cshtml" />
+    <Content Include="Views\Shared\Footer.cshtml" />
+    <Content Include="Views\AccountAdmin\NewPassword.cshtml" />
+    <Content Include="Views\Account\Pending.cshtml" />
+    <Content Include="Views\Account\VerificationFailed.cshtml" />
+    <Content Include="Views\Account\VerificationSuccess.cshtml" />
+    <Content Include="Views\Survey\Page1.cshtml" />
+    <Content Include="Views\Survey\Page2.cshtml" />
+    <Content Include="Views\Survey\Page6.cshtml" />
+    <Content Include="Views\Survey\Page3.cshtml" />
+    <Content Include="Views\Survey\Page4.cshtml" />
+    <Content Include="Views\Survey\Page5.cshtml" />
+    <Content Include="Views\Search\SearchResult.cshtml" />
+    <Content Include="Views\Message\SendMessage.cshtml" />
+    <Content Include="Views\Message\MyMessages.cshtml" />
+    <Content Include="Views\Message\ReadMessage.cshtml" />
+    <Content Include="Views\Survey\ShortDetails.cshtml" />
+    <Content Include="Views\Home\DevPage.cshtml" />
+    <Content Include="Views\Favourite\MyFavourites.cshtml" />
+    <Content Include="Views\Account\Blocked.cshtml" />
+    <Content Include="Views\Account\LockedOut.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Message\MessageSent.cshtml" />
+    <Content Include="Views\Visitor\MyVisitors.cshtml" />
+    <Content Include="Views\AbuseAdmin\Start.cshtml" />
+    <Content Include="Views\Account\OnlineUsers.cshtml" />
+    <Content Include="Views\PictureAdmin\Start.cshtml" />
+    <Content Include="Views\AccountAdmin\LogEntries.cshtml" />
+    <Content Include="Views\Shared\ToolbarAdmin.cshtml" />
+    <Content Include="Views\MessageAdmin\SupportMessages.cshtml" />
+    <Content Include="Views\Message\MySentMessages.cshtml" />
+    <Content Include="Views\Favourite\MyFans.cshtml" />
+    <Content Include="Views\Visitor\MyVisits.cshtml" />
+    <Content Include="Views\Shared\ToolbarUser.cshtml" />
+    <Content Include="Views\Picture\MyPictures.cshtml" />
+    <Content Include="Views\PictureAdmin\ShowPicture.cshtml" />
+    <Content Include="Views\Error\DatabaseFail.cshtml" />
+    <Content Include="Views\Error\AuthenticationFail.cshtml" />
+    <Content Include="Views\Shared\SurveyIncompleteError.cshtml" />
+    <Content Include="Views\Error\Throttled.cshtml" />
+    <Content Include="Views\Account\ReminderFailed.cshtml" />
+    <Content Include="Views\Account\ReminderSuccess.cshtml" />
+    <Content Include="Views\Account\ChangeNewPassword.cshtml" />
+    <Content Include="Views\Account\ChangeNewPasswordSuccess.cshtml" />
+    <Content Include="Views\Account\ReminderSent.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\tinymce_basic.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\tinymce_readonly.cshtml" />
+    <Content Include="Views\MaintenanceAdmin\Start.cshtml" />
+    <Content Include="Views\Home\MyActions.cshtml" />
+    <Content Include="Views\MessageAdmin\ReadConversation.cshtml" />
+    <Content Include="Views\MessageAdmin\BroadcastMessage.cshtml" />
+    <Content Include="Views\MessageAdmin\ReadSupportMessage.cshtml" />
+    <Content Include="Views\Home\Terms.cshtml" />
+    <Content Include="Views\Shared\ProfileMenu.cshtml" />
+    <Content Include="Views\Survey\MyShortDetails.cshtml" />
+    <Content Include="Views\Picture\ShowMyPicture.cshtml" />
+    <Content Include="Views\Picture\ShowOtherPicture.cshtml" />
+    <Content Include="nlog.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_GlobalResources\Account\" />
+    <Folder Include="App_GlobalResources\Home\" />
+    <Folder Include="App_GlobalResources\Message\" />
+    <Folder Include="App_GlobalResources\Search\" />
+    <Folder Include="App_GlobalResources\Shared\" />
+    <Folder Include="Areas\Mobile\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Global.da.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.da.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Survey\SurveyTexts.en.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveyTexts.en.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Survey\SurveyTexts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveyTexts.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="App_GlobalResources\Survey\SurveyTexts.da.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SurveyTexts.da.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\Global.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="robots.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JAM-Core\JAM-Core.csproj">
+      <Project>{8daa18ef-ee87-4654-96c7-0e80c0b54203}</Project>
+      <Name>JAM-Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45562</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:45562/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

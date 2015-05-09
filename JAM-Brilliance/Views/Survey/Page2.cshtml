@@ -1,0 +1,385 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model SurveyPage2ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Hår</legend>
+            <div class="editor-label">
+                @Html.HiddenFor(model => model.SurveyId)
+                @Html.CheckBoxFor(model => model.IsHairBlond, new { autofocus = "" })
+                @Html.LabelFor(model => model.IsHairBlond)
+                @Html.ValidationMessageFor(model => model.IsHairBlond)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairRed)
+                @Html.LabelFor(model => model.IsHairRed)
+                @Html.ValidationMessageFor(model => model.IsHairRed)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairBrown)
+                @Html.LabelFor(model => model.IsHairBrown)
+                @Html.ValidationMessageFor(model => model.IsHairBrown)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairGrey)
+                @Html.LabelFor(model => model.IsHairGrey)
+                @Html.ValidationMessageFor(model => model.IsHairGrey)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairBlack)
+                @Html.LabelFor(model => model.IsHairBlack)
+                @Html.ValidationMessageFor(model => model.IsHairBlack)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairBald)
+                @Html.LabelFor(model => model.IsHairBald)
+                @Html.ValidationMessageFor(model => model.IsHairBald)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Hårlängd</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthShaved)
+                @Html.LabelFor(model => model.IsHairLengthShaved)
+                @Html.ValidationMessageFor(model => model.IsHairLengthShaved)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthVeryShort)
+                @Html.LabelFor(model => model.IsHairLengthVeryShort)
+                @Html.ValidationMessageFor(model => model.IsHairLengthVeryShort)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthShort)
+                @Html.LabelFor(model => model.IsHairLengthShort)
+                @Html.ValidationMessageFor(model => model.IsHairLengthShort)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthShoulder)
+                @Html.LabelFor(model => model.IsHairLengthShoulder)
+                @Html.ValidationMessageFor(model => model.IsHairLengthShoulder)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthLong)
+                @Html.LabelFor(model => model.IsHairLengthLong)
+                @Html.ValidationMessageFor(model => model.IsHairLengthLong)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHairLengthVeryLong)
+                @Html.LabelFor(model => model.IsHairLengthVeryLong)
+                @Html.ValidationMessageFor(model => model.IsHairLengthVeryLong)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Ögon <i class="fa fa-eye"></i></legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEyesBlue)
+                @Html.LabelFor(model => model.IsEyesBlue)
+                @Html.ValidationMessageFor(model => model.IsEyesBlue)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEyesBrown)
+                @Html.LabelFor(model => model.IsEyesBrown)
+                @Html.ValidationMessageFor(model => model.IsEyesBrown)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEyesGrey)
+                @Html.LabelFor(model => model.IsEyesGrey)
+                @Html.ValidationMessageFor(model => model.IsEyesGrey)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEyesGreen)
+                @Html.LabelFor(model => model.IsEyesGreen)
+                @Html.ValidationMessageFor(model => model.IsEyesGreen)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEyesMix)
+                @Html.LabelFor(model => model.IsEyesMix)
+                @Html.ValidationMessageFor(model => model.IsEyesMix)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset class="break-print-page">
+            <legend>Yrke</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfNot)
+                @Html.LabelFor(model => model.IsProfNot)
+                @Html.ValidationMessageFor(model => model.IsProfNot)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfAdmin)
+                @Html.LabelFor(model => model.IsProfAdmin)
+                @Html.ValidationMessageFor(model => model.IsProfAdmin)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfArtist)
+                @Html.LabelFor(model => model.IsProfArtist)
+                @Html.ValidationMessageFor(model => model.IsProfArtist)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfConstruction)
+                @Html.LabelFor(model => model.IsProfConstruction)
+                @Html.ValidationMessageFor(model => model.IsProfConstruction)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfHr)
+                @Html.LabelFor(model => model.IsProfHr)
+                @Html.ValidationMessageFor(model => model.IsProfHr)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfIt)
+                @Html.LabelFor(model => model.IsProfIt)
+                @Html.ValidationMessageFor(model => model.IsProfIt)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfDetail)
+                @Html.LabelFor(model => model.IsProfDetail)
+                @Html.ValidationMessageFor(model => model.IsProfDetail)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfSelf)
+                @Html.LabelFor(model => model.IsProfSelf)
+                @Html.ValidationMessageFor(model => model.IsProfSelf)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfFinance)
+                @Html.LabelFor(model => model.IsProfFinance)
+                @Html.ValidationMessageFor(model => model.IsProfFinance)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfSales)
+                @Html.LabelFor(model => model.IsProfSales)
+                @Html.ValidationMessageFor(model => model.IsProfSales)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfHealth)
+                @Html.LabelFor(model => model.IsProfHealth)
+                @Html.ValidationMessageFor(model => model.IsProfHealth)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfHotel)
+                @Html.LabelFor(model => model.IsProfHotel)
+                @Html.ValidationMessageFor(model => model.IsProfHotel)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfLaw)
+                @Html.LabelFor(model => model.IsProfLaw)
+                @Html.ValidationMessageFor(model => model.IsProfLaw)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfAdvertising)
+                @Html.LabelFor(model => model.IsProfAdvertising)
+                @Html.ValidationMessageFor(model => model.IsProfAdvertising)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfState)
+                @Html.LabelFor(model => model.IsProfState)
+                @Html.ValidationMessageFor(model => model.IsProfState)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfEducation)
+                @Html.LabelFor(model => model.IsProfEducation)
+                @Html.ValidationMessageFor(model => model.IsProfEducation)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfRetired)
+                @Html.LabelFor(model => model.IsProfRetired)
+                @Html.ValidationMessageFor(model => model.IsProfRetired)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsProfStudent)
+                @Html.LabelFor(model => model.IsProfStudent)
+                @Html.ValidationMessageFor(model => model.IsProfStudent)
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Utbildning</legend>
+            <!-- ******************************************************************************************** -->
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduBasic)
+                @Html.LabelFor(model => model.IsEduBasic)
+                @Html.ValidationMessageFor(model => model.IsEduBasic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduCollage)
+                @Html.LabelFor(model => model.IsEduCollage)
+                @Html.ValidationMessageFor(model => model.IsEduCollage)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduUniversity)
+                @Html.LabelFor(model => model.IsEduUniversity)
+                @Html.ValidationMessageFor(model => model.IsEduUniversity)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduKand)
+                @Html.LabelFor(model => model.IsEduKand)
+                @Html.ValidationMessageFor(model => model.IsEduKand)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduMag)
+                @Html.LabelFor(model => model.IsEduMag)
+                @Html.ValidationMessageFor(model => model.IsEduMag)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduDoc)
+                @Html.LabelFor(model => model.IsEduDoc)
+                @Html.ValidationMessageFor(model => model.IsEduDoc)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEduLife)
+                @Html.LabelFor(model => model.IsEduLife)
+                @Html.ValidationMessageFor(model => model.IsEduLife)
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Personlighet</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonAdventurous)
+                @Html.LabelFor(model => model.IsPersonAdventurous)
+                @Html.ValidationMessageFor(model => model.IsPersonAdventurous)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonCarefree)
+                @Html.LabelFor(model => model.IsPersonCarefree)
+                @Html.ValidationMessageFor(model => model.IsPersonCarefree)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonShy)
+                @Html.LabelFor(model => model.IsPersonShy)
+                @Html.ValidationMessageFor(model => model.IsPersonShy)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonDominant)
+                @Html.LabelFor(model => model.IsPersonDominant)
+                @Html.ValidationMessageFor(model => model.IsPersonDominant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonLoner)
+                @Html.LabelFor(model => model.IsPersonLoner)
+                @Html.ValidationMessageFor(model => model.IsPersonLoner)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonStubborn)
+                @Html.LabelFor(model => model.IsPersonStubborn)
+                @Html.ValidationMessageFor(model => model.IsPersonStubborn)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonGenerous)
+                @Html.LabelFor(model => model.IsPersonGenerous)
+                @Html.ValidationMessageFor(model => model.IsPersonGenerous)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonHappy)
+                @Html.LabelFor(model => model.IsPersonHappy)
+                @Html.ValidationMessageFor(model => model.IsPersonHappy)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonHomorous)
+                @Html.LabelFor(model => model.IsPersonHomorous)
+                @Html.ValidationMessageFor(model => model.IsPersonHomorous)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonSensitive)
+                @Html.LabelFor(model => model.IsPersonSensitive)
+                @Html.ValidationMessageFor(model => model.IsPersonSensitive)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonAmbitious)
+                @Html.LabelFor(model => model.IsPersonAmbitious)
+                @Html.ValidationMessageFor(model => model.IsPersonAmbitious)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonAnalytic)
+                @Html.LabelFor(model => model.IsPersonAnalytic)
+                @Html.ValidationMessageFor(model => model.IsPersonAnalytic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonTemper)
+                @Html.LabelFor(model => model.IsPersonTemper)
+                @Html.ValidationMessageFor(model => model.IsPersonTemper)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonLivly)
+                @Html.LabelFor(model => model.IsPersonLivly)
+                @Html.ValidationMessageFor(model => model.IsPersonLivly)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonCalm)
+                @Html.LabelFor(model => model.IsPersonCalm)
+                @Html.ValidationMessageFor(model => model.IsPersonCalm)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonRestless)
+                @Html.LabelFor(model => model.IsPersonRestless)
+                @Html.ValidationMessageFor(model => model.IsPersonRestless)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonConsidering)
+                @Html.LabelFor(model => model.IsPersonConsidering)
+                @Html.ValidationMessageFor(model => model.IsPersonConsidering)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonReserved)
+                @Html.LabelFor(model => model.IsPersonReserved)
+                @Html.ValidationMessageFor(model => model.IsPersonReserved)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonSocial)
+                @Html.LabelFor(model => model.IsPersonSocial)
+                @Html.ValidationMessageFor(model => model.IsPersonSocial)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonSpantanious)
+                @Html.LabelFor(model => model.IsPersonSpantanious)
+                @Html.ValidationMessageFor(model => model.IsPersonSpantanious)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonCaring)
+                @Html.LabelFor(model => model.IsPersonCaring)
+                @Html.ValidationMessageFor(model => model.IsPersonCaring)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonInspiring)
+                @Html.LabelFor(model => model.IsPersonInspiring)
+                @Html.ValidationMessageFor(model => model.IsPersonInspiring)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonSafe)
+                @Html.LabelFor(model => model.IsPersonSafe)
+                @Html.ValidationMessageFor(model => model.IsPersonSafe)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPersonStructured)
+                @Html.LabelFor(model => model.IsPersonStructured)
+                @Html.ValidationMessageFor(model => model.IsPersonStructured)
+            </div>
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 2/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.PreviousPage" type="submit">
+                        <i class="fa fa-chevron-left"></i> Förra
+                    </button>
+                    <button name="direction" value="@PageButtons.NextPage" type="submit">
+                        Nästa <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

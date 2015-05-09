@@ -1,0 +1,21 @@
+﻿@using JAM.Core.Exceptions
+@model HandleErrorInfo
+
+<div>
+    @if (Model != null && Model.Exception is SurveyIncompleteException)
+    {
+        <div>
+            <fieldset>
+                <legend>OBS</legend>
+                <p>Du nåste fylla i din profil för att komma åt sökningar, meddelande, favoriter etc</p>
+                <p>Gå till @Html.ActionLink("Mina profil", "MyShortDetails", "Survey")</p>
+            </fieldset>
+        </div>
+        <br /><br /><br /><br />
+    }
+    else
+    {
+        <p>Systemfel!</p>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    }
+</div>

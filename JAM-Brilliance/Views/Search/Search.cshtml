@@ -1,0 +1,105 @@
+﻿@using JAM.Brilliance.Models.ViewModels
+@using JAM.Brilliance.App_GlobalResources
+@model SearchCriteriaViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<script>
+    $(function () {
+        $("#slider-agerange").slider({
+            range: true,
+            min: 18,
+            max: 85,
+            values: [25, 45],
+            slide: function (event, ui) {
+                $("#agerangetext").text($("#slider-agerange").slider("values", 0) + " -> " + $("#slider-agerange").slider("values", 1));
+                $("#@Html.IdFor(model => model.AgeMin)").val(ui.values[0]);
+                $("#@Html.IdFor(model => model.AgeMax)").val(ui.values[1]);
+            }
+        });
+
+        $("#slider-heightrange").slider({
+            range: true,
+            min: 118,
+            max: 210,
+            values: [158, 199],
+            slide: function (event, ui) {
+                $("#heightrangetext").text($("#slider-heightrange").slider("values", 0) + " -> " + $("#slider-heightrange").slider("values", 1));
+                $("#@Html.IdFor(model => model.HeightMin)").val(ui.values[0]);
+                $("#@Html.IdFor(model => model.HeightMax)").val(ui.values[1]);
+            }
+        });
+
+        $("#agerangetext").text($("#slider-agerange").slider("values", 0) + " -> " + $("#slider-agerange").slider("values", 1));
+        $("#heightrangetext").text($("#slider-heightrange").slider("values", 0) + " -> " + $("#slider-heightrange").slider("values", 1));
+
+        $("#@Html.IdFor(model => model.AgeMin)").val($("#slider-agerange").slider("values", 0));
+        $("#@Html.IdFor(model => model.AgeMax)").val($("#slider-agerange").slider("values", 1));
+
+        $("#@Html.IdFor(model => model.HeightMin)").val($("#slider-heightrange").slider("values", 0));
+        $("#@Html.IdFor(model => model.HeightMax)").val($("#slider-heightrange").slider("values", 1));
+
+    });
+</script>
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <br />
+    @Global.Search_P1 @Html.ActionLink(Global.Search_Adv, "SearchAdv") @Global.Search_And @Global.Search_Quick
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Snabbsök</legend>
+            <img src="/content/images/ja/holdinghands.jpg" alt="" width="400" style="float: right;" />
+            <div class="editor-label">
+                @Html.LabelFor(model => model.City)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.City, new { autofocus = "" })
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.AgeMin) 
+                (<span id="agerangetext"></span>)
+            </div>
+            <div class="editor-field">
+                <div id="slider-agerange" style="max-width: 40%"></div>
+               
+                @Html.HiddenFor(model => model.AgeMin)
+                @Html.HiddenFor(model => model.AgeMax)
+                @Html.ValidationMessageFor(model => model.AgeMin)
+            </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(model => model.HeightMin)
+                (<span id="heightrangetext"></span>)
+            </div>
+            <div class="editor-field">
+                <div id="slider-heightrange" style="max-width: 40%"></div>
+                
+                @Html.HiddenFor(model => model.HeightMin)
+                @Html.HiddenFor(model => model.HeightMax)
+                @Html.ValidationMessageFor(model => model.HeightMin)
+            </div>
+            
+            <div class="editor-label">
+         
+                @Html.CheckBoxFor(model => model.HasKids)
+                @Html.LabelFor(model => model.HasKids)
+                @Html.ValidationMessageFor(model => model.HasKids)
+            </div>
+
+            <div>
+                <br />
+                <button type="submit">
+                    Sök <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </fieldset>
+    }
+</p>

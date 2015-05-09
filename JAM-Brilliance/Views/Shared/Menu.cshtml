@@ -1,0 +1,95 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using JAM.Brilliance.App_GlobalResources
+@model MyPageViewModel
+@if (Model.IsMember)
+{
+    <script>
+        $(document).ready(checkMessages('@Url.Action("GetNumberOfUnreadMessages", "Message")'));
+    </script>
+}
+
+<table width="100%" id="main-nav" class="container">
+    <tr>
+        <td>
+            <div id="menu">
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item @(Model.CurrentPageId == PageIds.Start ? "active" : "")">@Html.ActionLink(@Global.Menu_Start, "Start", "Home")</li>
+                        <li class="nav-item @(Model.CurrentPageId == PageIds.About ? "active" : "")">@Html.ActionLink(@Global.Menu_AboutUs, "About", "Home")</li>
+                        @if (Model.IsMember)
+                        {
+                            <li class="nav-item @(Model.CurrentPageId == PageIds.Search ? "active" : "")">@Html.ActionLink(@Global.Menu_Search, "Search", "Search") <i class="fa fa-search"></i></li>
+                        }
+                        <li class="nav-item @(Model.CurrentPageId == PageIds.Coaching ? "active" : "")">@Html.ActionLink(@Global.Menu_Coaching, "Coaching", "Home")</li>
+                        <li class="nav-item @(Model.CurrentPageId == PageIds.Sharpen ? "active" : "")">@Html.ActionLink(@Global.Menu_Sharpen, "Sharpen", "Home")</li>
+                        <li class="nav-item @(Model.CurrentPageId == PageIds.Contact ? "active" : "")">@Html.ActionLink(@Global.Menu_ContactUs, "Contact", "Home")</li>
+                        @if (Model.IsMember)
+                        {
+                            <li class="nav-item @(Model.CurrentPageId == PageIds.MyPage ? "active" : "")">
+                                @Html.ActionLink("Min profil", "MyShortDetails", "Survey")
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("MyMessages", "Message")" title="Mina meddelande" id="MessagesLink">
+                                    <i class="fa fa-envelope"></i><sup id="MessagesCountTop">&nbsp;&nbsp;</sup>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item @(Model.CurrentPageId == PageIds.Login ? "active" : "")">@Html.ActionLink("Logga in", "LogOn", "Account")</li>
+                            <li class="nav-item @(Model.CurrentPageId == PageIds.Register ? "active" : "")">@Html.ActionLink("Registrera dig!", "Register", "Account")</li>
+                        }
+
+                        <li class="nav-item">
+                            <div id="flags">
+                                <a href="@Url.Action("Swedish", "Home")"><img width="28" title="Svenska" alt="Svenska" src='@Url.Content(Constants.Flags.SwedishFlag)' /></a>
+                                <a href="@Url.Action("English", "Home")"><img width="28" title="English" alt="English" src='@Url.Content(Constants.Flags.EnglishFlag)' /></a>
+                            </div>
+                        </li>
+                        @if (Model.IsAdmin)
+                        {
+                            <li class="nav-item @(Model.CurrentPageId == PageIds.DevPage ? "active" : "")">
+                                <a href="@Url.Action("DevPage", "Home")"><i class="fa fa-cogs fa-spin"></i></a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    (function () {
+        // Create mobile element
+        var mobile = document.createElement('div');
+        mobile.className = 'nav-mobile';
+        document.querySelector('.nav').appendChild(mobile);
+
+        // hasClass
+        function hasClass(elem, className) {
+            return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+        }
+
+        // toggleClass
+        function toggleClass(elem, className) {
+            var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+            if (hasClass(elem, className)) {
+                while (newClass.indexOf(' ' + className + ' ') >= 0) {
+                    newClass = newClass.replace(' ' + className + ' ', ' ');
+                }
+                elem.className = newClass.replace(/^\s+|\s+$/g, '');
+            } else {
+                elem.className += ' ' + className;
+            }
+        }
+
+        // Mobile nav function
+        var mobileNav = document.querySelector('.nav-mobile');
+        var toggle = document.querySelector('.nav-list');
+        mobileNav.onclick = function () {
+            toggleClass(this, 'nav-mobile-open');
+            toggleClass(toggle, 'nav-active');
+        };
+    })();
+</script>

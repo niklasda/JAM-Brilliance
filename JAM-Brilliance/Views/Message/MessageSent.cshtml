@@ -1,0 +1,18 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model SendMessageViewModel
+
+@if (!Model.IsFromAnonymous) 
+{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <br />
+
+    Meddelande har skickats
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</p>

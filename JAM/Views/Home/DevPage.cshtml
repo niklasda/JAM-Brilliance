@@ -1,0 +1,93 @@
+﻿@using System.Configuration
+@using System.Reflection
+@using System.Threading
+@using JAM.Controllers
+@using JAM.Logic
+
+@if (User.Identity.IsAuthenticated)
+{
+    <fieldset>
+        <legend>Developer Info</legend>
+
+        <br />
+        @{
+            /* Microsoft SQL Azure (RTM) - 11.0.9225.9   Sep 22 2014 22:55:00   Copyright (c) Microsoft Corporation */
+            var cs = ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
+            cs = cs.Substring(0, cs.IndexOf("password", StringComparison.CurrentCultureIgnoreCase));
+            @Html.Raw(string.Format("Conn: {0}", cs))<br />
+        }
+        <br />
+
+        @Html.Raw(string.Format("User: {0}", User.Identity.Name))<br />
+        @Html.Raw(string.Format("AuthType: {0}", User.Identity.AuthenticationType))<br />
+        @Html.Raw(string.Format("Roles: {0}", string.Join(", ", Roles.GetRolesForUser())))<br />
+        @Html.Raw(string.Format("Role AppName: {0}", Roles.ApplicationName))<br />
+        @Html.Raw(string.Format("Membership AppName: {0}", Membership.ApplicationName))<br />
+        <br />
+        @Html.Raw(string.Format("Current Culture: {0}", Thread.CurrentThread.CurrentCulture))<br />
+        @Html.Raw(string.Format("UI Culture: {0}", Thread.CurrentThread.CurrentUICulture))<br />
+        <br />
+        @Html.Raw(string.Format("Client IP: {0}", Request.ServerVariables["REMOTE_ADDR"]))<br />
+        @Html.Raw(string.Format("Server IP: {0}", Request.ServerVariables["LOCAL_ADDR"]))<br />
+        @Html.Raw(string.Format("Server Port: {0}", Request.ServerVariables["SERVER_PORT"]))<br />
+
+        @Html.Raw(string.Format("IIS Service Account: {0} \\ {1}", @Environment.UserDomainName, @Environment.UserName))<br />
+        @Html.Raw(string.Format(".NET CLR Version: {0}", @Environment.Version.ToString()))<br />
+
+        @Html.Raw(string.Format("Machine: {0}", Environment.MachineName))<br />
+        @Html.Raw(string.Format("Domain: {0}", Environment.UserDomainName))<br />
+        @Html.Raw(string.Format("User: {0}", Environment.UserName))<br />
+        @Html.Raw(string.Format("OS: {0}", Environment.OSVersion))<br />
+        @Html.Raw(string.Format("Server software: {0}", Request.ServerVariables["SERVER_SOFTWARE"]))<br />
+        @Html.Raw(string.Format("HTTPs: {0}", Request.ServerVariables["HTTPS"]))<br />
+        @Html.Raw(string.Format("Path: {0}", Request.ServerVariables["PATH_INFO"]))<br />
+        @Html.Raw(string.Format("Absolute Path: {0}", Request.ServerVariables["PATH_TRANSLATED"]))<br />
+        @Html.Raw(string.Format("JAM file: {0}", typeof(HomeController).Assembly.GetName().CodeBase))<br />
+        @Html.Raw(string.Format("JAM compilation date: {0}", File.GetLastWriteTime(typeof(HomeController).Assembly.Location).ToString("yyyy-MM-dd HH:mm:ss")))
+        @{
+            var cnf = Attribute.GetCustomAttribute(typeof(HomeController).Assembly, typeof(AssemblyConfigurationAttribute)) as AssemblyConfigurationAttribute;
+            if (cnf != null)
+            {
+                <span><br />JAM configuration: @cnf.Configuration</span><br />
+            }
+        }
+        @Html.Raw(string.Format("JAM Version: {0}", typeof(HomeController).Assembly.GetName().Version))<br /><br />
+
+        @Html.Raw(string.Format("MVC Version: {0}", typeof(Controller).Assembly.GetName().Version))<br />
+
+        jQuery version: <span id="jQueryVersion"></span><br /><br />
+        
+        @if (Session != null)
+        {
+            @Html.Raw(string.Format("Session ID: {0}", Session.SessionID))<br />
+            @Html.Raw(string.Format("Session Timeout: {0}m", Session.Timeout))<br />
+            @Html.Raw(string.Format("Session Mode: {0}m", Session.Mode))<br />
+            <span>
+                Session Keys < br / >
+                <ul>
+                    @foreach (var s in HttpContext.Current.Session.Keys)
+                    {
+                        <li> @s - @HttpContext.Current.Session[s as string] </li>
+                    }
+                </ul>
+            </span>
+        }
+        else
+        {
+            <span>No Session<br/></span>
+        }
+        Cookies<br />
+        <ul>
+            @* _ga, _gat, __utma, __utmz is from google analytics. __RequestVerificationToken is antiforgerytoken, ARRAffinity is from Azure, cultureCode is our own  *@
+            @foreach (var c in HttpContext.Current.Request.Cookies.AllKeys)
+            {
+                <li>@c - @Server.UrlDecode(HttpContext.Current.Request.Cookies[c].Value)</li>
+            }
+        </ul>
+
+    </fieldset>
+
+    <script>
+        $("#jQueryVersion").text(jQuery.prototype.jquery);
+    </script>
+}

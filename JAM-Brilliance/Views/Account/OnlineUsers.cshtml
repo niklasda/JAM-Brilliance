@@ -1,0 +1,33 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<AccountViewModel>
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>Online just nu</legend>
+
+        <table class="list-table">
+            <tr>
+                <th>Bild</th>
+                <th>Namn <i class="fa fa-chevron-up"></i></th>
+                <th>Pos</th>
+            </tr>
+            @foreach (AccountViewModel user in Model)
+            {
+                <tr>
+                    <td><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = user.SurveyId })" /></td>
+                    <td>@Html.ActionLink(user.UserName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = user.SurveyId }, null) <i class="fa fa-circle" style="color: green;"></i></td>
+                    <td>@user.GeoLocation.Coordinates[0], @user.GeoLocation.Coordinates[1]</td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfOnlineUsers, page => Url.Action("OnlineUsers", new { page }))
+        <br />
+        <br />
+        <br />
+    </fieldset>
+</p>

@@ -1,0 +1,68 @@
+﻿@using JAM.Brilliance.App_GlobalResources
+@using JAM.Core.Logic
+
+<div>
+    <img src="/content/images/ja/dating4.jpg" alt="" width="260" style="float: right; padding: 10px" />
+    <h1>
+        @Global.Start_Title
+    </h1>
+    <br />
+    <p>
+        @Global.Start_P2
+        <br />
+    </p>
+    @if (User.IsInRole(MemberRoles.Member))
+    {
+
+        <button onclick="window.location.href = '@Url.Action("Page1", "Survey")'" type="button" style="font-size: 18px;">
+            Fyll i din profil <i class="fa fa-list-ul fa-lg"></i>
+        </button>
+    }
+    else
+    {
+        <button onclick="window.location.href = '@Url.Action("Register", "Account")'" type="button" style="font-size: 18px;">
+            @Global.Start_P6 <i class="fa fa-check fa-lg"></i>
+        </button>
+
+        <button onclick="window.location.href = '@Url.Action("LogOn", "Account")'" type="button" style="font-size: 18px;">
+            Logga in <i class="fa fa-heart fa-lg"></i>
+        </button>
+    }
+
+    <p>
+        <br />
+        @Global.Start_P3
+        @Html.ActionLink(Global.Start_P4, "Matchmaking", "Home").
+    </p>
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2>Välkommen till Brilliance Dejting!!!</h2>
+    <div>
+    <p>Varmt välkommen som medlem på J&amp;A Dejting där du förutom att hitta en massa heta singlar även kan bli headhuntad av en professionell matchmaker och få möjligheten att gå på dejt med en av J&amp;A Datings spännande kunder.</p>
+    <p>Du kommer att få ett aktiveringsmail genom vilket du kan aktivera ditt konto. Om du inte fått det efter 5 minuter kan ett tips vara att kolla i din skräppost så det inte hamnat där.</p>
+    <p>När du har aktiverat ditt konto så är det bra att göra en så utförlig beskrivning av dig själv som möjligt under ”Min sida”. Fyll gärna i hela frågeformuläret så att det blir ännu lättare för andra att hitta dig utifrån gemensamma faktorer.</p>
+
+    <p>
+        Lite tips:
+        <ul>
+            <li>Använd så nytagna bilder som möjligt och gärna några av olika slag så att man kan få en bild av hela din personlighet. Pornografiska eller sexuella bilder är ej tillåtna.</li>
+            <li>Glöm inte att fylla i din egna profilbeskrivning! Skriv kortfattat men ta tillfället i akt och visa din egen ”stil” i texten.</li>
+            <li>Respektera alltid då en annan medlem inte vill bli kontaktad!</li>
+        </ul>
+    </p>
+    <p>Happy dejting!!!</p>
+
+    <p>Brilliance Dejting</p>
+
+    </div>
+</div>

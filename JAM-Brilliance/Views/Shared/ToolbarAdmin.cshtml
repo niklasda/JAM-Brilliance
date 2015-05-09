@@ -1,0 +1,29 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model MyPageViewModel
+
+<script>
+    $(document).ready(checkAdminCounts('@Url.Action("GetAdminNumbersOf", "PictureAdmin")'));
+</script>
+
+<fieldset>
+    <legend>Administration <i class="fa fa-cogs fa-spin"></i></legend>
+    &nbsp;
+    <a href="@Url.Action("Start", "SurveyAdmin")">Profiler<i style="padding-left: 5px;" class="fa fa-female"></i></a>
+    &nbsp;&nbsp;
+    <a href="@Url.Action("Start", "AccountAdmin")">ASP.NET Accounts<i style="padding-left: 5px;" class="fa fa-male"></i></a>
+    &nbsp;&nbsp;
+    <a href="@Url.Action("Start", "AbuseAdmin")">Anmälningar<i style="padding-left: 5px;" class="fa fa-bullhorn"></i></a><sup id="AbuseReportsCount">&nbsp;&nbsp;</sup>
+    &nbsp; &nbsp;
+    <a href="@Url.Action("Start", "PictureAdmin")">Väntande Bilder<i style="padding-left: 5px;" class="fa fa-file-image-o"></i></a><sup id="PicturesWaitingCount">&nbsp;&nbsp;</sup>
+    &nbsp; &nbsp;
+    <a href="@Url.Action("SupportMessages", "MessageAdmin", new { surveyId = 1 }, null)" title="Meddelande till support">Support<i style="padding-left: 5px;" class="fa fa-envelope"></i></a><sup id="SupportMessagesCount">&nbsp;&nbsp;</sup>
+    &nbsp;&nbsp;
+    <a href="@Url.Action("SupportMessages", "MessageAdmin", new { surveyId = 2 }, null)" title="Meddelande till anonym support">Support A<i style="padding-left: 5px;" class="fa fa-envelope"></i></a><sup id="AnonSupportMessagesCount">&nbsp;&nbsp;</sup>
+    &nbsp;&nbsp;
+    <a href="@Url.Action("BroadcastMessage", "MessageAdmin")" title="Skicka meddelande till alla">Multi<i style="padding-left: 5px;" class="fa fa-envelope-square"></i></a>
+    &nbsp;&nbsp;
+    <a href="@Url.Action("LogEntries", "AccountAdmin")" title="Öppna Loggen"><i style="padding-left: 5px;" class="fa fa-align-justify"></i></a>
+    &nbsp; &nbsp;
+    <a href="@Url.Action("Start", "MaintenanceAdmin")" title="Underhåll"><i style="padding-left: 5px;" class="fa fa-trash"></i></a>
+</fieldset>

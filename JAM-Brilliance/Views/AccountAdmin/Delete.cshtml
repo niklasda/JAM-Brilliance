@@ -1,0 +1,52 @@
+﻿@using JAM.Brilliance.Models.ViewModels;
+@model ShortSurveyViewModel
+
+<div>
+    <h2>
+        Vill du verkligen ta bort den här profilen?<br/>
+        Inklusive login, bilder, meddelande, favoriter, historik
+    </h2>
+    <br />
+    @using (Html.BeginForm("Delete", "AccountAdmin"))
+    {    <fieldset>
+        <legend>Radera den här profilen, inklusive login, bilder, meddelande, favoriter, historik</legend>
+        <div class="editor-label">
+            <b>Namn</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            <b>Postnummer</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.PostalCode)
+        </div>
+        <div class="editor-label">
+            <b>Stad</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            <b>Email</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Note1)
+            @Html.HiddenFor(model => model.Note1)
+        </div>
+    </fieldset>
+
+        <p>
+
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.SurveyId)
+            </div>
+            <button type="submit">
+                Ta bort <i class="fa fa-trash-o"></i>
+            </button>
+            |
+            @Html.ActionLink("Tillbaka till listan", "Start")
+        </p>
+    }
+</div>

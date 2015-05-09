@@ -1,0 +1,14 @@
+﻿User-Agent: *
+Disallow: /Abuse
+Disallow: /AbuseAdmin
+Disallow: /Account
+Disallow: /AccountAdmin
+Disallow: /Error
+Disallow: /Favourite
+Disallow: /Message
+Disallow: /Picture
+Disallow: /PictureAdmin
+Disallow: /Search
+Disallow: /Survey
+Disallow: /SurveyAdmin
+Disallow: /Visitor

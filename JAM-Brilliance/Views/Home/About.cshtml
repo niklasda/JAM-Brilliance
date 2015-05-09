@@ -1,0 +1,21 @@
+﻿@using JAM.Brilliance.App_GlobalResources
+
+<h1>
+    @Global.Menu_AboutUs
+</h1>
+<div class="pictures-container">
+    <span class="picture-caption">Foto: Helena Hagman</span>
+    <img src="/content/images/ja/about_us.jpg" height="360" alt="Foto: Helena Hagman" title="Foto: Helena Hagman" />
+</div>
+<p>
+    <br />
+    @Html.Raw(Global.About_Us.Replace("J&A Matchmaking", Html.ActionLink("J&A Matchmaking", "Matchmaking").ToHtmlString()))
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+</p>

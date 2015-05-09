@@ -1,0 +1,51 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model ConversationViewModel
+
+@{ Html.RenderAction("ToolbarAdmin", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>
+            En konversation mellan @Html.ActionLink(Model.OriginalMessage.FromName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = Model.OriginalMessage.FromSurveyId }, null)
+            <span><i class="fa fa-exchange"></i></span> @Html.ActionLink(Model.OriginalMessage.ToName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = Model.OriginalMessage.ToSurveyId }, null)
+        </legend>
+        <br />
+        @foreach (var m in Model.Messages.OrderBy(x => x.SendDate))
+        {
+            string styles;
+            if (m.FromSurveyId == Model.OriginalMessage.FromSurveyId)
+            {
+                if (m.MessageId == Model.OriginalMessage.MessageId)
+                {
+                    styles = "width: 300px; border: 5px solid black;";
+                }
+                else
+                {
+                    styles = "width: 300px; border: 2px solid black;";
+                }
+            }
+            else
+            {
+                if (m.MessageId == Model.OriginalMessage.MessageId)
+                {
+                    styles = "width: 300px; margin-left: 100px; border: 5px solid blue;";
+                }
+                else
+                {
+                    styles = "width: 300px; margin-left: 100px; border: 2px solid blue;";
+                }
+            }
+           
+            <table class="list-table" style="@styles">
+                <tr><td style="background-color: lightgrey;">&nbsp;<i class="fa fa-envelope"></i> @m.FromName.GetBeginning(StringLength.Short)
+                <span><i class="fa fa-long-arrow-right"></i></span> @m.ToName.GetBeginning(StringLength.Short)</td>
+                </tr>
+                <tr>
+                    <td><textarea cols="35" rows="5" readonly="readonly">@m.Body</textarea></td>
+                </tr>
+            </table>
+            <br/>
+        }
+    </fieldset>
+</p>

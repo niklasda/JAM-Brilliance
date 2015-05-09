@@ -1,0 +1,60 @@
+﻿@charset "utf-8";
+/*
+	Todd Motto Labs
+	URL: www.toddmotto.com
+*/
+/* Navigation styling */
+.nav {
+    position: relative;
+    z-index: 10;
+}
+.nav-list {
+}
+.nav-item {
+}
+/* Mobile Navigation */
+.nav-mobile {
+	display:none; /* Hide from browsers that don't support media queries */
+	cursor:pointer;
+	background:#170E0F url(/Content/images/nav.svg) no-repeat center center;
+	height:40px;
+	width:40px;
+}
+
+/*------------------------------------*\
+    Media Queries
+\*------------------------------------*/
+
+@media only screen and (max-width: 850px) {
+	.nav-mobile {
+		display:block;
+	}
+	.nav {
+		width:100%;
+		padding:30px 0 0 5px;
+	}
+	.nav-list {
+		display:none;
+	}
+	.nav-item {
+		width:100%;
+	    margin: 0 0 0 40px;
+	    padding: 0 0 0 10px; 
+		float:none;
+	}
+	.nav-item > a {
+		background:#170E0F;
+	    width: 200px;
+	    padding: 0 0 0 10px !important; 
+	}
+	.nav-item > div {
+		background:#170E0F;
+	    width: 200px;
+	    padding: 0 0 0 10px !important; 
+	}
+	.nav-active {
+		display:block;
+	}
+	.nav-mobile-open {
+	}
+}

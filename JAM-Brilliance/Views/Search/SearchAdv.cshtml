@@ -1,0 +1,26 @@
+﻿@using JAM.Brilliance.App_GlobalResources.Survey
+@using JAM.Brilliance.Models.ViewModels
+@using JAM.Brilliance.App_GlobalResources
+@model SearchAdvCriteriaViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <br />
+    @Global.Search_P1 @Global.Search_Adv @Global.Search_And @Html.ActionLink(Global.Search_Quick, "Search")
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>@SurveyTexts.Signup_Title</legend>
+            <img src="/content/images/ja/holdinghands.jpg" alt="" width="400" style="float: right;" />
+
+            <div>ADV Not done</div>
+        </fieldset>
+    }
+</p>

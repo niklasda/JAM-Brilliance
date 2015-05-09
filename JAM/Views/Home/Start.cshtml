@@ -1,0 +1,31 @@
+﻿@using JAM.Logic
+@using Resources
+
+<div>
+    <h1>
+        @Global.Start_Title</h1>
+    <br />
+    
+    <iframe src="//player.vimeo.com/video/118737496?title=0&byline=0&portrait=0" width="430" height="184" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+    <div style="color: slategray">Producerad av Westgatefilm AB</div>
+    <p>
+        @Global.Start_P2
+    </p>
+    <p>
+        @Global.Start_P3
+    </p>
+    <p>
+        @Html.Raw(Global.Start_P4)
+    </p>
+    <p>
+        @Global.Start_P6
+    </p>
+    <p>
+        <b>@Global.Start_P7</b>
+        <br />
+        <button type="button" onclick="window.location.href = '@Url.Action("Contact", "Home")'">@Global.Menu_ContactUs <i class="fa fa-envelope fa-lg"></i></button>
+        <button type="button" onclick="window.location.href = '@Url.Action("Create", "Survey")'">@Global.Menu_Signup <i class="fa fa-heart fa-lg"></i></button>
+    </p>
+</div>
+                                                      

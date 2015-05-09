@@ -1,0 +1,63 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<AbuseReportViewModel>
+
+<div>
+    @{ Html.RenderAction("ToolbarAdmin", "Home"); }
+    <p>
+        <table class="list-table">
+            <tr>
+                <th>Anmäld</th>
+                <th>E-Post</th>
+                <th>Datum <i class="fa fa-chevron-down"></i></th>
+                <th>Konversation</th>
+                <th>Bild</th>
+                <th>Profil</th>
+
+                <th>Av</th>
+                <th colspan="2">Åtgärder</th>
+            </tr>
+            @foreach (AbuseReportViewModel arvm in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(arvm.OtherName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = arvm.OtherSurveyId }, null)</td>
+                    <td>@Html.ActionLink(arvm.OtherEmail.GetBeginning(StringLength.Short), "StartOne", "SurveyAdmin", new { emailFilter = arvm.OtherEmail }, new { title = "Gå till profil" })</td>
+                    <td>@arvm.ReportDate</td>
+                    @if (arvm.MessageId > 0)
+                    {
+                        <td class="padded-table-cell-centered"><a href="@Url.Action("ReadConversation", "MessageAdmin", new { messageId = arvm.MessageId })" title="Se konversation"><i class="fa fa-envelope"></i></a></td>
+                    }
+                    else
+                    {
+                        <td class="padded-table-cell-centered"></td>
+                    }
+
+                    @if (arvm.PictureId > 0)
+                    {
+                        <td class="padded-table-cell-centered"><a href="@Url.Action("ShowPicture", "PictureAdmin", new { pictureId = arvm.PictureId })" title="Se bild"><i class="fa fa-file-image-o"></i></a></td>
+                    }
+                    else
+                    {
+                        <td class="padded-table-cell-centered"></td>
+                    }
+
+                    @if (arvm.OtherSurveyId > 0)
+                    {
+                        <td class="padded-table-cell-centered"><a href="@Url.Action("ShortDetails", "Survey", new { surveyId = arvm.OtherSurveyId })" title="Se profil"><i class="fa fa-list-ul"></i></a></td>
+                    }
+                    else
+                    {
+                        <td class="padded-table-cell-centered"></td>
+                    }
+
+                    <td><a href="@Url.Action("ShortDetails", "Survey", new { surveyId = arvm.SelfSurveyId })" title="Blockera användare">@arvm.SelfName</a></td>
+                    <td class="padded-table-cell-centered"><a href="@Url.Action("BlockUser", "AccountAdmin", new { email = arvm.OtherEmail })" title="Blockera användare"><i class="fa fa-ban"></i></a></td>
+                    <td class="padded-table-cell-centered"><a href="@Url.Action("DiscardAbuse", new { abuseId = arvm.AbuseId })" title="Ta bort"><i class="fa fa-check"></i></a></td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfAbuse, page => Url.Action("Start", new { page }))
+    </p>
+</div>

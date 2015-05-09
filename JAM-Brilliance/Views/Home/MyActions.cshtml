@@ -1,0 +1,28 @@
+﻿@using JAM.Brilliance.Models.ViewModels
+@model MyPageViewModel
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+ 
+<p>
+    <fieldset>
+        <legend>Profilåtgärder</legend>
+        <br />
+        @Html.ActionLink("Logga ut", "LogOff", "Account")<br />
+        @if (Model.IsDisabled)
+        {
+            @Html.ActionLink("Öppna profil", "EnableSurvey", "Survey")<br />
+        }
+        else
+        {
+            @Html.ActionLink("Göm/pausa profil", "DisableSurvey", "Survey")<br />
+        }
+        @Html.ActionLink("Byt lösenord", "ChangePassword", "Account")<br />
+        <br />
+        <fieldset>
+            <legend>Profilåtgärder</legend>
+            @Html.ActionLink("Stäng konto", "Deactivate", "Account", null, new { onclick = "return confirm('Are you sure?');" })
+            <i class="fa fa-exclamation-triangle"></i>
+            <br />
+        </fieldset>
+    </fieldset>
+</p>

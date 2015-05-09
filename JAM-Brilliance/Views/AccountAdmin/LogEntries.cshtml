@@ -1,0 +1,37 @@
+﻿@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<LogEntryViewModel>
+
+<div>
+    @{ Html.RenderAction("ToolbarAdmin", "Home"); }
+    <p>
+        <table class="list-table">
+            <tr>
+                <th>ID</th>
+                <th>Användarnamn</th>
+                <th>IP Nummer</th>
+                <th>Host</th>
+                <th>Machine</th>
+                <th>Level</th>
+                <th>Meddelande</th>
+                <th>Datum <i class="fa fa-chevron-down"></i></th>
+            </tr>
+            @foreach (LogEntryViewModel logEntry in Model)
+            {
+                <tr>
+                    <td>@logEntry.Id</td>
+                    <td>@logEntry.UserName</td>
+                    <td>@logEntry.Ip</td>
+                    <td>@logEntry.HostName</td>
+                    <td>@logEntry.MachineName</td>
+                    <td>@logEntry.EventLevel</td>
+                    <td>@logEntry.EventMessage</td>
+                    <td>@logEntry.EventDateTime</td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfLogEntries, page => Url.Action("LogEntries", new { page }))
+    </p>
+    @Html.ActionLink("ELMAH", "GotoElmah", "Home")
+</div>

@@ -1,0 +1,31 @@
+﻿@using JAM.Core.Logic
+@model HandleErrorInfo
+
+<div>
+    <h2>Systemfel!</h2>
+    
+    @if (Model != null)
+    {
+        <p>@Model.ControllerName / @Model.ActionName</p>
+        <p>
+            @Model.Exception.Message
+        </p>
+        <br /><br />
+        <div>
+            @if (User.IsInRole(MemberRoles.Administrator))
+            {
+                <p>@Model.Exception.StackTrace</p>
+
+                if (@Model.Exception.InnerException != null)
+                {
+                    <p>@Model.Exception.InnerException.StackTrace</p>
+                }
+            }
+        </div>
+        <br /><br /><br /><br />
+    }
+    else
+    {
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    }
+</div>

@@ -1,0 +1,75 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model SendMessageViewModel
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<div>
+    @using (Html.BeginForm("DeleteReplyMessage", "Message"))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Ett meddelande</legend>
+
+            <div class="editor-label">
+            </div>
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.MessageId)
+                @Html.HiddenFor(model => model.FromSurveyId)
+                @Html.HiddenFor(model => model.ToSurveyId)
+                @if (Model.IsFromDisabled)
+                {
+                    @Model.FromName.GetBeginning(StringLength.Short)
+                }
+                else
+                {
+                    @Html.ActionLink(Model.FromName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = Model.FromSurveyId }, new { title = "Från" })
+                }
+                <span><i class="fa fa-long-arrow-right"></i></span>
+                @if (Model.IsToDisabled)
+                {
+                    @Model.ToName.GetBeginning(StringLength.Short)
+                }
+                else
+                {
+                    @Html.ActionLink(Model.ToName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = Model.ToSurveyId }, new { title = "Till" })
+                }
+                <br />
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Body)
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Body, new { rows = "8", cols = "50", @readonly = "readonly" })<br />
+            </div>
+
+            <div>
+                <br />
+                @if (Model.IsFromDisabled)
+                {
+                    <p><strong>Användaren är inte aktiv</strong></p>
+                }
+
+                @if (!Model.IsSentMessage)
+                {
+                    <button name="action" value="@PageButtons.ReplyToMessage" type="submit">
+                        Svara <i class="fa fa-mail-reply"></i>
+                    </button>
+                    <button name="action" value="@PageButtons.DeleteMessage" type="submit">
+                        Radera <i class="fa fa-trash"></i>
+                    </button>
+                    <button onclick="window.location.href = '@Url.Action("ReportMessage", "Abuse", new {messageId = Model.MessageId, fromSurveyId = Model.FromSurveyId})';" type="button">
+                        Anmäl meddelande <i class="fa fa-bullhorn"></i>
+                    </button>
+                }
+                else
+                {
+                    <p>Meddelandet går inte att svara på</p>
+                }
+
+            </div>
+        </fieldset>
+    }
+</div>

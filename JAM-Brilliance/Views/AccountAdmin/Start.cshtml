@@ -1,0 +1,52 @@
+﻿@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model AccountsRolesViewModel
+
+<div>
+    @{ Html.RenderAction("ToolbarAdmin", "Home"); }
+    <p>
+        <table class="list-table">
+            <tr>
+                <th>Namn <i class="fa fa-chevron-up"></i></th>
+                <th>E-Post</th>
+                <th>Roller</th>
+                <th>Senaste aktivitet</th>
+                <th title="Approved/LockedOut/Online">A/L/O</th>
+                <th colspan="4">Åtgärder</th>
+                <th>X</th>
+            </tr>
+            @foreach (AccountViewModel user in Model.Accounts)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@Html.ActionLink(user.Email, "StartOne", "SurveyAdmin", new { emailFilter = user.Email }, null)</td>
+                    <td>@string.Join(", ", user.Roles)</td>
+                    <td>@user.LastActivityDate</td>
+                    <td>@(user.IsApproved ? "A" : "") @(user.IsLockedOut ? "L" : "") @(user.IsOnline ? "O" : "")</td>
+                    <td>@Html.ActionLink("Aktivera", "ActivateUser", new { userName = user.UserName })</td>
+                    <td>@Html.ActionLink("Spärra", "BlockUser", new { email = user.Email })</td>
+                    <td>@Html.ActionLink("Återställ", "ResetUserPassword", new { userName = user.UserName })</td>
+                    <td>@Html.ActionLink("Skicka Igen", "ResendMail", new { userName = user.UserName })</td>
+                    <td class="padded-table-cell-centered"><a href="@Url.Action("DeleteFromAccount", new { userName = user.UserName })" title="Ta bort"><i class="fa fa-trash"></i></a></td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfAccounts, page => Url.Action("Start", new { page }))
+    </p>
+    
+    @if (Model.Roles.Any())
+    {
+        <h2>
+            Roller
+        </h2>
+        <p>
+            <ul>
+                @foreach (var role in Model.Roles)
+                {
+                    <li>@role.RoleName (@string.Join(", ", role.Users))</li>
+                }
+            </ul>
+        </p>
+    }
+</div>

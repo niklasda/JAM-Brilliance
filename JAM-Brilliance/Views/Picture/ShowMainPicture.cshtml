@@ -1,0 +1,14 @@
+﻿@using JAM.Brilliance.Models.ViewModels;
+@model ShowPictureViewModel
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<div>
+    <br />
+    <img style="max-width: 500px;" src="@Url.Action("MainPictureDataFor", new { surveyId = Model.OwnerSurveyId })" />
+    <br />
+    <br />
+    <button onclick="window.location.href = '@Url.Action("ReportPicture", "Abuse", new { pictureId = Model.PictureId, ownerSurveyId = Model.OwnerSurveyId })';" type="button">
+        Anmäl bild <i class="fa fa-bullhorn"></i>
+    </button>
+</div>

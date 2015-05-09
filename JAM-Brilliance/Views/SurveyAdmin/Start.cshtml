@@ -1,0 +1,96 @@
+﻿@using JAM.Core.Interfaces
+@using JAM.Core.Logic
+@using JAM.Core.Models
+@using JAM.Core.Services
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<Survey>
+@{
+    IEmailService mailer = new EmailService();
+}
+
+@{ Html.RenderAction("ToolbarAdmin", "Home"); }
+
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Sök på namn/stad: @Html.TextBox("SearchString", "", new { autofocus = "" })
+            <button type="submit">
+                Sök <i class="fa fa-search"></i>
+            </button>
+            @Html.ActionLink("Män", "StartMen") |
+            @Html.ActionLink("Kvinnor", "StartWomen") |
+            @Html.ActionLink("Alla", "Start") |
+            @Html.ActionLink("Prospects", "StartProspects") |
+            @Html.ActionLink("Visa även gömda", "StartAll")
+        </p>
+    }
+    <table class="list-table">
+        <tr>
+            <th>@Html.ActionLink("Id", "Start", new { sortOrder = ViewBag.IdSortParm, searchString = ViewBag.SearchString })</th>
+            <th>@Html.ActionLink("Namn", "Start", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.SearchString })</th>
+            <th>@Html.ActionLink("Stad", "Start", new { sortOrder = ViewBag.CitySortParm, searchString = ViewBag.SearchString })</th>
+            <th>E-post</th>
+            <th>Mått</th>
+            <th>Kön</th>
+            <th>Kontakta</th>
+            <th colspan="3">Åtgärder</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.IsInterviewed)
+                {
+                    <td style="background-color: cornsilk">
+                        @item.SurveyId
+                    </td>
+                    <td style="background-color: cornsilk">
+                        @item.Name.GetBeginning(StringLength.Short)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @item.SurveyId
+                    </td>
+                    <td>
+                        @item.Name.GetBeginning(StringLength.Short)
+                    </td>
+                }
+                <td>@item.City.GetBeginning(StringLength.Short)</td>
+                <td>@Html.ActionLink(item.Email, "StartOne", "AccountAdmin", new { emailFilter = item.Email }, new { title = "Gå till Account" })</td>
+                <td>@item.Height cm - @item.Weight kg</td>
+                <td class="padded-table-cell-centered">
+                    @if (item.IsMale)
+                    {
+                        @Html.Raw("M")
+                    }
+                    else
+                    {
+                        @Html.Raw("K")
+                    }
+                    @Html.Raw(mailer.GetYear(item))
+                </td>
+                <td class="padded-table-cell-centered"><a href="@Url.Action("SendMessage", "Message", new { toSurveyId = item.SurveyId })" title="Kontakta"><i class="fa fa-envelope"></i></a></td>
+                <td>
+                    @Html.ActionLink("Ändra", "Page1", "Survey", new { surveyId = item.SurveyId }, null)
+                </td>
+                <td>@Html.ActionLink("Detaljer", "Details", "Survey", new { surveyId = item.SurveyId }, null) </td>
+                <td>
+                    @if (item.IsDisabled)
+                    {
+                        @Html.ActionLink("Visa", "UnHide", new { surveyId = item.SurveyId })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Göm", "Hide", new { surveyId = item.SurveyId })
+                    }
+                </td>
+            </tr>
+        }
+    </table>
+
+    @Html.PagedListPager((IPagedList)ViewBag.OnePageOfSurveys, page => Url.Action("Start", new { page, sortOrder = ViewBag.CurrentSort }))
+</div>

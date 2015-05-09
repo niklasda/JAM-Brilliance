@@ -1,0 +1,79 @@
+﻿@using JAM.Brilliance.Models.ViewModels
+
+@model MyPicturesViewModel
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>Mina bilder</legend>
+
+        <table class="list-table">
+            <tr>
+                <th></th>
+                <th>Uppladdad</th>
+                <th>Typ</th>
+                <th>Godkänd</th>
+                <th>Profilbild</th>
+                <th>Ta bort</th>
+            </tr>
+            @foreach (var pvm in Model.Pictures)
+            {
+                <tr>
+                    <td>
+                        <a href="@Url.Action("ShowMyPicture", "Picture", new { pictureId = pvm.PictureId })">
+                            <img style="max-height: 100px; max-width: 100px;" src="@Url.Action("MyPictureData", "Picture", new { pictureId = pvm.PictureId })" />
+                        </a>
+                    </td>
+                    <td>@pvm.UploadDate</td>
+                    <td>@pvm.ContentType</td>
+                    @if (pvm.IsApproved)
+                    {
+                        <td class="padded-table-cell-centered"><i class="fa fa-check" style="color: green;"></i></td>
+                    }
+                    else
+                    {
+                        <td class="padded-table-cell-centered"><i class="fa fa-ban"></i></td>
+                    }
+
+                    @if (pvm.IsMain)
+                    {
+                        <td class="padded-table-cell-centered"><i class="fa fa-check" style="color: green;"></i></td>
+                    }
+                    else
+                    {
+                        if (pvm.IsApproved)
+                        {
+                            <td class="padded-table-cell-centered"><a href="@Url.Action("SetMainPicture", new { pictureId = pvm.PictureId })" title="Gör till profilbild"><i class="fa fa-check"></i></a></td>
+                        }
+                        else
+                        {
+                            <td class="padded-table-cell-centered"><i class="fa fa-ban"></i></td>
+                        }
+                    }
+                    <td class="padded-table-cell-centered"><a href="@Url.Action("RemovePicture", "Picture", new { pictureId = pvm.PictureId })" title="Ta bort"><i class="fa fa-trash"></i></a></td>
+                </tr>
+            }
+        </table>
+        <br />
+        <br/>
+        @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <fieldset style="width: 40%;">
+                <legend>@Html.DisplayNameFor(model => model.PictureDummyId) <i class="fa fa-file-image-o"></i></legend>
+
+                <div>
+
+                    <input type="file" id="pictureFile" name="pictureFile" />
+                    <br/>
+                    @Html.HiddenFor(model => model.PictureDummyId)
+                    @Html.ValidationMessageFor(model => model.PictureDummyId)
+                    <br />
+                    <button type="submit">
+                        Ladda upp <i class="fa fa-save"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    </fieldset>
+</p>

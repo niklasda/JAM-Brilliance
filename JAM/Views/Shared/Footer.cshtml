@@ -1,0 +1,45 @@
+﻿@using System.Web.Security
+@using JAM.Logic
+@using Resources
+
+<div id="footer-box">
+    <table width="100%" class="container">
+        <tr style="height: 236px;">
+            <td style="vertical-align: top;">
+                <div class="col1">
+                    @Html.Raw(Global.Constants_ContactFooter)
+                </div>
+                <div class="col2">
+                    @Html.Raw(Global.Constants_Tax)
+                    @if (Request.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Logga ut", "LogOff", "Account")<br />
+                        @Html.ActionLink("Lista", "Index", "Survey")<br />
+                        <br />
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Logga in", "LogOn", "Account")<br />
+                        <br />
+                        <br />
+                    }
+                </div>
+                <div class="col3">
+                    @Html.Raw(Constants.FollowUs)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top;">
+                @Html.Raw(Constants.Links)
+            </td>
+        </tr>
+    </table>
+</div>
+<table width="100%" id="footer">
+    <tr>
+        <td style="vertical-align: top;">
+            @Html.Raw(Global.Constants_Copyright)
+        </td>
+    </tr>
+</table>

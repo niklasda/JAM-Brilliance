@@ -1,0 +1,49 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<SendMessageViewModel>
+
+@section scripts {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ja/JamListTools.js")"></script>
+}
+
+@{ Html.RenderAction("ToolbarAdmin", "Home"); }
+
+<p>
+    <h4>Meddelande till support</h4>
+
+    <table class="list-table">
+        <tr>
+            <th>Bild</th>
+            <th>Till</th>
+            <th>Från</th>
+            <th>Meddelande</th>
+            <th>Mottaget <i class="fa fa-chevron-down"></i></th>
+            <th>Ta bort</th>
+        </tr>
+        @foreach (var smvm in Model)
+        {
+            <tr data-url="@Url.Action("ReadSupportMessage", new { messageId = smvm.MessageId })">
+                <td data-action="highlightCell"><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = smvm.FromSurveyId })" /></td>
+
+                <td data-action="highlightCell" class="padded-table-cell@(smvm.IsUnread ? "-unread" : "")">@smvm.ToSurveyId</td>
+                <td data-action="highlightCell" class="padded-table-cell@(smvm.IsUnread ? "-unread" : "")">@smvm.FromName.GetBeginning(StringLength.Short)</td>
+                <td data-action="highlightCell" class="padded-table-cell@(smvm.IsUnread ? "-unread" : "")">@smvm.Body.GetBeginning(StringLength.Long)</td>
+                <td data-action="highlightCell" class="padded-table-cell@(smvm.IsUnread ? "-unread" : "")">@smvm.SendDate</td>
+                <td class="padded-table-cell-centered">
+                    <a href="@Url.Action("RemoveSupportMessage", new { messageId = smvm.MessageId })" onclick="return confirm('Are you sure?');">
+                        <i class="fa fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    @if (ViewBag.OnePageOfSupportMessages != null)
+    {
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfSupportMessages, page => Url.Action("SupportMessages", new { surveyId = Model.First().ToSurveyId, page }))
+        <br />
+        <br />
+        <br />
+    }
+</p>

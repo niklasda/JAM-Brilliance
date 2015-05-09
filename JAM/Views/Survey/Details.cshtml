@@ -1,0 +1,1496 @@
+﻿@using JAM.Logic
+@using JAM.Models
+@using Resources
+@model Survey
+
+<div>
+    <fieldset>
+        <legend>Personuppgifter</legend>
+        @Html.HiddenFor(model => model.SurveyId)
+        <div class="editor-label">
+            <a href="/Survey/ShowPhoto/@Model.Picture.PictureId">
+                <img src="@Url.Action("PhotoData", new { id = Model.Picture.PictureId })" align="right" alt="Profilbild" title="Profilbild" width="200" /></a>
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Name, @Global.Signup_Name)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Street, @Global.Signup_Street)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.Street)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.PostalCode, @Global.Signup_PostalCode)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.PostalCode)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.City, @Global.Signup_City)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Country, @Global.Signup_Country)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.Country)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Email, @Global.Signup_Email)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Phone, @Global.Signup_Phone)</b>
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
+    </fieldset>
+    <!-- *************************************************************** -->
+    <fieldset>
+        <legend>Info</legend>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Birth, @Global.Signup_Birthday)</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Birth)
+        </div>
+        <div class="editor-label">
+            @Html.Raw("<b>Kön:</b> ")
+            @Html.LabelFor(model => model.IsMale, "Man")
+            @Html.RadioButtonFor(model => model.IsMale, true, new { @disabled = "disabled" })
+            @Html.LabelFor(model => model.IsMale, "Kvinna")
+            @Html.RadioButtonFor(model => model.IsMale, false, new { @disabled = "disabled" })
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Height)</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Height) cm
+        </div>
+        <div class="editor-label">
+            <b>@Html.LabelFor(model => model.Weight)</b>
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Weight) kg
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Etniskt tillhörighet</legend>
+        <!-- ******************************************************************************************** -->
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MotherLanguage)
+            @Html.DisplayFor(model => model.MotherLanguage)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicNorthEuropean)
+            @Html.LabelFor(model => model.IsEthnicNorthEuropean)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicLatin)
+            @Html.LabelFor(model => model.IsEthnicLatin)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicMulat)
+            @Html.LabelFor(model => model.IsEthnicMulat)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicDark)
+            @Html.LabelFor(model => model.IsEthnicDark)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicAsian)
+            @Html.LabelFor(model => model.IsEthnicAsian)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicCaucasic)
+            @Html.LabelFor(model => model.IsEthnicCaucasic)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEthnicMiddleEastern)
+            @Html.LabelFor(model => model.IsEthnicMiddleEastern)
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Civilstånd</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsSingle)
+            @Html.LabelFor(model => model.IsSingle)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsSeparated)
+            @Html.LabelFor(model => model.IsSeparated)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsDivorced)
+            @Html.LabelFor(model => model.IsDivorced)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsWidowed)
+            @Html.LabelFor(model => model.IsWidowed)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Bor</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingAloneWithVisitors)
+            @Html.LabelFor(model => model.LivingAloneWithVisitors)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingAlone)
+            @Html.LabelFor(model => model.LivingAlone)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingWithPets)
+            @Html.LabelFor(model => model.LivingWithPets)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingWithKids)
+            @Html.LabelFor(model => model.LivingWithKids)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingWithParents)
+            @Html.LabelFor(model => model.LivingWithParents)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingWithFriends)
+            @Html.LabelFor(model => model.LivingWithFriends)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.LivingWithPartTimeKids)
+            @Html.LabelFor(model => model.LivingWithPartTimeKids)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Barn</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KidsCountId)
+            @Html.DropDownList("KidsCountId", null, new { @disabled = "disabled" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KidsWantedCountId)
+            @Html.DropDownList("KidsWantedCountId", null, new { @disabled = "disabled" })
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Kroppstyp</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsBodySlim)
+            @Html.LabelFor(model => model.IsBodySlim)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsBodyAverage)
+            @Html.LabelFor(model => model.IsBodyAverage)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsBodyAthletic)
+            @Html.LabelFor(model => model.IsBodyAthletic)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsBodyHeavy)
+            @Html.LabelFor(model => model.IsBodyHeavy)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsBodyChubby)
+            @Html.LabelFor(model => model.IsBodyChubby)
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Hår</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairBlond)
+            @Html.LabelFor(model => model.IsHairBlond)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairRed)
+            @Html.LabelFor(model => model.IsHairRed)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairBrown)
+            @Html.LabelFor(model => model.IsHairBrown)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairGrey)
+            @Html.LabelFor(model => model.IsHairGrey)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairBlack)
+            @Html.LabelFor(model => model.IsHairBlack)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairBald)
+            @Html.LabelFor(model => model.IsHairBald)
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Hårlängd</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthShaved)
+            @Html.LabelFor(model => model.IsHairLengthShaved)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthVeryShort)
+            @Html.LabelFor(model => model.IsHairLengthVeryShort)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthShort)
+            @Html.LabelFor(model => model.IsHairLengthShort)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthShoulder)
+            @Html.LabelFor(model => model.IsHairLengthShoulder)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthLong)
+            @Html.LabelFor(model => model.IsHairLengthLong)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsHairLengthVeryLong)
+            @Html.LabelFor(model => model.IsHairLengthVeryLong)
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Ögon</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEyesBlue)
+            @Html.LabelFor(model => model.IsEyesBlue)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEyesBrown)
+            @Html.LabelFor(model => model.IsEyesBrown)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEyesGrey)
+            @Html.LabelFor(model => model.IsEyesGrey)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEyesGreen)
+            @Html.LabelFor(model => model.IsEyesGreen)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEyesMix)
+            @Html.LabelFor(model => model.IsEyesMix)
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <fieldset>
+        <legend>Yrke</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfNot)
+            @Html.LabelFor(model => model.IsProfNot)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfAdmin)
+            @Html.LabelFor(model => model.IsProfAdmin)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfArtist)
+            @Html.LabelFor(model => model.IsProfArtist)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfConstruction)
+            @Html.LabelFor(model => model.IsProfConstruction)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfHr)
+            @Html.LabelFor(model => model.IsProfHr)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfIt)
+            @Html.LabelFor(model => model.IsProfIt)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfDetail)
+            @Html.LabelFor(model => model.IsProfDetail)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfSelf)
+            @Html.LabelFor(model => model.IsProfSelf)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfFinance)
+            @Html.LabelFor(model => model.IsProfFinance)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfSales)
+            @Html.LabelFor(model => model.IsProfSales)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfHealth)
+            @Html.LabelFor(model => model.IsProfHealth)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfHotel)
+            @Html.LabelFor(model => model.IsProfHotel)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfLaw)
+            @Html.LabelFor(model => model.IsProfLaw)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfAdvertising)
+            @Html.LabelFor(model => model.IsProfAdvertising)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfState)
+            @Html.LabelFor(model => model.IsProfState)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfEducation)
+            @Html.LabelFor(model => model.IsProfEducation)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfRetired)
+            @Html.LabelFor(model => model.IsProfRetired)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsProfStudent)
+            @Html.LabelFor(model => model.IsProfStudent)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Utbildning</legend>
+        <!-- ******************************************************************************************** -->
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduBasic)
+            @Html.LabelFor(model => model.IsEduBasic)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduCollage)
+            @Html.LabelFor(model => model.IsEduCollage)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduUniversity)
+            @Html.LabelFor(model => model.IsEduUniversity)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduKand)
+            @Html.LabelFor(model => model.IsEduKand)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduMag)
+            @Html.LabelFor(model => model.IsEduMag)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduDoc)
+            @Html.LabelFor(model => model.IsEduDoc)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsEduLife)
+            @Html.LabelFor(model => model.IsEduLife)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Personlighet</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonAdventurous)
+            @Html.LabelFor(model => model.IsPersonAdventurous)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonCarefree)
+            @Html.LabelFor(model => model.IsPersonCarefree)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonShy)
+            @Html.LabelFor(model => model.IsPersonShy)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonDominant)
+            @Html.LabelFor(model => model.IsPersonDominant)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonLoner)
+            @Html.LabelFor(model => model.IsPersonLoner)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonStubborn)
+            @Html.LabelFor(model => model.IsPersonStubborn)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonGenerous)
+            @Html.LabelFor(model => model.IsPersonGenerous)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonHappy)
+            @Html.LabelFor(model => model.IsPersonHappy)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonHomorous)
+            @Html.LabelFor(model => model.IsPersonHomorous)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonSensitive)
+            @Html.LabelFor(model => model.IsPersonSensitive)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonAmbitious)
+            @Html.LabelFor(model => model.IsPersonAmbitious)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonAnalytic)
+            @Html.LabelFor(model => model.IsPersonAnalytic)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonTemper)
+            @Html.LabelFor(model => model.IsPersonTemper)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonLivly)
+            @Html.LabelFor(model => model.IsPersonLivly)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonCalm)
+            @Html.LabelFor(model => model.IsPersonCalm)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonRestless)
+            @Html.LabelFor(model => model.IsPersonRestless)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonConsidering)
+            @Html.LabelFor(model => model.IsPersonConsidering)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonReserved)
+            @Html.LabelFor(model => model.IsPersonReserved)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonSocial)
+            @Html.LabelFor(model => model.IsPersonSocial)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonSpantanious)
+            @Html.LabelFor(model => model.IsPersonSpantanious)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonCaring)
+            @Html.LabelFor(model => model.IsPersonCaring)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonInspiring)
+            @Html.LabelFor(model => model.IsPersonInspiring)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonSafe)
+            @Html.LabelFor(model => model.IsPersonSafe)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsPersonStructured)
+            @Html.LabelFor(model => model.IsPersonStructured)
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Träning</legend>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsExcerNot)
+            @Html.LabelFor(model => model.IsExcerNot)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsExcerSome)
+            @Html.LabelFor(model => model.IsExcerSome)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsExcerRegular)
+            @Html.LabelFor(model => model.IsExcerRegular)
+        </div>
+        <div class="editor-label">
+            @Html.DisplayFor(model => model.IsExcerAlways)
+            @Html.LabelFor(model => model.IsExcerAlways)
+        </div>
+    </fieldset>
+    @if (Request.IsAuthenticated)
+    {
+        <fieldset>
+            <legend>Religion</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelAdventist)
+                @Html.LabelFor(model => model.IsRelAdventist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelAgnostic)
+                @Html.LabelFor(model => model.IsRelAgnostic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelSpiritual)
+                @Html.LabelFor(model => model.IsRelSpiritual)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelAnglican)
+                @Html.LabelFor(model => model.IsRelAnglican)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelAtheist)
+                @Html.LabelFor(model => model.IsRelAtheist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelBaptist)
+                @Html.LabelFor(model => model.IsRelBaptist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelHindu)
+                @Html.LabelFor(model => model.IsRelHindu)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelBuddhist)
+                @Html.LabelFor(model => model.IsRelBuddhist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelJewish)
+                @Html.LabelFor(model => model.IsRelJewish)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelCatholic)
+                @Html.LabelFor(model => model.IsRelCatholic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelChistian)
+                @Html.LabelFor(model => model.IsRelChistian)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelMethodist)
+                @Html.LabelFor(model => model.IsRelMethodist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelMormon)
+                @Html.LabelFor(model => model.IsRelMormon)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelMuslim)
+                @Html.LabelFor(model => model.IsRelMuslim)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelOrtodox)
+                @Html.LabelFor(model => model.IsRelOrtodox)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelPingst)
+                @Html.LabelFor(model => model.IsRelPingst)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelProtestant)
+                @Html.LabelFor(model => model.IsRelProtestant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelTao)
+                @Html.LabelFor(model => model.IsRelTao)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelOther)
+                @Html.LabelFor(model => model.IsRelOther)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Religionsutövning</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelPracticing)
+                @Html.LabelFor(model => model.IsRelPracticing)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelSomewhat)
+                @Html.LabelFor(model => model.IsRelSomewhat)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelNotPracticing)
+                @Html.LabelFor(model => model.IsRelNotPracticing)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Inkomst</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncomeLess)
+                @Html.LabelFor(model => model.IsIncomeLess)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncome1)
+                @Html.LabelFor(model => model.IsIncome1)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncome2)
+                @Html.LabelFor(model => model.IsIncome2)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncome3)
+                @Html.LabelFor(model => model.IsIncome3)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncome4)
+                @Html.LabelFor(model => model.IsIncome4)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncome5)
+                @Html.LabelFor(model => model.IsIncome5)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsIncomeMore)
+                @Html.LabelFor(model => model.IsIncomeMore)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Tobaksvanor</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacQuitting)
+                @Html.LabelFor(model => model.IsTobacQuitting)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacCigar)
+                @Html.LabelFor(model => model.IsTobacCigar)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacRegularly)
+                @Html.LabelFor(model => model.IsTobacRegularly)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacParty)
+                @Html.LabelFor(model => model.IsTobacParty)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacSnus)
+                @Html.LabelFor(model => model.IsTobacSnus)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsTobacNot)
+                @Html.LabelFor(model => model.IsTobacNot)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Alkoholvanor</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsAlcNot)
+                @Html.LabelFor(model => model.IsAlcNot)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsAlcLittle)
+                @Html.LabelFor(model => model.IsAlcLittle)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsAlcSocially)
+                @Html.LabelFor(model => model.IsAlcSocially)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsAlcMuch)
+                @Html.LabelFor(model => model.IsAlcMuch)
+            </div>
+            <!-- ********************************************************************************************
+            -->
+        </fieldset>
+        <fieldset>
+            <legend>Mest nöjd med</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiArms)
+                @Html.LabelFor(model => model.IsPleWiArms)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiChest)
+                @Html.LabelFor(model => model.IsPleWiChest)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiLegs)
+                @Html.LabelFor(model => model.IsPleWiLegs)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiFeet)
+                @Html.LabelFor(model => model.IsPleWiFeet)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiNeck)
+                @Html.LabelFor(model => model.IsPleWiNeck)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiHands)
+                @Html.LabelFor(model => model.IsPleWiHands)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiHair)
+                @Html.LabelFor(model => model.IsPleWiHair)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiSmile)
+                @Html.LabelFor(model => model.IsPleWiSmile)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiLips)
+                @Html.LabelFor(model => model.IsPleWiLips)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiMuscles)
+                @Html.LabelFor(model => model.IsPleWiMuscles)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiBelly)
+                @Html.LabelFor(model => model.IsPleWiBelly)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiEars)
+                @Html.LabelFor(model => model.IsPleWiEars)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiEyes)
+                @Html.LabelFor(model => model.IsPleWiEyes)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiButt)
+                @Html.LabelFor(model => model.IsPleWiButt)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPleWiCalf)
+                @Html.LabelFor(model => model.IsPleWiCalf)
+            </div>
+            <!-- ******************************************************************************************-->
+        </fieldset>
+        <fieldset>
+            <legend>Klädstil</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressBoheme)
+                @Html.LabelFor(model => model.IsDressBoheme)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressBusiness)
+                @Html.LabelFor(model => model.IsDressBusiness)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressEthnic)
+                @Html.LabelFor(model => model.IsDressEthnic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressClassic)
+                @Html.LabelFor(model => model.IsDressClassic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressFashion)
+                @Html.LabelFor(model => model.IsDressFashion)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressRock)
+                @Html.LabelFor(model => model.IsDressRock)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressSophisticated)
+                @Html.LabelFor(model => model.IsDressSophisticated)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressSport)
+                @Html.LabelFor(model => model.IsDressSport)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDressTrend)
+                @Html.LabelFor(model => model.IsDressTrend)
+            </div>
+            <!-- *******************************************************************************************-->
+        </fieldset>
+        <fieldset>
+            <legend>Kroppsdekorationer</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsBodyArtNever)
+                @Html.LabelFor(model => model.IsBodyArtNever)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsBodyArtVisible)
+                @Html.LabelFor(model => model.IsBodyArtVisible)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsBodyArtHidden)
+                @Html.LabelFor(model => model.IsBodyArtHidden)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsBodyArtPiercing)
+                @Html.LabelFor(model => model.IsBodyArtPiercing)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsBodyArtAsk)
+                @Html.LabelFor(model => model.IsBodyArtAsk)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Romantik</legend>
+            <!-- ******************************************************************************************** -->
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRomanticVery)
+                @Html.LabelFor(model => model.IsRomanticVery)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRomantic)
+                @Html.LabelFor(model => model.IsRomantic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRomanticLittle)
+                @Html.LabelFor(model => model.IsRomanticLittle)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRomanticNot)
+                @Html.LabelFor(model => model.IsRomanticNot)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Syn på äktenskap</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageHoly)
+                @Html.LabelFor(model => model.IsMarriageHoly)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageVeryImportant)
+                @Html.LabelFor(model => model.IsMarriageVeryImportant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageImportant)
+                @Html.LabelFor(model => model.IsMarriageImportant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageLessImportant)
+                @Html.LabelFor(model => model.IsMarriageLessImportant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageUnImportant)
+                @Html.LabelFor(model => model.IsMarriageUnImportant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMarriageNotAgain)
+                @Html.LabelFor(model => model.IsMarriageNotAgain)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Politisk ståndpunkt</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticVeryConservative)
+                @Html.LabelFor(model => model.IsPoliticVeryConservative)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticConservative)
+                @Html.LabelFor(model => model.IsPoliticConservative)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticMiddle)
+                @Html.LabelFor(model => model.IsPoliticMiddle)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticLiberal)
+                @Html.LabelFor(model => model.IsPoliticLiberal)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticVeryLiberal)
+                @Html.LabelFor(model => model.IsPoliticVeryLiberal)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticNonConformist)
+                @Html.LabelFor(model => model.IsPoliticNonConformist)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsPoliticOther)
+                @Html.LabelFor(model => model.IsPoliticOther)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Favoritmusik</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicNewAge)
+                @Html.LabelFor(model => model.IsMusicNewAge)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicBlues)
+                @Html.LabelFor(model => model.IsMusicBlues)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicCountry)
+                @Html.LabelFor(model => model.IsMusicCountry)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicHits)
+                @Html.LabelFor(model => model.IsMusicHits)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicDisco)
+                @Html.LabelFor(model => model.IsMusicDisco)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicElectronica)
+                @Html.LabelFor(model => model.IsMusicElectronica)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicEthnic)
+                @Html.LabelFor(model => model.IsMusicEthnic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicFilm)
+                @Html.LabelFor(model => model.IsMusicFilm)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicFolk)
+                @Html.LabelFor(model => model.IsMusicFolk)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicFunk)
+                @Html.LabelFor(model => model.IsMusicFunk)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicGospel)
+                @Html.LabelFor(model => model.IsMusicGospel)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicMetal)
+                @Html.LabelFor(model => model.IsMusicMetal)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicHipHop)
+                @Html.LabelFor(model => model.IsMusicHipHop)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicJazz)
+                @Html.LabelFor(model => model.IsMusicJazz)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicClassic)
+                @Html.LabelFor(model => model.IsMusicClassic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicLatin)
+                @Html.LabelFor(model => model.IsMusicLatin)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicMusical)
+                @Html.LabelFor(model => model.IsMusicMusical)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicOpera)
+                @Html.LabelFor(model => model.IsMusicOpera)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicPop)
+                @Html.LabelFor(model => model.IsMusicPop)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicRnB)
+                @Html.LabelFor(model => model.IsMusicRnB)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicRock)
+                @Html.LabelFor(model => model.IsMusicRock)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicReggae)
+                @Html.LabelFor(model => model.IsMusicReggae)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicSoul)
+                @Html.LabelFor(model => model.IsMusicSoul)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMusicSynth)
+                @Html.LabelFor(model => model.IsMusicSynth)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Favoritfilmer</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieAction)
+                @Html.LabelFor(model => model.IsMovieAction)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieAnimation)
+                @Html.LabelFor(model => model.IsMovieAnimation)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieAdventure)
+                @Html.LabelFor(model => model.IsMovieAdventure)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieDocumentary)
+                @Html.LabelFor(model => model.IsMovieDocumentary)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieDrama)
+                @Html.LabelFor(model => model.IsMovieDrama)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieErotic)
+                @Html.LabelFor(model => model.IsMovieErotic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieFantasy)
+                @Html.LabelFor(model => model.IsMovieFantasy)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieHistoric)
+                @Html.LabelFor(model => model.IsMovieHistoric)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieIndependent)
+                @Html.LabelFor(model => model.IsMovieIndependent)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieComedy)
+                @Html.LabelFor(model => model.IsMovieComedy)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieShort)
+                @Html.LabelFor(model => model.IsMovieShort)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieWar)
+                @Html.LabelFor(model => model.IsMovieWar)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieCrime)
+                @Html.LabelFor(model => model.IsMovieCrime)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieManga)
+                @Html.LabelFor(model => model.IsMovieManga)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieMusic)
+                @Html.LabelFor(model => model.IsMovieMusic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieRomantic)
+                @Html.LabelFor(model => model.IsMovieRomantic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieThriller)
+                @Html.LabelFor(model => model.IsMovieThriller)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieSciFi)
+                @Html.LabelFor(model => model.IsMovieSciFi)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieHorror)
+                @Html.LabelFor(model => model.IsMovieHorror)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieCartoon)
+                @Html.LabelFor(model => model.IsMovieCartoon)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsMovieWestern)
+                @Html.LabelFor(model => model.IsMovieWestern)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Intressen</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyNewAge)
+                @Html.LabelFor(model => model.IsHobbyNewAge)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyCars)
+                @Html.LabelFor(model => model.IsHobbyCars)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyDance)
+                @Html.LabelFor(model => model.IsHobbyDance)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyAnimals)
+                @Html.LabelFor(model => model.IsHobbyAnimals)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyMovies)
+                @Html.LabelFor(model => model.IsHobbyMovies)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyHunting)
+                @Html.LabelFor(model => model.IsHobbyHunting)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyInterior)
+                @Html.LabelFor(model => model.IsHobbyInterior)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyPhoto)
+                @Html.LabelFor(model => model.IsHobbyPhoto)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyOutdoors)
+                @Html.LabelFor(model => model.IsHobbyOutdoors)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyArt)
+                @Html.LabelFor(model => model.IsHobbyArt)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyGame)
+                @Html.LabelFor(model => model.IsHobbyGame)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyCooking)
+                @Html.LabelFor(model => model.IsHobbyCooking)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyReading)
+                @Html.LabelFor(model => model.IsHobbyReading)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyHistory)
+                @Html.LabelFor(model => model.IsHobbyHistory)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyPainting)
+                @Html.LabelFor(model => model.IsHobbyPainting)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyMuseum)
+                @Html.LabelFor(model => model.IsHobbyMuseum)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyMusic)
+                @Html.LabelFor(model => model.IsHobbyMusic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyPolitics)
+                @Html.LabelFor(model => model.IsHobbyPolitics)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyTravel)
+                @Html.LabelFor(model => model.IsHobbyTravel)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyRolePlaying)
+                @Html.LabelFor(model => model.IsHobbyRolePlaying)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyShopping)
+                @Html.LabelFor(model => model.IsHobbyShopping)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbySinging)
+                @Html.LabelFor(model => model.IsHobbySinging)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyWriting)
+                @Html.LabelFor(model => model.IsHobbyWriting)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyGaming)
+                @Html.LabelFor(model => model.IsHobbyGaming)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyWorkout)
+                @Html.LabelFor(model => model.IsHobbyWorkout)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyDrama)
+                @Html.LabelFor(model => model.IsHobbyDrama)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyDrawing)
+                @Html.LabelFor(model => model.IsHobbyDrawing)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyGardening)
+                @Html.LabelFor(model => model.IsHobbyGardening)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyTv)
+                @Html.LabelFor(model => model.IsHobbyTv)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyCircles)
+                @Html.LabelFor(model => model.IsHobbyCircles)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyHiking)
+                @Html.LabelFor(model => model.IsHobbyHiking)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsHobbyWine)
+                @Html.LabelFor(model => model.IsHobbyWine)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Hur ser en helg ut</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsWeekendActive)
+                @Html.LabelFor(model => model.IsWeekendActive)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsWeekendChill)
+                @Html.LabelFor(model => model.IsWeekendChill)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsWeekendRandom)
+                @Html.LabelFor(model => model.IsWeekendRandom)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsWeekendPlanned)
+                @Html.LabelFor(model => model.IsWeekendPlanned)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Idrottsintressen</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportDance)
+                @Html.LabelFor(model => model.IsSportDance)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportBalls)
+                @Html.LabelFor(model => model.IsSportBalls)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportMartial)
+                @Html.LabelFor(model => model.IsSportMartial)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportFitness)
+                @Html.LabelFor(model => model.IsSportFitness)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportAdventure)
+                @Html.LabelFor(model => model.IsSportAdventure)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportGolf)
+                @Html.LabelFor(model => model.IsSportGolf)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportRunning)
+                @Html.LabelFor(model => model.IsSportRunning)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportRiding)
+                @Html.LabelFor(model => model.IsSportRiding)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportSailing)
+                @Html.LabelFor(model => model.IsSportSailing)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportSkating)
+                @Html.LabelFor(model => model.IsSportSkating)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportSurfing)
+                @Html.LabelFor(model => model.IsSportSurfing)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportYoga)
+                @Html.LabelFor(model => model.IsSportYoga)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsSportRaquet)
+                @Html.LabelFor(model => model.IsSportRaquet)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Din favoritdejt</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateBreakfast)
+                @Html.LabelFor(model => model.IsDateBreakfast)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateLunch)
+                @Html.LabelFor(model => model.IsDateLunch)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateDinner)
+                @Html.LabelFor(model => model.IsDateDinner)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateMovie)
+                @Html.LabelFor(model => model.IsDateMovie)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateBarSnack)
+                @Html.LabelFor(model => model.IsDateBarSnack)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateDrinks)
+                @Html.LabelFor(model => model.IsDateDrinks)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDatePicnic)
+                @Html.LabelFor(model => model.IsDatePicnic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateDinnerHome)
+                @Html.LabelFor(model => model.IsDateDinnerHome)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsDateFika)
+                @Html.LabelFor(model => model.IsDateFika)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Vikten av utseende</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsLooksImportant)
+                @Html.LabelFor(model => model.IsLooksImportant)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsLooksLessImportant)
+                @Html.LabelFor(model => model.IsLooksLessImportant)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Min syn på en kärleksrelation</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelationTogether)
+                @Html.LabelFor(model => model.IsRelationTogether)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelationOwnTime)
+                @Html.LabelFor(model => model.IsRelationOwnTime)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelationMarriage)
+                @Html.LabelFor(model => model.IsRelationMarriage)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelationLiving)
+                @Html.LabelFor(model => model.IsRelationLiving)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.IsRelationNotLiving)
+                @Html.LabelFor(model => model.IsRelationNotLiving)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Våra anteckningar</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Note1)
+            </div>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.Note1)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Note2)
+            </div>
+            <div class="editor-field">
+                @Html.DisplayFor(model => model.Note2)
+            </div>
+        </fieldset>
+    }
+    <fieldset>
+        <legend>Den jag söker</legend>
+        <fieldset>
+            <legend>Eftersökt längd</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.Is150)
+                @Html.LabelFor(model => model.WantedSurvey.Is150)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.Is160)
+                @Html.LabelFor(model => model.WantedSurvey.Is160)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.Is170)
+                @Html.LabelFor(model => model.WantedSurvey.Is170)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.Is180)
+                @Html.LabelFor(model => model.WantedSurvey.Is180)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.Is190)
+                @Html.LabelFor(model => model.WantedSurvey.Is190)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Eftersökt ålder</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WantedSurvey.AgeMin)
+                @Html.DisplayFor(model => model.WantedSurvey.AgeMin) år
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WantedSurvey.AgeMax)
+                @Html.DisplayFor(model => model.WantedSurvey.AgeMax) år
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Barn</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WantedKidsWantedCountId)
+                @Html.DropDownList("WantedKidsWantedCountId", null, new { @disabled = "disabled" })
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Eftersökt kroppstyp</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsBodySlim)
+                @Html.LabelFor(model => model.WantedSurvey.IsBodySlim)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsBodyAverage)
+                @Html.LabelFor(model => model.WantedSurvey.IsBodyAverage)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsBodyAthletic)
+                @Html.LabelFor(model => model.WantedSurvey.IsBodyAthletic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsBodyChubby)
+                @Html.LabelFor(model => model.WantedSurvey.IsBodyChubby)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsBodyHeavy)
+                @Html.LabelFor(model => model.WantedSurvey.IsBodyHeavy)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Eftersökta intressen</legend>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbySport)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbySport)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbyMusic)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbyMusic)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbyNature)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbyNature)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbyCulture)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbyCulture)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbyFriends)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbyFriends)
+            </div>
+            <div class="editor-label">
+                @Html.DisplayFor(model => model.WantedSurvey.IsHobbyTech)
+                @Html.LabelFor(model => model.WantedSurvey.IsHobbyTech)
+            </div>
+        </fieldset>
+    </fieldset>
+    <fieldset>
+        <legend>Medlemskapstyp</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ReferrerId)
+            @Html.DropDownList("ReferrerId", null, new { @disabled = "disabled" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DatePackageId)
+            @Html.DropDownList("DatePackageId", null, new { @disabled = "disabled" })
+        </div>
+        <!-- ******************************************************************************************** -->
+    </fieldset>
+    <p>
+        @Html.ActionLink("Redigera", "Edit", new { id = Model.SurveyId }) |
+        @Html.ActionLink("Tillbaka till listan", "Index")
+    </p>
+</div>

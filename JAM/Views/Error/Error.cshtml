@@ -1,0 +1,26 @@
+﻿@using JAM.Logic
+@using Resources
+@model HandleErrorInfo
+
+<div>
+    @if (Model != null)
+    {
+        <p>@Model.ControllerName / @Model.ActionName</p>
+        <p>
+            @Model.Exception.Message
+        </p>
+        <br /><br />
+        <p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <p>@Model.Exception.ToString()</p>
+            }
+        </p>
+    <br /><br /><br /><br />
+    }
+    else
+    {
+        <p>Du måste logga in först!</p>
+        <br /><br /><br /><br /><br /><br /><br /><br /><br />
+    }
+</div>

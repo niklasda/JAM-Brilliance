@@ -1,0 +1,69 @@
+﻿@using JAM.Brilliance.App_GlobalResources.Survey
+@using JAM.Brilliance.Models.ViewModels;
+@model ShortSurveyViewModel
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+@{ Html.RenderAction("ProfileMenu", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>@SurveyTexts.Signup_Title</legend>
+        
+        <div class="pictures-gallery-container">
+            <img class="left-float-small-picture1" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 1 })" />
+            <img class="left-float-small-picture2" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 2 })" />
+            <img class="left-float-small-picture3" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 3 })" />
+
+            <span class="picture-caption">
+                @Html.ActionLink("Mina bilder", "MyPictures", "Picture")
+            </span>
+            <img class="right-float-big-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = Model.SurveyId })" />
+        </div>
+        
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name, @SurveyTexts.Signup_Name)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Name, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Height)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Height, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Height)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Age)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Age, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Age)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.City, @SurveyTexts.Signup_City)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.City, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastActivityDate)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("LastActivityTextBox", Model.LastActivityShortDateString, new { @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.LastActivityDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Note1)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Note1, new { rows = "8", cols = "50", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Note1)
+        </div>
+        <br />
+       
+    </fieldset>
+</p>

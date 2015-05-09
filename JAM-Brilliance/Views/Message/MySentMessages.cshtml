@@ -1,0 +1,46 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<SendMessageViewModel>
+
+@section scripts{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/ja/JamListTools.js")"></script>
+}
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>Mina skickade meddelande</legend>
+
+        <table class="list-table">
+            <tr>
+                <th>Bild</th>
+                <th>Till</th>
+                <th>Meddelande</th>
+                <th>Skickat <i class="fa fa-chevron-down"></i></th>
+                <th>Ta bort</th>
+            </tr>
+            @foreach (var smvm in Model)
+            {
+                <tr data-url="@Url.Action("ReadSentMessage", new { messageId = smvm.MessageId })">
+                    <td data-action="highlightCell"><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = smvm.ToSurveyId })" /></td>
+                    <td data-action="highlightCell">@smvm.ToName.GetBeginning(StringLength.Short)</td>
+                    <td data-action="highlightCell">@smvm.Body.GetBeginning(StringLength.Long)</td>
+                    <td data-action="highlightCell">@smvm.SendDate</td>
+                    <td class="padded-table-cell-centered">
+                        <a href="@Url.Action("RemoveMessage", "Message", new { messageId = smvm.MessageId })" onclick="return confirm('Are you sure?');">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfSentMessages, page => Url.Action("MySentMessages", new { page }))
+        @Html.ActionLink("Mina meddelande", "MyMessages")
+        <br />
+        <br />
+        <br />
+    </fieldset>
+</p>

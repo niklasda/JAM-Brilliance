@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="About_Anna" xml:space="preserve">
+    <value>Anna</value>
+  </data>
+  <data name="About_Charlotte" xml:space="preserve">
+    <value>Charlotte (Köpenhamn/Öresundsregionen)</value>
+  </data>
+  <data name="About_Charlotte_More" xml:space="preserve">
+    <value>Förutom att arbeta som matchmaker är jag är receptionschef på ett av de största hotellen i Köpenhamn och möter till vardags väldigt många människor. Under mina 13 år i servicebranschen har jag lärt mig läsa av människor och har fått en människokännedom som jag nu har stor nytta av. Jag har ett 12 år långt förhållande bakom mig och vet att det är en utmaning att hitta en person som man verkligen känner den där fina kontakten med och viktigast av allt att få dela glädje o sorg med. Jag vill genom matchmaking hjälpa fler själar att hitta varandra.</value>
+  </data>
+  <data name="About_Emelie" xml:space="preserve">
+    <value>Emelie (Öresundsregionen)</value>
+  </data>
+  <data name="About_Emelie_More" xml:space="preserve">
+    <value>Förutom att arbeta som personlig matchmaker är jag specialistutbildad sjuksköterska. Jag studerar även på halvfart vid Lunds Universitet. På min fritid tränar jag eller gör andra sociala aktiviteter. Jag kommer således i kontakt med otroligt mycket människor i min vardag och har genom åren utvecklat en god människokännedom. Alla människor är olika och värdesätter olika när det kommer till kärlek. Med tanke på att en relation förhoppningsvis är livslång tycker jag inte att man ska behöva nöja sig med något som bara känns 80%. Jag hoppas att genom J&amp;A Matchmaking få möjligheten att hjälpa dig hitta din kärlek där det känns rätt till 100%.</value>
+  </data>
+  <data name="About_Footer" xml:space="preserve">
+    <value>Med vår samlade kunskap och erfarenhet ser vi fram emot att hjälpa dig hitta din partner. Varmt välkommen att höra av dig!</value>
+  </data>
+  <data name="About_Jeanette" xml:space="preserve">
+    <value>Jeanette</value>
+  </data>
+  <data name="About_Jeanette_More" xml:space="preserve">
+    <value>Jag är utbildad kostrådgivare, personlig tränare och massageterapeut och driver eget företag inom friskvård sedan 8 år tillbaka. Jag har ett 10-årigt samboskap bakom mig och två barn. Efter ett par års erfarenhet av dejtingsidor kände jag att det saknades en personlig matchingmakingservice. Därför är jag glad att vi nu kan erbjuda dig detta!</value>
+  </data>
+  <data name="About_Linda" xml:space="preserve">
+    <value>Linda (Köpenhamn/Öresundsregionen)</value>
+  </data>
+  <data name="About_Linda_More" xml:space="preserve">
+    <value>Förutom att arbeta som matchmaker så jobbar jag som vägledande konsult inom företaget själens kraft. Jag håller kurser, arbetar med kost, näringslära, yoga, qigong &amp; meditation. Jag har lång erfarenhet av att hjälpa människor att se möjligheter när de står vid vägskäl. Kärlek i livet är något av det viktigaste som finns och med mina kunskaper ser jag fram emot att finna kärleken till dig.</value>
+  </data>
+  <data name="About_Nina" xml:space="preserve">
+    <value>Nina (Öresundsregionen)</value>
+  </data>
+  <data name="About_Nina_More" xml:space="preserve">
+    <value>Jag är utbildad Civilekonom och arbetar idag som konsultchef med försäljning och rekrytering på världens näst största HR-service företag. Förutom mitt arbete som representant för J&amp;A Matchmaking spenderar jag mina dagar med att nätverka, genomföra kundbesök och hålla intervjuer. Mitt arbete kräver stor människokännedom och ett stort kontaktnät, lyckligtvis besitter jag båda delar och hoppas få dela med mig av detta när jag ska hjälpa dig hitta din kärlekspartner. Jag har flera långa förhållanden bakom mig och har själv funnit kärleken i mitt liv. Jag ger gärna råd om vad som krävs för att få förhållandet att fungera.</value>
+  </data>
+  <data name="About_Nisse" xml:space="preserve">
+    <value>Nisse (Öresundsregionen)</value>
+  </data>
+  <data name="About_Nisse_More" xml:space="preserve">
+    <value>Äntligen kan jag ägna mig åt att arbeta med det bästa som finns, kärleken! Förutom mitt arbete som representant för J&amp;A Matchmaking så finns jag i försäljningsbranschen och där har jag 18 års erfarenhet på olika nivåer. Jag har stor social kompetens och människokännedom som jag hoppas få användning för i min strävan att hjälpa dig hitta kärleken. Jag är än så länge singel själv och vet hur det är att ha höga krav och hur svårt det är att hitta den som känns mitt i prick.</value>
+  </data>
+  <data name="About_Us" xml:space="preserve">
+    <value>2011 startade J&amp;A Matchmaking som en följd av att matchmaking saknades i Sverige. Vår erfarenhet är att både matchmaking och onlinedating har en funktion att fylla. Eftersom vi vill att alla ska få möjligheten att hitta kärleken så väljer vi att erbjuda både onlinedating och matchmaking. För den som behöver ytterligare stöd i form av tex coaching eller hjälp att vässa din onlineprofil så har vi även dessa tjänster att erbjuda.  Vår onlinedatingsida är det enda  sidan där du kan bli headhuntad av en personlig matchmaker från J&amp;A Matchmaking och få möjligheten att gå på dejt med en av våra spännande kunder helt kostnadsfritt.</value>
+  </data>
+  <data name="About_Ylva" xml:space="preserve">
+    <value>Ylva (Stockholmsregionen)</value>
+  </data>
+  <data name="About_Ylva_More" xml:space="preserve">
+    <value>Jag är utbildad Public Bid Manager och har jobbat med försäljning mot sjukvården under flera år. Förutom att arbeta med matchmaking driver idag en egen webshop med exklusivare inredningsdetaljer, utvalda med fingertoppskänsla. Jag har ett 20-årigt äktenskap bakom mig och njuter nu frukterna av detta, en son och en dotter. Som singel har även jag erfarenhet av dejting och har en del råd och tips att ge kring detta. Min stora hobby förutom inredning är beteendevetenskap där jag läser så mycket jag kommer över.</value>
+  </data>
+  <data name="Coaching_P1" xml:space="preserve">
+    <value>Vill du ha peppning och nya idéer? Det kan vara krävande att vara singel, det vet vi som arbetar med singlar. Det gäller att alltid framställa sig själv från sin bästa sida och vara på topp. Vi hjälper dig!</value>
+  </data>
+  <data name="Coaching_P10" xml:space="preserve">
+    <value>Samtalen sköts enl ök inom 12 v, du kan tex använda dig av samtalen inför en dejt eller efter en dejt eller övrig dejtcoaching.</value>
+  </data>
+  <data name="Coaching_P2" xml:space="preserve">
+    <value>Det är svårt att hitta rätt partner, det vet säkert du också. Dessutom har du kanske inrättat ett ganska bekvämt singelliv utifrån sina egna premisser och är inte alltid så sugen att förändra detta. Är det kanske så att du ibland blir hindrad av dina egna krav och har du tänkt tanken att titta utanför boxen?</value>
+  </data>
+  <data name="Coaching_P3" xml:space="preserve">
+    <value>Ibland kan det underlätta att bolla dessa tankar med någon utomstående som vet vad det innebär. Vi som pratar med singelmän och singelkvinnor dagligen kan hjälpa dig att reda ut begreppen. Vi kan stärka dig och ge dig konkreta tips på vad som kan vara bra att tänka på när du flirtar och dejtar.</value>
+  </data>
+  <data name="Coaching_P4" xml:space="preserve">
+    <value>Dejtcoaching via telefon:</value>
+  </data>
+  <data name="Coaching_P5" xml:space="preserve">
+    <value>30 min: 499:-</value>
+  </data>
+  <data name="Coaching_P6" xml:space="preserve">
+    <value>50 min: 799:-</value>
+  </data>
+  <data name="Coaching_P7" xml:space="preserve">
+    <value>Coachingpaket 3 x 30 min 1350:-</value>
+  </data>
+  <data name="Coaching_P8" xml:space="preserve">
+    <value>Samtalen sköts enl ök inom 6 v, du kan tex använda dig av samtalen inför en dejt eller efter en dejt eller övrig dejtcoaching.</value>
+  </data>
+  <data name="Coaching_P9" xml:space="preserve">
+    <value>Coachingpaket 6 x 30 min 2500:-</value>
+  </data>
+  <data name="Coaching_Title" xml:space="preserve">
+    <value>Coaching</value>
+  </data>
+  <data name="Constants_AnnaInfo" xml:space="preserve">
+    <value>Anna Dingizian, Delägare/Representant Öresundsregionen: +46 (0)733-529 987</value>
+  </data>
+  <data name="Constants_Banner" xml:space="preserve">
+    <value>Seriöst&amp;nbsp;-&amp;nbsp;personligt&amp;nbsp;-&amp;nbsp;professionellt&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;</value>
+  </data>
+  <data name="Constants_CharlotteInfo" xml:space="preserve">
+    <value>Charlotte Aldin, Representant Köpenhamn/Öresundsregionen: 0709-328 182</value>
+  </data>
+  <data name="Constants_ContactFooter" xml:space="preserve">
+    <value>&lt;h2&gt;Kontakta oss&lt;/h2&gt;&lt;p&gt;Jeanette Vinberg: +46 (0)702-650 361&lt;br /&gt;Anna Dingizian: +46 (0)733-529 987&lt;br /&gt;Mailadress: &lt;a href="mailto:jamatchmaking@gmail.com"&gt;jamatchmaking@gmail.com&lt;/a&gt;&lt;/p&gt;</value>
+  </data>
+  <data name="Constants_Copyright" xml:space="preserve">
+    <value>&lt;p&gt;Copyright (c) 2014 J&amp;A Matchmaking. All Rights Reserved.&lt;/p&gt;</value>
+  </data>
+  <data name="Constants_EmelieInfo" xml:space="preserve">
+    <value>Emelie, Representant Öresundsregionen: 0765-591 604</value>
+  </data>
+  <data name="Constants_Headline" xml:space="preserve">
+    <value>dating</value>
+  </data>
+  <data name="Constants_JeanetteInfo" xml:space="preserve">
+    <value>Jeanette Vinberg, Delägare/Representant Öresundsregionen: +46 (0)702-650 361</value>
+  </data>
+  <data name="Constants_LindaInfo" xml:space="preserve">
+    <value>Linda Fennhagen, Representant Köpenhamn/Öresundsregionen: 0736-836 421</value>
+  </data>
+  <data name="Constants_NinaInfo" xml:space="preserve">
+    <value>Nina von Platen, Representant Öresundsregionen: 0733-966 337</value>
+  </data>
+  <data name="Constants_NisseInfo" xml:space="preserve">
+    <value>Nisse Andersson, Representant Öresundsregionen: 0737-404 013</value>
+  </data>
+  <data name="Constants_Tax" xml:space="preserve">
+    <value>&lt;p&gt;Innehar F-skattsedel&lt;br /&gt;&lt;br /&gt;Denna hemsida använder cookies.&lt;/p&gt;</value>
+  </data>
+  <data name="Constants_YlvaInfo" xml:space="preserve">
+    <value>Ylva Vezzoli, Representant Stockholmsregionen: 0702-730 022</value>
+  </data>
+  <data name="ContactUs_Homepage" xml:space="preserve">
+    <value>Hemsida</value>
+  </data>
+  <data name="ContactUs_Mail" xml:space="preserve">
+    <value>Mailadress</value>
+  </data>
+  <data name="ContactUs_Title" xml:space="preserve">
+    <value>Kontakta Oss</value>
+  </data>
+  <data name="FAQ_A1" xml:space="preserve">
+    <value>Vi gör jobbet åt dig och du kan fokusera på annat. Kanske du inte har tid att nätdejta eller gå på krogen, eller kanske du har en position som gör det mindre lämpligt att exponera sig på nätet. Du som är blyg eller tillbakadragen kan få möjlighet att gå på dejt, du kan även få coaching att våga mer. Du slipper råka ut för någon som marknadsfört sig falskt på nätet.</value>
+  </data>
+  <data name="FAQ_A2" xml:space="preserve">
+    <value>Nej, alla är välkomna men vi utgår från öresundsregionen och Stockholmsområdet.</value>
+  </data>
+  <data name="FAQ_A3" xml:space="preserve">
+    <value>Nej, tyvärr inte eftersom vi sätter konfidentialiteten högt.</value>
+  </data>
+  <data name="FAQ_A4" xml:space="preserve">
+    <value>Nej, vi presenterar kandidaten sen är det upp till dig som medlem att avgöra om du vill träffas.</value>
+  </data>
+  <data name="FAQ_A5" xml:space="preserve">
+    <value>Ja, om båda samtycker.</value>
+  </data>
+  <data name="FAQ_A6" xml:space="preserve">
+    <value>Maten ingår inte i servicen och om ni hellre vill boka själv går det bra.</value>
+  </data>
+  <data name="FAQ_A7" xml:space="preserve">
+    <value>Alla lyckönskningar till dig i så fall! Återköp sker ej men du kan ge bort medlemskapet till någon annan.</value>
+  </data>
+  <data name="FAQ_A8" xml:space="preserve">
+    <value>Vi vill gärna arbeta även med samkönade relationer i framtiden. Tyvärr har vi inte möjligheten att erbjuda denna service ännu, men håll utkik framöver!</value>
+  </data>
+  <data name="FAQ_Q1" xml:space="preserve">
+    <value>Varför ska jag välja personlig matchmaking?</value>
+  </data>
+  <data name="FAQ_Q2" xml:space="preserve">
+    <value>Måste man bo i öresundsregionen eller Stockholm för att få vara medlem?</value>
+  </data>
+  <data name="FAQ_Q3" xml:space="preserve">
+    <value>Finns det något öppet forum där man kan prata med andra medlemmar?</value>
+  </data>
+  <data name="FAQ_Q4" xml:space="preserve">
+    <value>Måste jag tacka ja till de dejter ni föreslår?</value>
+  </data>
+  <data name="FAQ_Q5" xml:space="preserve">
+    <value>Finns det möjlighet att få se en bild eller att få pratas vid via telefon innan träff?</value>
+  </data>
+  <data name="FAQ_Q6" xml:space="preserve">
+    <value>Ni uppger att ni kan ordna dejten via restaurang eller café, ingår maten då? Kan man boka själv på valfritt ställe?</value>
+  </data>
+  <data name="FAQ_Q7" xml:space="preserve">
+    <value>Vad händer om jag träffar min drömpartner efter att jag anmält mig hos er, kan jag få pengarna tillbaka då?</value>
+  </data>
+  <data name="FAQ_Q8" xml:space="preserve">
+    <value>Arbetar ni inte med samkönade relationer?</value>
+  </data>
+  <data name="Menu_AboutUs" xml:space="preserve">
+    <value>Om oss</value>
+  </data>
+  <data name="Menu_Coaching" xml:space="preserve">
+    <value>Coaching</value>
+  </data>
+  <data name="Menu_ContactUs" xml:space="preserve">
+    <value>Kontakta oss</value>
+  </data>
+  <data name="Menu_Faq" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+  <data name="Menu_Press" xml:space="preserve">
+    <value>Pressrum</value>
+  </data>
+  <data name="Menu_Prices" xml:space="preserve">
+    <value>Priser</value>
+  </data>
+  <data name="Menu_Process" xml:space="preserve">
+    <value>Processen</value>
+  </data>
+  <data name="Menu_References" xml:space="preserve">
+    <value>Referenser</value>
+  </data>
+  <data name="Menu_Reps" xml:space="preserve">
+    <value>Representanter</value>
+  </data>
+  <data name="Menu_Search" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Menu_Sharpen" xml:space="preserve">
+    <value>Vässa profilen</value>
+  </data>
+  <data name="Menu_Signup" xml:space="preserve">
+    <value>Anmälan</value>
+  </data>
+  <data name="Menu_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Press_Title" xml:space="preserve">
+    <value>Pressrum</value>
+  </data>
+  <data name="Prices_Base" xml:space="preserve">
+    <value>&lt;ul&gt;
+&lt;li&gt;Intervju och profilskiss av dig&lt;/li&gt;
+&lt;li&gt;Aktivt sökande av en match för dig&lt;/li&gt;
+&lt;li&gt;Administration av ditt ärende&lt;/li&gt;
+&lt;li&gt;Sekretess genom alla led&lt;/li&gt;
+&lt;li&gt;1 eller flera matchningar presenteras för dig&lt;/li&gt;
+&lt;li&gt;Intervju och profilskiss av din dejt/dejter&lt;/li&gt;
+&lt;li&gt;Korrespondens med dig angående förslag på dejt&lt;/li&gt;
+&lt;li&gt;Bokning av dejt för er&lt;/li&gt;
+&lt;li&gt;Uppföljningssamtal efter er dejt&lt;/li&gt;
+&lt;li&gt;Coaching inför dejten&lt;/li&gt;
+&lt;li&gt;Bakgrundskoll av din dejt via brottsregister&lt;/li&gt;
+&lt;li&gt;Allmän dejtcoaching&lt;/li&gt;
+&lt;li&gt;Stylingtips allmänt och inför dejten&lt;/li&gt;
+&lt;li&gt;Fotografering hos fotograf&lt;/li&gt;
+&lt;li&gt;Styling i samband med fotografering&lt;/li&gt;
+&lt;/ul&gt;</value>
+  </data>
+  <data name="Prices_Base_Price" xml:space="preserve">
+    <value>Observera att de 9 första punkterna alltid ingår och inte går att välja bort.</value>
+  </data>
+  <data name="Prices_Base_Title" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Coaching" xml:space="preserve">
+    <value>För dig som vill bli säkrare och tryggare när du är ute och träffar människor eller dejtar erbjuder vi dejtcoahcing. Du får tips och verktyg för hur du kan agera vid nya kontakter med människor. Du får coaching och peptalk för att bli lyft och kunna möta människor med större säkerhet. Ring eller maila oss för att boka en tid.&lt;br/&gt;
+Pris: &lt;b&gt;995:-&lt;/b&gt; / 45 min</value>
+  </data>
+  <data name="Prices_Coaching_Title" xml:space="preserve">
+    <value>Dejt/relationscoaching</value>
+  </data>
+  <data name="Prices_End" xml:space="preserve">
+    <value>Varmt välkomna!</value>
+  </data>
+  <data name="Prices_Gold" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Gold_Price" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Gold_Title" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Intro" xml:space="preserve">
+    <value>Alla människor är olika när det gäller synen på och kraven man har vid sökandet efter en partner. Vi har förståelse för detta och kan hjälpa dig med dina specifika krav. Eftersom var och ens situation är unik har vi valt att inte erbjuda färdiga lösningar. Beroende på dina krav och din situation kommer vi överens om en lösning och ett pris som passar just dig.</value>
+  </data>
+  <data name="Prices_Or" xml:space="preserve">
+    <value>Följande finns i vår service:</value>
+  </data>
+  <data name="Prices_Payment" xml:space="preserve">
+    <value>Betalning sker till bankgiro: 839-2714</value>
+  </data>
+  <data name="Prices_Platinum" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Platinum_Price" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Platinum_Title" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Renew" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Prices_Title" xml:space="preserve">
+    <value>Priser</value>
+  </data>
+  <data name="Process_P1" xml:space="preserve">
+    <value>Anmälan gör du via fliken anmälan.</value>
+  </data>
+  <data name="Process_P2" xml:space="preserve">
+    <value>När vi fått din anmälan så kommer vi kontakta dig inom några dagar för att boka ett personligt möte. Du får även ett kundnummer som du ska ange vid betalningen.</value>
+  </data>
+  <data name="Process_P3" xml:space="preserve">
+    <value>Vi träffas för att närmre gå igenom dina önskemål. Det personliga mötet är basen i verksamheten för att hitta din bästa match.</value>
+  </data>
+  <data name="Process_P4" xml:space="preserve">
+    <value>Vi återkommer när vi hittat en lämplig kandidat för en dejt. Om ni vill se varandras foto före dejt så är det möjligt efter era godkännanden. Vi ombesörjer att boka bord på passande restaurang eller café.</value>
+  </data>
+  <data name="Process_P5" xml:space="preserve">
+    <value>Efter dejten kontaktar vi dig för feedback.</value>
+  </data>
+  <data name="Process_Title" xml:space="preserve">
+    <value>Så här går det till</value>
+  </data>
+  <data name="References_1" xml:space="preserve">
+    <value>&lt;b&gt;Magnus och Johanna:&lt;/b&gt;</value>
+  </data>
+  <data name="References_2" xml:space="preserve">
+    <value>&lt;b&gt;Magnus, 41:&lt;/b&gt; "Jag separerade från min sambo för 2½ år sedan och efter det så har det bara inte blivit av att jag tänkt så mycket på det här med att träffa någon. Det har bara inte blivit prioritet även om jag känt att jag verkligen inte vill leva som singel för alltid, alltså jag vill ju ha barn och så... Jag har ju varit ute med grabbarna en hel del men det är inte riktigt min grej att flirta, helt ärligt kommer jag nog inte ihåg hur man gör för det var så länge sedan jag var singel, det var före jag var sambo och vi bodde ihop i 8 år. I alla fall blev det att jag fick ett visitkort från J&amp;A Matchmaking av en vän och såg min chans att kunna dejta utan att behöva gå på krogen och flirta och då valde de ut Johanna som min dejt. På den vägen är det, jag och Johanna har så mycket gemensamt och har haft så mycket kul tillsammans sedan vi träffades vilket var 6 månader sedan nu."</value>
+  </data>
+  <data name="References_3" xml:space="preserve">
+    <value>&lt;b&gt;Johanna, 37:&lt;/b&gt; "Jag har varit singel i 5 år innan jag träffade Magnus. Det har varit en hel del dejtande under dessa åren! Tyvärr är det väldigt svårt att hitta den rätte där ute... Att ragga på krogen kan funka ibland men oftast är det väldigt jobbigt, folk är fulla och dryga. Sedan har jag nätdejtat en hel del också men det är hur svårt som helst att hitta guldkornen bland alla möjliga konstiga. Tyvärr är det allt för många som presenterar en oäkta bild av sig själva på nätet, till slut tröttnar man på att gå på dejt via nätet. Jag hittade J&amp;A Matchmaking genom att googla och det kändes precis som den servicen jag letade efter! Någon annan som gallrar och väljer åt mig! Jag har varit på 3 olika dejter via J&amp;A Matchmaking och de har alla tre varit väldigt trevliga dejter men det var först på den tredje som det klickade! Det var då de valde ut Magnus till mig!"</value>
+  </data>
+  <data name="References_4" xml:space="preserve">
+    <value>&lt;b&gt;P-O och Louise:&lt;/b&gt;</value>
+  </data>
+  <data name="References_5" xml:space="preserve">
+    <value>&lt;b&gt;P-O, 55:&lt;/b&gt; "Efter min skilsmässa 2002 så har jag dels haft ett längre särboskap men även bott utomlands längre perioder. Eftersom jag bott utomlands har jag inte haft så etablerat nätverk här i Sverige. Jag tycker det har varit befriande att vara singel under längre perioder efter att ha varit gift och haft familj och hela den biten tidigare. Fast jag tror inte någon tycker det är kul att vara singel när man är 70 år. Jag ville hitta någon som motsvarade mina krav på en partner, någon som tycker om att resa och sporta, någon som vill leva ett aktivt liv fast man inte är 20 längre. Detta har J&amp;A Matchmaking verkligen lyckats med, de har presenterat några olika kvinnor för mig som verkligen motsvarat detta. Jag och Louise var på dejt i juli 2012, det klickade inte första kvällen men vi träffades flera gånger under sommaren och gjorde olika saker tillsammans och det växte fram en stark kärlek."</value>
+  </data>
+  <data name="References_6" xml:space="preserve">
+    <value>&lt;b&gt;Louise, 55:&lt;/b&gt; "Min exman gick bort i sjukdom 2007, det var en tung tid för mig efteråt. Våra barn är vuxna och studerar utomlands så jag måste erkänna att jag känt mig väldigt ensam. Jag har haft en stark längtan länge efter att träffa någon ny partner att dela tillvaron med, men det är så svårt i min ålder att hitta någon. Jag har inte för vana att gå på krogen precis och i mitt nätverk är de flesta redan i relationer. Jag fick kontakt med J&amp;A Matchmaking via en mässa och tvekade ett bra tag innan jag anmälde mig som medlem. Jag hade verkligen inte dejtat på länge så det kändes väldigt tryggt att ha dem med mig under hela processen och få coaching när jag behövde det. Det var verkligen ett lyckokast att jag blev presenterad för P-O, bättre livspartner hade jag inte vågat hoppas på."</value>
+  </data>
+  <data name="References_Title" xml:space="preserve">
+    <value>Referenser</value>
+  </data>
+  <data name="Search_Adv" xml:space="preserve">
+    <value>avancerad sökning</value>
+  </data>
+  <data name="Search_And" xml:space="preserve">
+    <value>och</value>
+  </data>
+  <data name="Search_P1" xml:space="preserve">
+    <value>Sök en passande match för dig i vårt exklusiva register. Välj mellan </value>
+  </data>
+  <data name="Search_Quick" xml:space="preserve">
+    <value>snabbsökning</value>
+  </data>
+  <data name="Search_Title" xml:space="preserve">
+    <value>Sök</value>
+  </data>
+  <data name="Sharpen_P1" xml:space="preserve">
+    <value>Många kunder hör av sig till oss med funderingar kring hur man presenterar sig på bästa sätt när man söker matcher online. Många känner att det är svårt att framhäva sig själv, hur gör man för att det inte ska bli för skrytsamt eller för blygsamt? Det är avgörande hur man formulerar sig i sin presentation, de ord du väljer påverkar läsaren. Det är också viktigt att ge en så sann bild av dig själv som möjligt för att öka chanserna att träffa någon som verkligen matchar. Likaså är det avgörande vilka bilder du väljer, detta kan vi hjälpa dig med. Jeanette och Anna på J&amp;A Matchmaking arbetar som professionella matchmakers. Jeanette har bakgrund som friskvårdsterapeut och massageterapeut har lång erfarenhet av människor och coaching. Anna är utbildad beteendevetare och har arbetat med människor i olika slags samtal i många år. Med denna samlade kompetens och erfarenhet av matchmaking så kan de hjälpa dig att vässa din profil.</value>
+  </data>
+  <data name="Sharpen_P2" xml:space="preserve">
+    <value>Detta kan vi hjälpa dig med:&lt;ul&gt;
+&lt;li&gt;Att välja den profilbild som framhäver dig på bästa sätt.&lt;/li&gt;
+&lt;li&gt;Att välja bra bilder av dig till ditt album.&lt;/li&gt;
+&lt;li&gt;Vi hjälper dig formulera din presentation så den blir tilltalande och framhäver dig på bästa sätt.&lt;/li&gt;
+&lt;li&gt;Vi kan hjälpa dig formulera din text så att du uppmärksammas av den sortens match som du söker.&lt;/li&gt;&lt;/ul&gt;</value>
+  </data>
+  <data name="Sharpen_P3" xml:space="preserve">
+    <value>Prisförslag: 450:-</value>
+  </data>
+  <data name="Sharpen_Title" xml:space="preserve">
+    <value>Vässa Profilen</value>
+  </data>
+  <data name="Start_P2" xml:space="preserve">
+    <value>Välkommen till Sveriges första online datingsida där just du kan bli headhuntad av personliga matchmakers.</value>
+  </data>
+  <data name="Start_P3" xml:space="preserve">
+    <value>Detta är datingsiten som drivs av professionella matchmakers som kan hjälpa dig med allt från datingtips, coaching till hur du presenterar dig själv på bästa sätt online. När du registrerat dig hos oss finns möjligheten att vi kontaktar dig för att du matchar en av våra kunder som anlitat oss som personliga matchmakers på </value>
+  </data>
+  <data name="Start_P4" xml:space="preserve">
+    <value>J&amp;A Matchmaking</value>
+  </data>
+  <data name="Start_P5" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Start_P6" xml:space="preserve">
+    <value>Registrera dig här</value>
+  </data>
+  <data name="Start_P7" xml:space="preserve">
+    <value>NA</value>
+  </data>
+  <data name="Start_Title" xml:space="preserve">
+    <value>Är du singel?</value>
+  </data>
+</root>

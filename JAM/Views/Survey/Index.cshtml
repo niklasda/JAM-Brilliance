@@ -1,0 +1,115 @@
+﻿@using System.Collections.Generic
+@using JAM.Logic
+@using JAM.Models
+@using PagedList
+@using PagedList.Mvc
+@using Resources
+@model IEnumerable<Survey>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        <p>
+            Sök på namn/stad: @Html.TextBox("SearchString", "", new { autofocus = "" })
+            <input type="submit" value="Sök" />
+            @Html.ActionLink("Män", "IndexMen") |
+            @Html.ActionLink("Kvinnor", "IndexWomen") |
+            @Html.ActionLink("Alla", "Index") |
+            @Html.ActionLink("Prospects", "IndexProspects") |
+            @Html.ActionLink("Visa även gömda", "IndexAll")
+        </p>
+    }
+    <table width="100%">
+        <tr>
+            <th>
+                @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParm, searchString = ViewBag.SearchString })
+            </th>
+            <th>
+                @Html.ActionLink("Namn", "Index", new { sortOrder = ViewBag.NameSortParm, searchString = ViewBag.SearchString })
+            </th>
+            <th>
+                Gatuadress
+            </th>
+            <th>
+                @Html.ActionLink("Stad", "Index", new { sortOrder = ViewBag.CitySortParm, searchString = ViewBag.SearchString })
+            </th>
+            <th>
+                E-post
+            </th>
+            <th>
+                Typ
+            </th>
+            <th>
+                Kön
+            </th>
+            <th>
+                Åtgärder
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @if (item.IsInterviewed)
+                {
+                    <td style="background-color: cornsilk">
+                        @Html.DisplayFor(i => item.SurveyId)&nbsp;
+                    </td>
+                    <td style="background-color: cornsilk">
+                        @Html.DisplayFor(i => item.Name)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(i => item.SurveyId)&nbsp;
+                    </td>
+                    <td>
+                        @Html.DisplayFor(i => item.Name)
+                    </td>
+                }
+                <td>
+                    @Html.DisplayFor(i => item.Street)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(i => item.Email)
+                </td>
+                <td>
+                    @Html.Raw(Mailer.PackageCode(item))
+                </td>
+                <td>
+                    @if (item.IsMale)
+                    {
+                        @Html.Raw("M")
+                    }
+                    else
+                    {
+                        @Html.Raw("K")
+                    }
+                    @Html.Raw(Mailer.GetYear(item))
+                </td>
+                <td>
+                    | @Html.ActionLink("Ändra", "Edit", new { id = item.SurveyId }) |
+                    @Html.ActionLink("Detaljer", "Details", new { id = item.SurveyId }) |
+                    @if (item.IsDisabled)
+                    {
+                        @Html.ActionLink("Visa", "UnHide", new { id = item.SurveyId })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Göm", "Hide", new { id = item.SurveyId })
+
+                    }
+                    | @Html.ActionLink("Bort", "Delete", new { id = item.SurveyId }) |
+                </td>
+            </tr>
+        }
+    </table>
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfProducts, page => Url.Action("Index", new { page = page, sortOrder = ViewBag.CurrentSort }), (PagedListRenderOptions)ViewData["PagedListRenderOptions"])
+    <br />
+    <i class="fa fa-cog fa-spin"></i>
+    @Html.ActionLink("DevPage", "DevPage", "Home")
+
+</div>

@@ -1,0 +1,9 @@
+bin/
+obj/
+packages/
+TestResults/
+JAM-Brilliance-Mobile/platforms/
+JAM-Brilliance-Mobile/plugins/
+*.suo
+*.csproj.user
+JAM-Brilliance/Logs/

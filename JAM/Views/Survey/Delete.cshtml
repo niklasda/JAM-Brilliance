@@ -1,0 +1,51 @@
+﻿@using JAM.Logic
+@using JAM.Models
+@using Resources
+@model Survey
+
+<div>
+    <h2>
+        Vill du verkligen ta bort den här personen?</h2>
+    <br />
+    <fieldset>
+        <legend>Personuppgifter</legend>
+        <div class="editor-label">
+            <b>Namn</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            <b>Gata</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Street)
+        </div>
+        <div class="editor-label">
+            <b>Postnummer</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.PostalCode)
+        </div>
+        <div class="editor-label">
+            <b>Stad</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.City)
+        </div>
+        <div class="editor-label">
+            <b>Land</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Country)
+        </div>
+        <div class="editor-label">
+            <b>E-post</b></div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm())
+    {
+        <p>
+            <input type="submit" value="Ta bort" />
+            |
+            @Html.ActionLink("Tillbaka till listan", "Index")
+        </p>
+    }
+</div>

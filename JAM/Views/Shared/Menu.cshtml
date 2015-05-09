@@ -1,0 +1,66 @@
+﻿@using JAM.Logic
+@using Resources
+
+<table width="100%" id="main-nav" class="container">
+    <tr>
+        <td>
+            <div id="menu">
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Start ? "active" : "")">@Html.ActionLink(@Global.Menu_Start, "Start", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Survery ? "active" : "")">@Html.ActionLink(@Global.Menu_Signup, "Create", "Survey")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Prices ? "active" : "")">@Html.ActionLink(@Global.Menu_Prices, "Prices", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Process ? "active" : "")">@Html.ActionLink(@Global.Menu_Process, "Process", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Faq ? "active" : "")">@Html.ActionLink(@Global.Menu_Faq, "Faq", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Contact ? "active" : "")">@Html.ActionLink(@Global.Menu_ContactUs, "Contact", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.About ? "active" : "")">@Html.ActionLink(@Global.Menu_AboutUs, "About", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Reps ? "active" : "")">@Html.ActionLink(@Global.Menu_Reps, "Reps", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Press ? "active" : "")">@Html.ActionLink(@Global.Menu_Press, "Pressrum", "Home")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.References ? "active" : "")">@Html.ActionLink(@Global.Menu_References, "References", "Home")</li>
+                        <li class="nav-item">
+                            <div id="flags">
+                                <a href="@Url.Action("Danish", "Home")"><img width="28" title="Dansk" alt="Dansk" src='@Url.Content(Constants.DanishFlag)' border="0" /></a>
+                                <a href="@Url.Action("Swedish", "Home")"><img width="28" title="Svenska" alt="Svenska" src='@Url.Content(Constants.SwedishFlag)' border="0" /></a>
+                                <a href="@Url.Action("English", "Home")"><img width="28" title="English" alt="English" src='@Url.Content(Constants.EnglishFlag)' border="0" /></a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </td>
+    </tr>
+</table>
+<script>
+    (function () {
+        // Create mobile element
+        var mobile = document.createElement('div');
+        mobile.className = 'nav-mobile';
+        document.querySelector('.nav').appendChild(mobile);
+
+        // hasClass
+        function hasClass(elem, className) {
+            return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+        }
+
+        // toggleClass
+        function toggleClass(elem, className) {
+            var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+            if (hasClass(elem, className)) {
+                while (newClass.indexOf(' ' + className + ' ') >= 0) {
+                    newClass = newClass.replace(' ' + className + ' ', ' ');
+                }
+                elem.className = newClass.replace(/^\s+|\s+$/g, '');
+            } else {
+                elem.className += ' ' + className;
+            }
+        }
+
+        // Mobile nav function
+        var mobileNav = document.querySelector('.nav-mobile');
+        var toggle = document.querySelector('.nav-list');
+        mobileNav.onclick = function () {
+            toggleClass(this, 'nav-mobile-open');
+            toggleClass(toggle, 'nav-active');
+        };
+    })();
+</script>

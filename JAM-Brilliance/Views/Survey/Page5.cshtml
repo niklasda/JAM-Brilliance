@@ -1,0 +1,382 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model SurveyPage5ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset class="break-print-page">
+            <legend>Intressen</legend>
+            <div class="editor-label">
+                @Html.HiddenFor(model => model.SurveyId)
+                @Html.CheckBoxFor(model => model.IsHobbyNewAge, new { autofocus = "" })
+                @Html.LabelFor(model => model.IsHobbyNewAge)
+                @Html.ValidationMessageFor(model => model.IsHobbyNewAge)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyCars)
+                @Html.LabelFor(model => model.IsHobbyCars)
+                @Html.ValidationMessageFor(model => model.IsHobbyCars)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyDance)
+                @Html.LabelFor(model => model.IsHobbyDance)
+                @Html.ValidationMessageFor(model => model.IsHobbyDance)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyAnimals)
+                @Html.LabelFor(model => model.IsHobbyAnimals)
+                @Html.ValidationMessageFor(model => model.IsHobbyAnimals)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyMovies)
+                @Html.LabelFor(model => model.IsHobbyMovies)
+                @Html.ValidationMessageFor(model => model.IsHobbyMovies)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyHunting)
+                @Html.LabelFor(model => model.IsHobbyHunting)
+                @Html.ValidationMessageFor(model => model.IsHobbyHunting)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyInterior)
+                @Html.LabelFor(model => model.IsHobbyInterior)
+                @Html.ValidationMessageFor(model => model.IsHobbyInterior)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyPhoto)
+                @Html.LabelFor(model => model.IsHobbyPhoto)
+                @Html.ValidationMessageFor(model => model.IsHobbyPhoto)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyOutdoors)
+                @Html.LabelFor(model => model.IsHobbyOutdoors)
+                @Html.ValidationMessageFor(model => model.IsHobbyOutdoors)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyArt)
+                @Html.LabelFor(model => model.IsHobbyArt)
+                @Html.ValidationMessageFor(model => model.IsHobbyArt)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyGame)
+                @Html.LabelFor(model => model.IsHobbyGame)
+                @Html.ValidationMessageFor(model => model.IsHobbyGame)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyCooking)
+                @Html.LabelFor(model => model.IsHobbyCooking)
+                @Html.ValidationMessageFor(model => model.IsHobbyCooking)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyReading)
+                @Html.LabelFor(model => model.IsHobbyReading)
+                @Html.ValidationMessageFor(model => model.IsHobbyReading)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyHistory)
+                @Html.LabelFor(model => model.IsHobbyHistory)
+                @Html.ValidationMessageFor(model => model.IsHobbyHistory)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyPainting)
+                @Html.LabelFor(model => model.IsHobbyPainting)
+                @Html.ValidationMessageFor(model => model.IsHobbyPainting)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyMuseum)
+                @Html.LabelFor(model => model.IsHobbyMuseum)
+                @Html.ValidationMessageFor(model => model.IsHobbyMuseum)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyMusic)
+                @Html.LabelFor(model => model.IsHobbyMusic)
+                @Html.ValidationMessageFor(model => model.IsHobbyMusic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyPolitics)
+                @Html.LabelFor(model => model.IsHobbyPolitics)
+                @Html.ValidationMessageFor(model => model.IsHobbyPolitics)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyTravel)
+                @Html.LabelFor(model => model.IsHobbyTravel)
+                @Html.ValidationMessageFor(model => model.IsHobbyTravel)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyRolePlaying)
+                @Html.LabelFor(model => model.IsHobbyRolePlaying)
+                @Html.ValidationMessageFor(model => model.IsHobbyRolePlaying)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyShopping)
+                @Html.LabelFor(model => model.IsHobbyShopping)
+                @Html.ValidationMessageFor(model => model.IsHobbyShopping)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbySinging)
+                @Html.LabelFor(model => model.IsHobbySinging)
+                @Html.ValidationMessageFor(model => model.IsHobbySinging)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyWriting)
+                @Html.LabelFor(model => model.IsHobbyWriting)
+                @Html.ValidationMessageFor(model => model.IsHobbyWriting)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyGaming)
+                @Html.LabelFor(model => model.IsHobbyGaming)
+                @Html.ValidationMessageFor(model => model.IsHobbyGaming)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyWorkout)
+                @Html.LabelFor(model => model.IsHobbyWorkout)
+                @Html.ValidationMessageFor(model => model.IsHobbyWorkout)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyDrama)
+                @Html.LabelFor(model => model.IsHobbyDrama)
+                @Html.ValidationMessageFor(model => model.IsHobbyDrama)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyDrawing)
+                @Html.LabelFor(model => model.IsHobbyDrawing)
+                @Html.ValidationMessageFor(model => model.IsHobbyDrawing)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyGardening)
+                @Html.LabelFor(model => model.IsHobbyGardening)
+                @Html.ValidationMessageFor(model => model.IsHobbyGardening)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyTv)
+                @Html.LabelFor(model => model.IsHobbyTv)
+                @Html.ValidationMessageFor(model => model.IsHobbyTv)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyCircles)
+                @Html.LabelFor(model => model.IsHobbyCircles)
+                @Html.ValidationMessageFor(model => model.IsHobbyCircles)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyHiking)
+                @Html.LabelFor(model => model.IsHobbyHiking)
+                @Html.ValidationMessageFor(model => model.IsHobbyHiking)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsHobbyWine)
+                @Html.LabelFor(model => model.IsHobbyWine)
+                @Html.ValidationMessageFor(model => model.IsHobbyWine)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Hur ser en helg ut</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsWeekendActive)
+                @Html.LabelFor(model => model.IsWeekendActive)
+                @Html.ValidationMessageFor(model => model.IsWeekendActive)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsWeekendChill)
+                @Html.LabelFor(model => model.IsWeekendChill)
+                @Html.ValidationMessageFor(model => model.IsWeekendChill)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsWeekendRandom)
+                @Html.LabelFor(model => model.IsWeekendRandom)
+                @Html.ValidationMessageFor(model => model.IsWeekendRandom)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsWeekendPlanned)
+                @Html.LabelFor(model => model.IsWeekendPlanned)
+                @Html.ValidationMessageFor(model => model.IsWeekendPlanned)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Idrottsintressen <i class="fa fa-futbol-o"></i></legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportDance)
+                @Html.LabelFor(model => model.IsSportDance)
+                @Html.ValidationMessageFor(model => model.IsSportDance)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportBalls)
+                @Html.LabelFor(model => model.IsSportBalls)
+                @Html.ValidationMessageFor(model => model.IsSportBalls)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportMartial)
+                @Html.LabelFor(model => model.IsSportMartial)
+                @Html.ValidationMessageFor(model => model.IsSportMartial)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportFitness)
+                @Html.LabelFor(model => model.IsSportFitness)
+                @Html.ValidationMessageFor(model => model.IsSportFitness)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportAdventure)
+                @Html.LabelFor(model => model.IsSportAdventure)
+                @Html.ValidationMessageFor(model => model.IsSportAdventure)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportGolf)
+                @Html.LabelFor(model => model.IsSportGolf)
+                @Html.ValidationMessageFor(model => model.IsSportGolf)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportRunning)
+                @Html.LabelFor(model => model.IsSportRunning)
+                @Html.ValidationMessageFor(model => model.IsSportRunning)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportRiding)
+                @Html.LabelFor(model => model.IsSportRiding)
+                @Html.ValidationMessageFor(model => model.IsSportRiding)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportSailing)
+                @Html.LabelFor(model => model.IsSportSailing)
+                @Html.ValidationMessageFor(model => model.IsSportSailing)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportSkating)
+                @Html.LabelFor(model => model.IsSportSkating)
+                @Html.ValidationMessageFor(model => model.IsSportSkating)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportSurfing)
+                @Html.LabelFor(model => model.IsSportSurfing)
+                @Html.ValidationMessageFor(model => model.IsSportSurfing)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportYoga)
+                @Html.LabelFor(model => model.IsSportYoga)
+                @Html.ValidationMessageFor(model => model.IsSportYoga)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSportRaquet)
+                @Html.LabelFor(model => model.IsSportRaquet)
+                @Html.ValidationMessageFor(model => model.IsSportRaquet)
+            </div>
+        </fieldset>
+
+        <fieldset class="break-print-page">
+            <legend>Din favoritdejt</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateBreakfast)
+                @Html.LabelFor(model => model.IsDateBreakfast)
+                @Html.ValidationMessageFor(model => model.IsDateBreakfast)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateLunch)
+                @Html.LabelFor(model => model.IsDateLunch)
+                @Html.ValidationMessageFor(model => model.IsDateLunch)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateDinner)
+                @Html.LabelFor(model => model.IsDateDinner)
+                @Html.ValidationMessageFor(model => model.IsDateDinner)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateMovie)
+                @Html.LabelFor(model => model.IsDateMovie)
+                @Html.ValidationMessageFor(model => model.IsDateMovie)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateBarSnack)
+                @Html.LabelFor(model => model.IsDateBarSnack)
+                @Html.ValidationMessageFor(model => model.IsDateBarSnack)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateDrinks)
+                @Html.LabelFor(model => model.IsDateDrinks)
+                @Html.ValidationMessageFor(model => model.IsDateDrinks)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDatePicnic)
+                @Html.LabelFor(model => model.IsDatePicnic)
+                @Html.ValidationMessageFor(model => model.IsDatePicnic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateDinnerHome)
+                @Html.LabelFor(model => model.IsDateDinnerHome)
+                @Html.ValidationMessageFor(model => model.IsDateDinnerHome)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDateFika)
+                @Html.LabelFor(model => model.IsDateFika)
+                @Html.ValidationMessageFor(model => model.IsDateFika)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Vikten av utseende</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsLooksImportant)
+                @Html.LabelFor(model => model.IsLooksImportant)
+                @Html.ValidationMessageFor(model => model.IsLooksImportant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsLooksLessImportant)
+                @Html.LabelFor(model => model.IsLooksLessImportant)
+                @Html.ValidationMessageFor(model => model.IsLooksLessImportant)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Min syn på en kärleksrelation</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelationTogether)
+                @Html.LabelFor(model => model.IsRelationTogether)
+                @Html.ValidationMessageFor(model => model.IsRelationTogether)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelationOwnTime)
+                @Html.LabelFor(model => model.IsRelationOwnTime)
+                @Html.ValidationMessageFor(model => model.IsRelationOwnTime)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelationMarriage)
+                @Html.LabelFor(model => model.IsRelationMarriage)
+                @Html.ValidationMessageFor(model => model.IsRelationMarriage)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelationLiving)
+                @Html.LabelFor(model => model.IsRelationLiving)
+                @Html.ValidationMessageFor(model => model.IsRelationLiving)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelationNotLiving)
+                @Html.LabelFor(model => model.IsRelationNotLiving)
+                @Html.ValidationMessageFor(model => model.IsRelationNotLiving)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 5/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.PreviousPage" type="submit">
+                        <i class="fa fa-chevron-left"></i> Förra
+                    </button>
+                    <button name="direction" value="@PageButtons.NextPage" type="submit">
+                        Nästa <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

@@ -1,0 +1,49 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<HistoryEntryViewModel>
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>Mina besökare</legend>
+
+        <table class="list-table">
+            <tr>
+                <th>Bild</th>
+                <th>Namn</th>
+                <th>Senaste besök <i class="fa fa-chevron-down"></i></th>
+                <th>Kontakta</th>
+            </tr>
+            @foreach (var fvm in Model)
+            {
+                <tr>
+                    <td><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = fvm.SelfSurveyId })" /></td>
+                    @if (fvm.IsDisabled)
+                    {
+                        <td>@fvm.SelfName.GetBeginning(StringLength.Short)</td>
+                        <td>@fvm.LastVisitDate</td>
+                        <td class="padded-table-cell-centered"><i class="fa fa-envelope" title="Profilen är inte aktiv"></i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink(fvm.SelfName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = fvm.SelfSurveyId }, null)</td>
+                        <td>@fvm.LastVisitDate</td>
+                        <td class="padded-table-cell-centered">
+                            <a href="@Url.Action("SendMessage", "Message", new { toSurveyId = fvm.SelfSurveyId })">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfVisitors, page => Url.Action("MyVisitors", new { page }))
+        @Html.ActionLink("Se vem som har besökt mig", "MyVisits")
+        <br />
+        <br />
+        <br />
+    </fieldset>
+</p>

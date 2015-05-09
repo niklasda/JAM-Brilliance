@@ -1,0 +1,55 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<FavouriteViewModel>
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <fieldset>
+        <legend>Mina fans</legend>
+
+        <table class="list-table">
+            <tr>
+                <th>Bild</th>
+                <th>Namn <i class="fa fa-chevron-up"></i></th>
+                <th>Tillagd</th>
+                <th>Kontakta</th>
+                <th>Ta bort</th>
+            </tr>
+            @foreach (var fvm in Model)
+            {
+                <tr>
+                    <td><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = fvm.SelfSurveyId })" /></td>
+                    @if (fvm.IsDisabled)
+                    {
+                        <td>@fvm.SelfName.GetBeginning(StringLength.Short)</td>
+                        <td>@fvm.AddedDate</td>
+                        <td class="padded-table-cell-centered"><i class="fa fa-envelope" title="Profilen är inte aktiv"></i></td>
+                    }
+                    else
+                    {
+                        <td>@Html.ActionLink(fvm.SelfName.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = fvm.SelfSurveyId }, null)</td>
+                        <td>@fvm.AddedDate</td>
+                        <td class="padded-table-cell-centered">
+                            <a href="@Url.Action("SendMessage", "Message", new { toSurveyId = fvm.SelfSurveyId })">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                        </td>
+                    }
+                    <td class="padded-table-cell-centered">
+                        <a href="@Url.Action("RemoveFavourite", new { favouriteId = fvm.FavouriteId })" onclick="return confirm('Are you sure?');">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+        @Html.PagedListPager((IPagedList)ViewBag.OnePageOfFans, page => Url.Action("MyFans", new { page }))
+        @Html.ActionLink("Mina favoriter", "MyFavourites")
+        <br />
+        <br />
+        <br />
+    </fieldset>
+</p>

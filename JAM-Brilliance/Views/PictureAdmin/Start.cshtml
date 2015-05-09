@@ -1,0 +1,36 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<PictureViewModel>
+
+    <div>
+        @{ Html.RenderAction("ToolbarAdmin", "Home"); }
+        <p>
+            <table class="list-table">
+                <tr>
+                    <th>Bild</th>
+                    <th>Namn</th>
+                    <th>Datum <i class="fa fa-chevron-down"></i></th>
+
+                    <th colspan="3">Åtgärder</th>
+                </tr>
+                @foreach (PictureViewModel pvm in Model)
+                {
+                    <tr>
+                        <td><a href="@Url.Action("ShowPicture", "PictureAdmin", new { pictureId = pvm.PictureId })"><img style="max-height: 100px; max-width: 100px;" src="@Url.Action("PictureData", "PictureAdmin", new { pictureId = pvm.PictureId })" /></a></td>
+                        <td>@pvm.Name.GetBeginning(StringLength.Short)</td>
+                        <td>@pvm.UploadDate</td>
+
+                        <td><a href="@Url.Action("Approve", new { pictureId = pvm.PictureId })" title="Godkänn"><i class="fa fa-check"></i></a></td>
+                        <td><a href="@Url.Action("RemovePicture", new { pictureId = pvm.PictureId })" title="Ta bort"><i class="fa fa-trash"></i></a></td>
+                        <td><a href="@Url.Action("BlockUser", "AccountAdmin", new { surveyId = pvm.SurveyId })" title="Spärra användare"><i class="fa fa-ban"></i></a></td>
+                    </tr>
+                }
+            </table>
+            @if (ViewBag.OnePageOfPictures != null)
+            {
+                @Html.PagedListPager((IPagedList)ViewBag.OnePageOfPictures, page => Url.Action("Start", new { page }))
+            }
+        </p>
+    </div>

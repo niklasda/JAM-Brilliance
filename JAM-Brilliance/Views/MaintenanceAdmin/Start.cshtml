@@ -1,0 +1,21 @@
+﻿
+<div>
+    @{ Html.RenderAction("ToolbarAdmin", "Home"); }
+    <p>
+        <fieldset>
+            <legend>Ta bort saker som är äldre än 1 månad</legend>
+            <ul>
+                <li>
+                    <a href="@Url.Action("DeleteOldLogEntries")"><i class="fa fa-align-justify"></i> Ta bort gamla loggar</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("DeleteOldAbuse")"><i class="fa fa-bullhorn"></i> Ta bort gamla hanterade anmälningar</a>
+                </li>
+                <li>Ta bort gamla meddelande till supporten</li>
+                <li>Ta bort gamla meddelande till anonyma supporten</li>
+                <li>Ta bort gamla använda lösenordspåminnelser</li>
+                <li>Ta bort gamla verifierad emailverifikationer</li>
+            </ul>
+        </fieldset>
+    </p>
+</div>

@@ -1,0 +1,287 @@
+﻿@using JAM.Brilliance.App_GlobalResources.Survey
+@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@model SurveyPage1ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>@SurveyTexts.Signup_Title</legend>
+            
+            <div class="pictures-gallery-container">
+                <img class="left-float-small-picture1" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 1 })" />
+                <img class="left-float-small-picture2" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 2 })" />
+                <img class="left-float-small-picture3" src="@Url.Action("OtherPictureDataFor", "Picture", new { surveyId = Model.SurveyId, idx = 3 })" />
+
+                <span class="picture-caption">
+                    @Html.ActionLink("Mina bilder", "MyPictures", "Picture")
+                </span>
+                <img class="right-float-big-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = Model.SurveyId })" />
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Name, @SurveyTexts.Signup_Name)
+            </div>
+            <div class="editor-field">
+                @Html.HiddenFor(model => model.SurveyId)
+                @Html.TextBoxFor(model => model.Name, new { autofocus = "" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.PostalCode)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PostalCode)
+                @Html.ValidationMessageFor(model => model.PostalCode)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.City)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.City)
+                @Html.ValidationMessageFor(model => model.City)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Country)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Country)
+                @Html.ValidationMessageFor(model => model.Country)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Email)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Email, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Birth, @SurveyTexts.Signup_Birthday)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Birth)
+                @Html.ValidationMessageFor(model => model.Birth)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.WhatSearchingForWhatId)<br />
+                @Html.DropDownListFor(model => model.WhatSearchingForWhatId, new SelectList(Model.WhatSearchingForWhats, "WhatSearchingForWhatId", "Name", Model.WhatSearchingForWhatId))
+                @Html.ValidationMessageFor(model => model.WhatSearchingForWhatId)
+            </div>
+            <div class="editor-label">
+            </div>
+            <fieldset style="width: 40%;">
+                <legend>@SurveyTexts.Signup_Picture <i class="fa fa-file-image-o"></i></legend>
+
+                <div>
+                    @Html.LabelFor(model => model.PictureDummyId/*, @SurveyTexts.Signup_Upload*/)
+                    <br />
+                    <input type="file" id="OriginalLocation" name="OriginalLocation" />
+                    <br />
+                    @Html.HiddenFor(model => model.PictureDummyId)
+                    @Html.ValidationMessageFor(model => model.PictureDummyId)
+                    <br />
+                    @SurveyTexts.Signup_UploadAgreement
+                </div>
+            </fieldset>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Längd/Vikt</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Height)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Height) cm
+                @Html.ValidationMessageFor(model => model.Height)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Weight)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Weight) kg
+                @Html.ValidationMessageFor(model => model.Weight)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>@Html.DisplayNameFor(model => model.Note1)</legend>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Note1)
+                @Html.ValidationMessageFor(model => model.Note1)
+            </div>
+        </fieldset>
+        <fieldset class="break-print-page">
+            <legend>Etniskt tillhörighet</legend>
+            <!-- ******************************************************************************************** -->
+            <div class="editor-label">
+                @Html.LabelFor(model => model.MotherLanguage)
+                @Html.EditorFor(model => model.MotherLanguage)
+                @Html.ValidationMessageFor(model => model.MotherLanguage)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicNorthEuropean)
+                @Html.LabelFor(model => model.IsEthnicNorthEuropean)
+                @Html.ValidationMessageFor(model => model.IsEthnicNorthEuropean)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicLatin)
+                @Html.LabelFor(model => model.IsEthnicLatin)
+                @Html.ValidationMessageFor(model => model.IsEthnicLatin)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicMulat)
+                @Html.LabelFor(model => model.IsEthnicMulat)
+                @Html.ValidationMessageFor(model => model.IsEthnicMulat)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicDark)
+                @Html.LabelFor(model => model.IsEthnicDark)
+                @Html.ValidationMessageFor(model => model.IsEthnicDark)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicAsian)
+                @Html.LabelFor(model => model.IsEthnicAsian)
+                @Html.ValidationMessageFor(model => model.IsEthnicAsian)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicCaucasic)
+                @Html.LabelFor(model => model.IsEthnicCaucasic)
+                @Html.ValidationMessageFor(model => model.IsEthnicCaucasic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsEthnicMiddleEastern)
+                @Html.LabelFor(model => model.IsEthnicMiddleEastern)
+                @Html.ValidationMessageFor(model => model.IsEthnicMiddleEastern)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        <fieldset>
+            <legend>Civilstånd</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSingle)
+                @Html.LabelFor(model => model.IsSingle)
+                @Html.ValidationMessageFor(model => model.IsSingle)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsSeparated)
+                @Html.LabelFor(model => model.IsSeparated)
+                @Html.ValidationMessageFor(model => model.IsSeparated)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDivorced)
+                @Html.LabelFor(model => model.IsDivorced)
+                @Html.ValidationMessageFor(model => model.IsDivorced)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsWidowed)
+                @Html.LabelFor(model => model.IsWidowed)
+                @Html.ValidationMessageFor(model => model.IsWidowed)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Bor</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingAloneWithVisitors)
+                @Html.LabelFor(model => model.LivingAloneWithVisitors)
+                @Html.ValidationMessageFor(model => model.LivingAloneWithVisitors)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingAlone)
+                @Html.LabelFor(model => model.LivingAlone)
+                @Html.ValidationMessageFor(model => model.LivingAlone)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingWithPets)
+                @Html.LabelFor(model => model.LivingWithPets)
+                @Html.ValidationMessageFor(model => model.LivingWithPets)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingWithKids)
+                @Html.LabelFor(model => model.LivingWithKids)
+                @Html.ValidationMessageFor(model => model.LivingWithKids)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingWithParents)
+                @Html.LabelFor(model => model.LivingWithParents)
+                @Html.ValidationMessageFor(model => model.LivingWithParents)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingWithFriends)
+                @Html.LabelFor(model => model.LivingWithFriends)
+                @Html.ValidationMessageFor(model => model.LivingWithFriends)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.LivingWithPartTimeKids)
+                @Html.LabelFor(model => model.LivingWithPartTimeKids)
+                @Html.ValidationMessageFor(model => model.LivingWithPartTimeKids)
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Barn <i class="fa fa-child"></i></legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.KidsCountId)
+                @Html.DropDownListFor(model => model.KidsCountId, new SelectList(Model.KidsCounts, "KidCountId", "Name", Model.KidsCountId))
+                @Html.ValidationMessageFor(model => model.KidsCountId)
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.KidsWantedCountId)
+                @Html.DropDownListFor(model => model.KidsWantedCountId, new SelectList(Model.KidsWantedCounts, "KidWantedCountId", "Name", Model.KidsWantedCountId))
+                @Html.ValidationMessageFor(model => model.KidsWantedCountId)
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Kroppstyp</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodySlim)
+                @Html.LabelFor(model => model.IsBodySlim)
+                @Html.ValidationMessageFor(model => model.IsBodySlim)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyAverage)
+                @Html.LabelFor(model => model.IsBodyAverage)
+                @Html.ValidationMessageFor(model => model.IsBodyAverage)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyAthletic)
+                @Html.LabelFor(model => model.IsBodyAthletic)
+                @Html.ValidationMessageFor(model => model.IsBodyAthletic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyHeavy)
+                @Html.LabelFor(model => model.IsBodyHeavy)
+                @Html.ValidationMessageFor(model => model.IsBodyHeavy)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyChubby)
+                @Html.LabelFor(model => model.IsBodyChubby)
+                @Html.ValidationMessageFor(model => model.IsBodyChubby)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 1/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.SavePage" type="submit">
+                        Spara <i class="fa fa-save"></i>
+                    </button>
+                    <button name="direction" value="@PageButtons.NextPage" type="submit">
+                        Nästa <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

@@ -1,0 +1,55 @@
+﻿@using JAM.Core.Logic
+@using JAM.Brilliance.Models.ViewModels
+@using JAM.Brilliance.App_GlobalResources
+@using PagedList
+@using PagedList.Mvc
+@model IEnumerable<SearchResultViewModel>
+
+@{ Html.RenderAction("ToolbarUser", "Home"); }
+
+<p>
+    <br />
+    @Global.Search_P1 @Html.ActionLink(Global.Search_Adv, "SearchAdv") @Global.Search_And @Global.Search_Quick
+    <br />
+</p>
+<p>
+    <fieldset>
+        <legend>Sökresultat</legend>
+        <table class="list-table">
+            <tr>
+                <th>Bild</th>
+                <th>Namn</th>
+                <th>Stad</th>
+                <th>Ålder</th>
+                <th>Längd</th>
+                <th>Kontakta</th>
+                <th>Gilla</th>
+            </tr>
+            @foreach (SearchResultViewModel sr in Model)
+            {
+                <tr>
+                    <td><img class="list-picture" src="@Url.Action("MainPictureDataFor", "Picture", new { surveyId = sr.SurveyId })" /></td>
+                    <td>@Html.ActionLink(sr.Name.GetBeginning(StringLength.Short), "ShortDetails", "Survey", new { surveyId = sr.SurveyId }, null)</td>
+                    <td>@sr.City.GetBeginning(StringLength.Long)</td>
+                    <td>@sr.Age</td>
+                    <td>@sr.Height</td>
+                    <td class="padded-table-cell-centered">
+                        <a href="@Url.Action("SendMessage", "Message", new { toSurveyId = sr.SurveyId })">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </td>
+                    <td class="padded-table-cell-centered">
+                        <a href="@Url.Action("AddFavourite", "Favourite", new { otherSurveyId = sr.SurveyId })">
+                            <i class="fa fa-heart"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+        @if (ViewBag.OnePageOfSearchResults != null)
+        {
+            @Html.PagedListPager((IPagedList)ViewBag.OnePageOfSearchResults, page => Url.Action("SearchResult", new { page }))
+
+        }
+    </fieldset>
+</p>
