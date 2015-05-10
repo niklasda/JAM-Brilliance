@@ -16,7 +16,12 @@
     @{
         /* Microsoft SQL Azure (RTM) - 11.0.9225.9   Sep 22 2014 22:55:00   Copyright (c) Microsoft Corporation */
         var cs = ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
-        cs = cs.Substring(0, cs.IndexOf("password", StringComparison.CurrentCultureIgnoreCase));
+        var pwdIdx = cs.IndexOf("password", StringComparison.CurrentCultureIgnoreCase);
+        if (pwdIdx == -1)
+        {
+            pwdIdx = cs.Length;
+        }
+        cs = cs.Substring(0, pwdIdx);
         @Html.Raw(string.Format("Conn: {0}", cs))<br />
     }
     <br />
