@@ -14,7 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8DCD49D5-FB68-44D3-BD70-C63A58253166}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		JAM-Brilliance-Mobile\config.xml = JAM-Brilliance-Mobile\config.xml
+		JAM-Brilliance-App\config.xml = JAM-Brilliance-App\config.xml
 		JAM.sln.DotSettings = JAM.sln.DotSettings
 		sonar-project.properties = sonar-project.properties
 	EndProjectSection

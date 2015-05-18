@@ -40,11 +40,11 @@
                     { route: 'mypage', title: 'Min sida', moduleId: 'viewmodels/mypage', nav: false },
                     { route: 'conversations', title: 'Kontakter', moduleId: 'viewmodels/conversations', nav: false },
                     { route: 'conversation/(:id)', title: 'Konversation', moduleId: 'viewmodels/conversation', nav: false },
-                    { route: 'signup1', title: 'Anmälan', moduleId: 'viewmodels/signup1', nav: true },
+                    { route: 'signup1', title: 'Anmälan', moduleId: 'viewmodels/signup1', nav: false },
                     { route: 'signup2', title: 'Anmälan Steg 2', moduleId: 'viewmodels/signup2', nav: false },
                     { route: 'signup3', title: 'Anmälan Steg 3', moduleId: 'viewmodels/signup3', nav: false },
                     { route: 'signup4', title: 'Anmälan Klar', moduleId: 'viewmodels/signup4', nav: false },
-                    { route: 'login', title: 'Logga in', moduleId: 'viewmodels/login', nav: true },
+                    { route: 'login', title: 'Logga in', moduleId: 'viewmodels/login', nav: false },
                     { route: 'logout', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
                 ]).buildNavigationModel();
             }
