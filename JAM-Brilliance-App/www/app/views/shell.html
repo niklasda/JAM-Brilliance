@@ -4,7 +4,7 @@
         <div>
 
             <span data-bind="foreach: router.navigationModel">
-                <a class="btn btn-default" data-bind="attr: { href: hash }, text: title"></a>
+                <a class="btn btn-default" data-ajax="false" data-bind="attr: { href: hash }, text: title"></a>
             </span>
 
         </div>
