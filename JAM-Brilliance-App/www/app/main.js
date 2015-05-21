@@ -7,7 +7,8 @@ requirejs.config({
         'knockout': '../Scripts/knockout-3.3.0',
         'knockout-validation': '../Scripts/knockout.validation',
         'bootstrap': '../Scripts/bootstrap',
-        'jquery': '../Scripts/jquery-2.1.3',
+        'jquery': '../Scripts/jquery-2.1.4',
+        'jqm': '../Scripts/jquery.mobile-1.4.5',
         'slick': '../slick/slick'
     }
 });

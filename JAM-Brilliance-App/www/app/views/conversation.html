@@ -1,6 +1,6 @@
 ﻿<section>
     <h2>
-        <a data-bind="attr: { href: '#survey/' + otherSurveyId }">
+        <a data-bind="attr: { href: '/#contact/' + otherSurveyId }">
             <span data-bind="text: otherSurveyName"></span>
         </a>
     </h2>
@@ -20,7 +20,7 @@
             </tr>
             <tr data-bind="if: FromSurveyId==$parent.otherSurveyId">
                 <td>
-                    <a data-bind="attr: { href: '#survey/' + $parent.otherSurveyId }">
+                    <a data-bind="attr: { href: '#contact/' + $parent.otherSurveyId }">
                         <img width="50" src="../../Content/images/icon.png" style="float:left;" />
                     </a>
                     <div data-bind='html: BodyAsHtml' class="conversation-other" style="margin-left: 10px"></div>

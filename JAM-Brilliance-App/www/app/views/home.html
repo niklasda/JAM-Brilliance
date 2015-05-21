@@ -1,14 +1,17 @@
 ﻿<section>
     <h2>Är du singel?</h2>
-    <div class="" data-bind="if: isLoggedIn">
+    <div class="label-input-area" data-bind="if: isLoggedIn">
         Välkommen till Sveriges första online datingtjänst där just du kan bli headhuntad av personliga matchmakers.
-        <br/>
+        <br />
         Sök<br />
     </div>
 
-    <div class="" data-bind="ifnot: isLoggedIn">
-        Välkommen till Sveriges första online datingtjänst där just du kan bli headhuntad av personliga matchmakers.
-        <br /><br />
+    <div data-bind="ifnot: isLoggedIn">
+        <div class="label-input-area">
+            Välkommen till Sveriges första online datingtjänst där just du kan bli headhuntad av personliga matchmakers.
+            <br />
+        </div>
+        <br/>
         <a class="btn btn-lg" href="#login" style="background: rgba(0, 0, 0, 0.6); color: white;">Logga in</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a class="btn btn-lg" href="#signup1" style="background: rgba(0, 0, 0, 0.6); color: white;">Anmälan</a>

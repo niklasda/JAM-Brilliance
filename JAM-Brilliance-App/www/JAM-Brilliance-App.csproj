@@ -59,13 +59,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\viewmodels\conversation.js" />
+    <Content Include="app\viewmodels\contact.js" />
     <Content Include="app\viewmodels\mypage.js" />
     <Content Include="app\viewmodels\searching.js" />
     <Content Include="app\viewmodels\signup4.js" />
     <Content Include="app\viewmodels\signup3.js" />
     <Content Include="app\viewmodels\signup2.js" />
     <Content Include="app\viewmodels\signup1.js" />
-    <Content Include="app\viewmodels\survey.js" />
+    <Content Include="app\viewmodels\hit.js" />
     <Content Include="app\viewmodels\logout.js" />
     <Content Include="app\viewmodels\login.js" />
     <Content Include="app\viewmodels\conversations.js" />
@@ -73,13 +74,14 @@
     <Content Include="app\viewmodels\search.js" />
     <Content Include="app\main.js" />
     <Content Include="app\views\conversation.html" />
+    <Content Include="app\views\contact.html" />
     <Content Include="app\views\mypage.html" />
     <Content Include="app\views\searching.html" />
     <Content Include="app\views\signup4.html" />
     <Content Include="app\views\signup3.html" />
     <Content Include="app\views\signup2.html" />
     <Content Include="app\views\signup1.html" />
-    <Content Include="app\views\survey.html" />
+    <Content Include="app\views\hit.html" />
     <Content Include="app\views\logout.html" />
     <Content Include="app\views\login.html" />
     <Content Include="app\views\search.html" />
@@ -344,6 +346,9 @@
     <Content Include="Scripts\durandal\transitions\entrance.js" />
     <Content Include="Scripts\durandal\viewEngine.js" />
     <Content Include="Scripts\durandal\viewLocator.js" />
+    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\jquery-2.1.4.js" />
+    <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
     <Content Include="Scripts\knockout.validation.debug.js" />
@@ -367,16 +372,13 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\JAM-Brilliance-App Azure.pubxml" />
-    <None Include="Scripts\jquery-2.1.3.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.3.js" />
-    <Content Include="Scripts\jquery-2.1.3.min.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.min.js" />
     <Content Include="Scripts\jquery.mobile-1.4.5.min.map" />
-    <Content Include="Scripts\jquery-2.1.3.min.map" />
     <Content Include="slick\fonts\slick.eot" />
     <Content Include="slick\fonts\slick.ttf" />
     <Content Include="slick\fonts\slick.woff" />
+    <Content Include="Scripts\jquery-2.1.4.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

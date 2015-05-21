@@ -1,0 +1,32 @@
+﻿<section>
+    <h2>
+        <a href="http://localhost:7229/#searching" style="background: rgba(0, 0, 0, 0.6); color: white;"><i class="fa fa-arrow-left"></i></a>
+        Profil
+    </h2>
+    <br/>
+
+    <div class="form-group label-input-area" style="padding: 20px;">
+        <div style="float: left; padding-right: 20px; ">
+
+            <img width="130" title="" data-bind="attr: { src: imgurl }" />
+
+        </div>
+        <div>
+            <div data-bind="with: survey">
+
+                <span data-bind="text: Name"></span><br />
+                <span data-bind="text: PostalCode"></span> <span data-bind="text: City"></span><br />
+                <span>Födelseår: </span><span data-bind="text: Year"></span><br />
+                <span data-bind="if: IsMale">Kön: Man</span>
+                <span data-bind="ifnot: IsMale">Kön: Kvinna</span>
+                <br />
+                <span data-bind="text: Age"></span><span> år</span><br />
+            </div>
+            <br />
+
+
+        </div>
+
+
+    </div>
+</section>

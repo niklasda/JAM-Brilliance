@@ -1,6 +1,9 @@
 ﻿<section>
     <h2>Kontakter</h2>
     <br />
+    <div class="label-input-area"  data-bind="if: heads().length===0">
+        Inga kontakter
+    </div>
 
     <table class="form-group label-input-area" style="width: 100%; padding: 20px;">
         <thead>
@@ -21,7 +24,7 @@
                 <td style="white-space: nowrap;">
                     <span data-bind="text: NbrOf"></span>
 
-                    <span data-bind="text: '('+NbrOfUnread+')'" />
+                    <span data-bind="text: '('+NbrOfUnread+')'"></span>
                     <i data-bind="visible: Category===1 && NbrOfUnread > 0" class="fa fa-envelope"></i>
                     <i data-bind="visible: Category===2 && NbrOfUnread === 0" class="fa fa-envelope-o"></i>
                     <i data-bind="visible: Category===3 && NbrOfUnread === 0" class="fa fa-heart-o"></i>

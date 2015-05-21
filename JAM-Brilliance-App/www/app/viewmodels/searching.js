@@ -1,11 +1,11 @@
-﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'slick'], function (router, http, ko, app, slick) {
+﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'jqm', 'slick'], function (router, http, ko, app, jqm, slick) {
     "use strict";
 
     return {
         survey: ko.observable(),
         //searchResults: ko.observableArray(),
         searchResults2: [],
-        carousel: ko.observable(true),
+        //carousel: ko.observable(true),
         buildUrl: function (id) {
             var token = localStorage.getItem("x-brilliance-token");
             return brilliance.appbaseurl() + "/Mobile/AppPicture/MainPictureDataFor/" + id + "?token=" + token;
@@ -20,7 +20,7 @@
             window.location.href = '#conversation/' + surveyId;
         },
         showShortSurvey: function (surveyId) {
-            window.location.href = '#survey/' + surveyId;
+            window.location.href = '#hit/' + surveyId;
         },
 
         bindingComplete: function () {
@@ -58,14 +58,16 @@
 
                 that.searchResults2.forEach(function (item) {
 
-                    var i3 = "<i id='favo_" + item.SurveyId + "' class='fa fa-1x fa-heart-o' style='cursor: pointer; margin-left:20px;'></i>";
-                    var i4 = "<i id='mess_" + item.SurveyId + "' class='fa fa-1x fa-envelope-o' style='cursor: pointer; margin-left:20px;'></i>";
-                    var i5 = "<i id='prof_" + item.SurveyId + "' class='fa fa-1x fa-user' style='cursor: pointer ;margin-left:20px;'></i>";
+                    var favo = "<i id='favo_" + item.SurveyId + "' class='fa fa-1x fa-heart-o' style='cursor: pointer; margin-left: 20px;'></i>";
+                    var mess = "<i id='mess_" + item.SurveyId + "' class='fa fa-1x fa-envelope-o' style='cursor: pointer; margin-left: 20px;'></i>";
+                    var prof = "<i id='prof_" + item.SurveyId + "' class='fa fa-1x fa-user' style='cursor: pointer; margin-left: 20px;'></i>";
 
-                    var h3 = "<h3>" + item.Name + " " + i3 + " " + i4 + " " + i5 + "</h3>";
-                    var img = "<img width=\"95%\" title=\"\" src=\"" + that.buildUrl(item.SurveyId) + "\" />";
+                    var h3 = "<h3>" + item.Name + " " + favo + " " + mess + " " + prof + "</h3>";
+                    var img = "<img id='pic_" + item.SurveyId + "' style='cursor: pointer;' width=\"95%\" title=\"\" src=\"" + that.buildUrl(item.SurveyId) + "\" />";
 
-                    $("#carousel").slick("slickAdd", "<div>" + h3 + "<div>" + img + "</div></div>");
+                    var below = "<h3>" + item.Name +", " + item.Age + " år</h3>";
+
+                    $("#carousel").slick("slickAdd", "<div>" + h3 + "<div>" + img + "</div>" + below + "</div>");
 
                     var vm = ko.dataFor($("#carousel")[0]);
 
@@ -76,6 +78,9 @@
                         vm.startConversation(item.SurveyId);
                     });
                     $("#prof_" + item.SurveyId).on("click", function () {
+                        vm.showShortSurvey(item.SurveyId);
+                    });
+                    $("#pic_" + item.SurveyId).on("tap", function () {
                         vm.showShortSurvey(item.SurveyId);
                     });
                 });
