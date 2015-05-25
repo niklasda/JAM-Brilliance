@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web.Configuration;
 using JAM.Core.Interfaces;
 using JAM.Core.Logic;
@@ -75,7 +76,7 @@ namespace JAM.Core.Services
                 var transportWeb = new Web(credentials);
 
                 // Send the email.
-                transportWeb.Deliver(mailMessage);
+                Task.Run(() => transportWeb.DeliverAsync(mailMessage));
 
                 return true;
             }
