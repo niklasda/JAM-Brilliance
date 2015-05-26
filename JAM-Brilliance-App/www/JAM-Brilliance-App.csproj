@@ -60,6 +60,7 @@
   <ItemGroup>
     <Content Include="app\viewmodels\conversation.js" />
     <Content Include="app\viewmodels\contact.js" />
+    <Content Include="app\viewmodels\settings.js" />
     <Content Include="app\viewmodels\mypage.js" />
     <Content Include="app\viewmodels\searching.js" />
     <Content Include="app\viewmodels\signup4.js" />
@@ -75,6 +76,7 @@
     <Content Include="app\main.js" />
     <Content Include="app\views\conversation.html" />
     <Content Include="app\views\contact.html" />
+    <Content Include="app\views\settings.html" />
     <Content Include="app\views\mypage.html" />
     <Content Include="app\views\searching.html" />
     <Content Include="app\views\signup4.html" />

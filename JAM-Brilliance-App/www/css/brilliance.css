@@ -26,6 +26,10 @@ nav {
     padding: 15px;
 }
 
+.transparent-button {
+     background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+}
 .label-input-area {
      background-color: rgba(0, 0, 0, 0.6);
 }

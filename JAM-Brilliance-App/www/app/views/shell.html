@@ -1,12 +1,19 @@
 ﻿<div>
     <nav role="navigation">
 
-        <div>
-
-            <span data-bind="foreach: router.navigationModel">
-                <a class="btn btn-default" data-ajax="false" data-bind="attr: { href: hash }, text: title"></a>
+        <div data-bind="if: validToken">
+            <span>
+                <a class="btn btn-default transparent-button" data-ajax="false" href="#searching">Sök <i class="fa fa-search"></i></a>
+                <a class="btn btn-default transparent-button" data-ajax="false" href="#mypage">Min Sida <i class="fa fa-edit"></i></a>
+                <a class="btn btn-default transparent-button" data-ajax="false" href="#conversations">kontakter <i class="fa fa-users"></i></a>
+                <a class="btn btn-default transparent-button" data-ajax="false" href="#settings">Inställningar <i class="fa fa-cogs"></i></a>
             </span>
+        </div>
 
+        <div data-bind="ifnot: validToken">
+            <span>
+                <!--Inte inloggad-->
+            </span>
         </div>
     </nav>
 

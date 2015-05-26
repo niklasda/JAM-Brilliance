@@ -1,20 +1,21 @@
-﻿define(['plugins/router'], function (router) {
+﻿define(['plugins/router', 'knockout'], function (router, ko) {
     "use strict";
 
     return {
         router: router,
-        validToken: function () {
+        validToken: ko.observable(false)
+            /*function () {
             var token = localStorage.getItem("x-brilliance-token");
             if (token && token.length === 36) {
                 return true;
             }
 
             return false;
-        },
+        }*/,
         activate: function () {
             var token = localStorage.getItem("x-brilliance-token");
             if (token && token.length === 36) {
-                this.validToken = true;
+                this.validToken(true);
                 router.map([
                     { route: ['', 'home'], title: 'Start', moduleId: 'viewmodels/home', nav: false },
                     { route: 'terms', title: 'Villkor', moduleId: 'viewmodels/terms', nav: false },
@@ -22,6 +23,7 @@
                     { route: 'hit/(:id)', title: 'Träff', moduleId: 'viewmodels/hit', nav: false },
                     { route: 'contact/(:id)', title: 'Kontakt', moduleId: 'viewmodels/contact', nav: false },
                     { route: 'mypage', title: 'Min sida', moduleId: 'viewmodels/mypage', nav: true },
+                    { route: 'settings', title: 'Inställningar', moduleId: 'viewmodels/settings', nav: true },
                     { route: 'conversations', title: 'Kontakter', moduleId: 'viewmodels/conversations', nav: true },
                     { route: 'conversation/(:id)', title: 'Konversation', moduleId: 'viewmodels/conversation', nav: false },
                     { route: 'signup1', title: 'Anmälan', moduleId: 'viewmodels/signup1', nav: false },
@@ -32,7 +34,7 @@
                     { route: 'logout', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
                 ]).buildNavigationModel();
             } else {
-                this.validToken = false;
+                this.validToken(false);
                 router.map([
                     { route: ['', 'home'], title: 'Start', moduleId: 'viewmodels/home', nav: false },
                     { route: 'terms', title: 'Villkor', moduleId: 'viewmodels/terms', nav: false },
@@ -40,6 +42,7 @@
                     { route: 'hit/(:id)', title: 'Träff', moduleId: 'viewmodels/hit', nav: false },
                     { route: 'contact/(:id)', title: 'Kontakt', moduleId: 'viewmodels/contact', nav: false },
                     { route: 'mypage', title: 'Min sida', moduleId: 'viewmodels/mypage', nav: false },
+                    { route: 'settings', title: 'Inställningar', moduleId: 'viewmodels/settings', nav: false },
                     { route: 'conversations', title: 'Kontakter', moduleId: 'viewmodels/conversations', nav: false },
                     { route: 'conversation/(:id)', title: 'Konversation', moduleId: 'viewmodels/conversation', nav: false },
                     { route: 'signup1', title: 'Anmälan', moduleId: 'viewmodels/signup1', nav: false },
