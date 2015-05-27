@@ -5,16 +5,16 @@ Cordova version: 5.0.0
 Config.xml file: 
 
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="se.brilliance.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="se.brilliance.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Brilliance</name>
-    <description>Hello World sample application that responds to the deviceready event.</description>
-    <author email="brilliancedating@gmail.com" href="http://brilliance.se">Brilliance dating</author>
+    <description>Brilliance Dating.</description>
+    <author email="brilliancedating@gmail.com" href="http://brilliance.se">Brilliance Dating</author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
-    <preference name="phonegap-version" value="3.5.0" />
-    <preference name="orientation" value="default" />
+    <preference name="phonegap-version" value="3.7.0" />
+    <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
-    <preference name="fullscreen" value="true" />
+    <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
@@ -26,24 +26,6 @@ Config.xml file:
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
-    <gap:plugin name="org.apache.cordova.battery-status" />
-    <gap:plugin name="org.apache.cordova.camera" />
-    <gap:plugin name="org.apache.cordova.media-capture" />
-    <gap:plugin name="org.apache.cordova.console" />
-    <gap:plugin name="org.apache.cordova.contacts" />
-    <gap:plugin name="org.apache.cordova.device" />
-    <gap:plugin name="org.apache.cordova.device-motion" />
-    <gap:plugin name="org.apache.cordova.device-orientation" />
-    <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="org.apache.cordova.file-transfer" />
-    <gap:plugin name="org.apache.cordova.geolocation" />
-    <gap:plugin name="org.apache.cordova.globalization" />
-    <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="org.apache.cordova.media" />
-    <gap:plugin name="org.apache.cordova.network-information" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:plugin name="org.apache.cordova.vibration" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
@@ -71,10 +53,15 @@ Config.xml file:
     <gap:splash gap:platform="winphone" src="www/res/screen/windows-phone/screen-portrait.jpg" />
     <access origin="*" />
     <engine name="wp8" spec="^3.8.0" />
+    <plugin name="cordova-plugin-file" spec="^2.0.0" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.1.0" />
+    <plugin name="cordova-plugin-console" spec="^1.0.0" />
 </widget>
 
 
-No Plugins Currently Installed
+Plugins: 
+
+cordova-plugin-console,cordova-plugin-file,cordova-plugin-file-transfer
 
 
 
