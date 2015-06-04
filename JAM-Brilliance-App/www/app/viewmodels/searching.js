@@ -22,7 +22,9 @@
         showShortSurvey: function (surveyId) {
             window.location.href = '#hit/' + surveyId;
         },
+        addContact: function (surveyId) {
 
+        },
         bindingComplete: function () {
 
             var token = localStorage.getItem("x-brilliance-token");
@@ -58,11 +60,11 @@
 
                 that.searchResults2.forEach(function (item) {
 
-                    var favo = "<i id='favo_" + item.SurveyId + "' class='fa fa-1x fa-heart-o' style='cursor: pointer; margin-left: 20px;'></i>";
+                    //var favo = "<i id='favo_" + item.SurveyId + "' class='fa fa-1x fa-heart-o' style='cursor: pointer; margin-left: 20px;'></i>";
                     var mess = "<i id='mess_" + item.SurveyId + "' class='fa fa-1x fa-envelope-o' style='cursor: pointer; margin-left: 20px;'></i>";
-                    var prof = "<i id='prof_" + item.SurveyId + "' class='fa fa-1x fa-user' style='cursor: pointer; margin-left: 20px;'></i>";
+                    var prof = "<i id='prof_" + item.SurveyId + "' class='fa fa-1x fa-user-md' style='cursor: pointer; margin-left: 20px;'></i>";
 
-                    var h3 = "<h3>" + item.Name + " " + favo + " " + mess + " " + prof + "</h3>";
+                    var h3 = "<h3>" + item.Name + " " + mess + " " + prof + "</h3>";
                     var img = "<img id='pic_" + item.SurveyId + "' style='cursor: pointer;' width=\"95%\" title=\"\" src=\"" + that.buildUrl(item.SurveyId) + "\" />";
 
                     var below = "<h3>" + item.Name +", " + item.Age + " år</h3>";
