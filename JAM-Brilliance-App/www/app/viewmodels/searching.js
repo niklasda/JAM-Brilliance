@@ -13,17 +13,28 @@
         rowClick: function (row) {
             window.location.href = '#conversation/' + row.SurveyId;
         },
-        setFavourite: function (surveyId) {
-            alert('favourite; ' + surveyId);
+        addFavourite: function (surveyId) {
+            var token = localStorage.getItem("x-brilliance-token");
+            var that = this;
+
+            var data = {
+                OtherSurveyId: surveyId
+            };
+
+            http.put(brilliance.appbaseurl() + "/Mobile/AppContactivity/PutNewFavourite", data, { 'x-brilliance-token': token })
+                   .then(function (response, textStatus) {
+                       //that.message(response.Message);
+                       //window.location.href = '';
+                   }).fail(function (jqXHR, textStatus, errorThrown) {
+                       //that.message(jqXHR.responseJSON.Message);
+                       //that.message(textStatus);
+                   });
         },
         startConversation: function (surveyId) {
             window.location.href = '#conversation/' + surveyId;
         },
         showShortSurvey: function (surveyId) {
             window.location.href = '#hit/' + surveyId;
-        },
-        addContact: function (surveyId) {
-
         },
         bindingComplete: function () {
 
@@ -73,15 +84,15 @@
 
                     var vm = ko.dataFor($("#carousel")[0]);
 
-                    $("#favo_" + item.SurveyId).on("click", function () {
-                        vm.setFavourite(item.SurveyId);
+                    $("#prof_" + item.SurveyId).on("click", function () {
+                        vm.addFavourite(item.SurveyId);
                     });
                     $("#mess_" + item.SurveyId).on("click", function () {
                         vm.startConversation(item.SurveyId);
                     });
-                    $("#prof_" + item.SurveyId).on("click", function () {
-                        vm.showShortSurvey(item.SurveyId);
-                    });
+                    //$("#prof_" + item.SurveyId).on("click", function () {
+                    //    vm.showShortSurvey(item.SurveyId);
+                    //});
                     $("#pic_" + item.SurveyId).on("tap", function () {
                         vm.showShortSurvey(item.SurveyId);
                     });

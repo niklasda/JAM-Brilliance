@@ -249,6 +249,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Areas\Mobile\MobileAreaRegistration.cs" />
     <Compile Include="Areas\Mobile\Models\GetNewMessagesModel.cs" />
+    <Compile Include="Areas\Mobile\Models\NewFavouriteModel.cs" />
     <Compile Include="Areas\Mobile\Models\Response\SearchResultModel.cs" />
     <Compile Include="Areas\Mobile\Models\SignupModel.cs" />
     <Compile Include="Areas\Mobile\Models\NewMessageModel.cs" />

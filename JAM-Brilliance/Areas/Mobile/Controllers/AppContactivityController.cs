@@ -15,12 +15,14 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
     {
         private readonly IContactifyDataService _contactifyDataService;
         private readonly IMessageDataService _messageDataService;
+        private readonly IFavouriteDataService _favouriteDataService;
 
-        public AppContactivityController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, IContactifyDataService contactifyDataService, IMessageDataService messageDataService)
+        public AppContactivityController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, IContactifyDataService contactifyDataService, IMessageDataService messageDataService, IFavouriteDataService favouriteDataService)
             : base(accountService, accountTokenDataService)
         {
             _contactifyDataService = contactifyDataService;
             _messageDataService = messageDataService;
+            _favouriteDataService = favouriteDataService;
         }
 
         [HttpGet, ValidateToken]
@@ -103,6 +105,22 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
 
             var response = new ConversationModel { Success = true, Message = "OK", Conversation = conversation };
             return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPut, ValidateToken]
+        public JsonResult PutNewFavourite(NewFavouriteModel model)
+        {
+            var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+
+            var fav = new Favourite();
+            fav.SelfSurveyId = selfSurveyId;
+            fav.OtherSurveyId = model.OtherSurveyId;
+            // handle 0
+            _favouriteDataService.AddFavourite(fav);
+
+            var response = new StatusModel { Success = true, Message = "OK" };
+
+            return Json(response);
         }
 
         [AcceptVerbs(HttpVerbs.Delete)]
