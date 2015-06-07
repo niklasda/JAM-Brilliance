@@ -6,7 +6,9 @@
         otherSurveyId: ko.observable(),
         otherSurveyName: ko.observable(),
         newMessageBody: ko.observable(),
-
+        onBackClick: function () {
+            return true;
+        },
         onSendNewMessage: function (messageModel) {
 
             if (messageModel == undefined) {

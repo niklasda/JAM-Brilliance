@@ -10,6 +10,7 @@
         year: ko.observable(),
         isMale: ko.observable(),
         age: ko.observable(),
+        note1: ko.observable(),
         imgurl: ko.observable(),
         editable: ko.observable(false),
         newPostalCode: ko.observable(),
@@ -43,7 +44,7 @@
                    that.year(response.Survey.Year);
                    that.isMale(response.Survey.IsMale);
                    that.age(response.Survey.Age);
-                 //  that.survey(response.Survey);
+                   that.note1(response.Survey.Note1);
                    that.imgurl(brilliance.appbaseurl() + "/Mobile/AppPicture/MainPictureData/?token=" + token);
 
                    that.newPostalCode.subscribe(function (newPostalCodeValue) {
