@@ -9,6 +9,7 @@ requirejs.config({
         'bootstrap': '../Scripts/bootstrap',
         'jquery': '../Scripts/jquery-2.1.4',
         'jqm': '../Scripts/jquery.mobile-1.4.5',
+        'jqui': '../Scripts/jquery-ui-1.11.4',
         'slick': '../slick/slick'
     }
 });
