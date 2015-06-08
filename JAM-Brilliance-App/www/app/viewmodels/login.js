@@ -23,10 +23,7 @@
                     password: this.password(),
                 }
 
-                //if (loginModel == undefined) {
-                //    return;
-                //}
-
+                
                 var that = this;
 
                 http.post(brilliance.appbaseurl() + "/Mobile/AppAccount/LoginSubmit", loginModel, '')

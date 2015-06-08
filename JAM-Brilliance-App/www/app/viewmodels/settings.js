@@ -3,46 +3,42 @@
 
     return {
         errorMessage: ko.observable(),
-        
+        ageMin: ko.observable(25),
+        ageMax: ko.observable(45),
+        distanceMin: ko.observable(0),
+        distanceMax: ko.observable(45),
         activate: function () {
 
             var token = localStorage.getItem("x-brilliance-token");
-            
-         
+
         },
-        bindingComplete: function() {
+        compositionComplete: function () {
+
+            var that = this;
+
             $("#slider-agerange").slider({
                 range: true,
                 min: 18,
                 max: 85,
                 values: [25, 45],
                 slide: function (event, ui) {
-                    $("#agerangetext").text($("#slider-agerange").slider("values", 0) + " -> " + $("#slider-agerange").slider("values", 1));
-
+                    
+                    that.ageMin(ui.values[0]);
+                    that.ageMax(ui.values[1]);
                 }
             });
 
             $("#slider-distancerange").slider({
                 range: true,
-                min: 18,
+                min: 0,
                 max: 85,
-                values: [25, 45],
+                values: [0, 45],
                 slide: function (event, ui) {
-                    $("#distancerangetext").text($("#slider-distancerange").slider("values", 0) + " -> " + $("#slider-distancerange").slider("values", 1));
-
+                    
+                    that.distanceMin(ui.values[0]);
+                    that.distanceMax(ui.values[1]);
                 }
             });
-
-            $("#agerangetext").text($("#slider-agerange").slider("values", 0) + " -> " + $("#slider-agerange").slider("values", 1));
-            $("#distancerangetext").text($("#slider-distancerange").slider("values", 0) + " -> " + $("#slider-distancerange").slider("values", 1));
-
-            $("#@Html.IdFor(model => model.AgeMin)").val($("#slider-agerange").slider("values", 0));
-            $("#@Html.IdFor(model => model.AgeMax)").val($("#slider-agerange").slider("values", 1));
-
-            $("#@Html.IdFor(model => model.HeightMin)").val($("#slider-distancerange").slider("values", 0));
-            $("#@Html.IdFor(model => model.HeightMax)").val($("#slider-distancerange").slider("values", 1));
-
-           
         }
     };
 });
