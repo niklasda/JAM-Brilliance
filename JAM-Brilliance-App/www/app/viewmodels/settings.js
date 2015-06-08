@@ -22,12 +22,6 @@
                 }
             });
 
-            $("#@Html.IdFor(model => model.AgeMin)").val($("#slider-agerange").slider("values", 0));
-            $("#@Html.IdFor(model => model.AgeMax)").val($("#slider-agerange").slider("values", 1));
-
-            $("#@Html.IdFor(model => model.HeightMin)").val($("#slider-heightrange").slider("values", 0));
-            $("#@Html.IdFor(model => model.HeightMax)").val($("#slider-heightrange").slider("values", 1));
-
             $("#slider-distancerange").slider({
                 range: true,
                 min: 18,
@@ -38,6 +32,17 @@
 
                 }
             });
+
+            $("#agerangetext").text($("#slider-agerange").slider("values", 0) + " -> " + $("#slider-agerange").slider("values", 1));
+            $("#distancerangetext").text($("#slider-distancerange").slider("values", 0) + " -> " + $("#slider-distancerange").slider("values", 1));
+
+            $("#@Html.IdFor(model => model.AgeMin)").val($("#slider-agerange").slider("values", 0));
+            $("#@Html.IdFor(model => model.AgeMax)").val($("#slider-agerange").slider("values", 1));
+
+            $("#@Html.IdFor(model => model.HeightMin)").val($("#slider-distancerange").slider("values", 0));
+            $("#@Html.IdFor(model => model.HeightMax)").val($("#slider-distancerange").slider("values", 1));
+
+           
         }
     };
 });
