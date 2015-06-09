@@ -31,7 +31,7 @@
                     { route: 'signup3', title: 'Anmälan Steg 3', moduleId: 'viewmodels/signup3', nav: false },
                     { route: 'signup4', title: 'Anmälan Klar', moduleId: 'viewmodels/signup4', nav: false },
                     { route: 'login', title: 'Logga in', moduleId: 'viewmodels/login', nav: false },
-                    { route: 'logout', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
+                    { route: 'logout/(:action)', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
                 ]).buildNavigationModel();
             } else {
                 this.validToken(false);
@@ -50,7 +50,7 @@
                     { route: 'signup3', title: 'Anmälan Steg 3', moduleId: 'viewmodels/signup3', nav: false },
                     { route: 'signup4', title: 'Anmälan Klar', moduleId: 'viewmodels/signup4', nav: false },
                     { route: 'login', title: 'Logga in', moduleId: 'viewmodels/login', nav: false },
-                    { route: 'logout', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
+                    { route: 'logout/(:action)', title: 'Logga ut', moduleId: 'viewmodels/logout', nav: false }
                 ]).buildNavigationModel();
             }
             return router.activate();
