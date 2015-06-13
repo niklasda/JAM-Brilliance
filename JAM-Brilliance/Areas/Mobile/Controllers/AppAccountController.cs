@@ -34,7 +34,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             var ok = !string.IsNullOrWhiteSpace(model.UserName) && !string.IsNullOrWhiteSpace(model.Password);
             if (ok && Membership.ValidateUser(model.UserName, model.Password))
             {
-                if (AccountService.IsUserMember(model.UserName))
+                if (AccountService.IsUserMobileApp(model.UserName))
                 {
                     // return the token
                     var utd = AccountTokenDataService.IssueToken(model.UserName);

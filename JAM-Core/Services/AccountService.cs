@@ -129,6 +129,11 @@ namespace JAM.Core.Services
             return Roles.IsUserInRole(userName, MemberRoles.Member);
         }
 
+        public bool IsUserMobileApp(string userName)
+        {
+            return Roles.IsUserInRole(userName, MemberRoles.MobileApp);
+        }
+
         public bool IsUserPending(string userName)
         {
             return Roles.IsUserInRole(userName, MemberRoles.Pending);

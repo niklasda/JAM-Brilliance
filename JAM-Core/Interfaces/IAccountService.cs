@@ -48,5 +48,6 @@ namespace JAM.Core.Interfaces
         DateTime GetCurrentUserLastActivity(string email);
 
         string[] GetCurrentUserRoles();
+        bool IsUserMobileApp(string userName);
     }
 }
