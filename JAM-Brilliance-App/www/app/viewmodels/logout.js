@@ -23,8 +23,8 @@
             }
             else if (action === "deactivate") {
             }
-            else if (action === "delete") {
-                app.showMessage('Vill du verkligen ta bort ditt konto, din profil, dina meddelande och kontakter kommer att tas bort?', 'Bekräfta', ['Ja', 'Nej']);
+            else if (action === "remove") {
+               
             }
         }
     };

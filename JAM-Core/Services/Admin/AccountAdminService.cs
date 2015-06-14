@@ -1,4 +1,5 @@
-﻿using System.Web.Security;
+﻿using System.Globalization;
+using System.Web.Security;
 
 using JAM.Core.Interfaces;
 using JAM.Core.Interfaces.Admin;
@@ -12,7 +13,8 @@ namespace JAM.Core.Services.Admin
     {
         private readonly IDataCache _dataCache;
 
-        public AccountAdminService(IDataCache dataCache) : base(dataCache)
+        public AccountAdminService(IDataCache dataCache)
+            : base(dataCache)
         {
             _dataCache = dataCache;
         }
@@ -66,6 +68,32 @@ namespace JAM.Core.Services.Admin
             {
                 Roles.AddUserToRole(_dataCache.AdminSurveyName, MemberRoles.Member);
             }
+        }
+
+        public void AddRoleToUser(string userName, string roleName)
+        {
+            switch (roleName)
+            {
+                case MemberRoles.MobileApp:
+                    if (!Roles.IsUserInRole(userName, MemberRoles.MobileApp))
+                    {
+                        Roles.AddUserToRole(userName, MemberRoles.MobileApp);
+                    }
+                    break;
+                case MemberRoles.Member:
+                    if (!Roles.IsUserInRole(userName, MemberRoles.Member))
+                    {
+                        Roles.AddUserToRole(userName, MemberRoles.Member);
+                    }
+                    break;
+                case MemberRoles.Administrator:
+                    if (!Roles.IsUserInRole(userName, MemberRoles.Administrator))
+                    {
+                        Roles.AddUserToRole(userName, MemberRoles.Administrator);
+                    }
+                    break;
+            }
+
         }
     }
 }

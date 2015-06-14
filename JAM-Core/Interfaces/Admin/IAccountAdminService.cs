@@ -5,5 +5,6 @@
         void CreateAllRoles();
 
         void SetupSpecialUser();
+        void AddRoleToUser(string userName, string roleName);
     }
 }

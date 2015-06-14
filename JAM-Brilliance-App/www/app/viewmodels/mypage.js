@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app'], function (router, http, ko, app) {
+﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'base64'], function (router, http, ko, app, b64) {
     "use strict";
 
     return {
@@ -70,6 +70,45 @@
         },
         save: function () {
             this.editable(false);
+        },
+        uploadImage: function (file) {
+            //var slicedFile = file.slice(10, 30);
+
+            var reader = new FileReader();
+            reader.readAsText(file);
+            reader.onload = function (e) {
+                // browser completed reading file - display it
+               // alert(e.target.result);
+
+                //$.base64('encode', e.target.result);
+
+                var pictureDataModel = {
+                    fileName: file.name,
+                    fileType: file.type,
+                    fileSize: file.size,
+                    fileData64: $.base64('encode', e.target.result)
+                }
+
+                var token = localStorage.getItem("x-brilliance-token");
+
+                var that = this;
+
+                http.post(brilliance.appbaseurl() + "/Mobile/AppPicture/UploadPictureData", pictureDataModel, { 'x-brilliance-token': token })
+                    .then(function (response, textStatus) {
+                        //localStorage.setItem("x-brilliance-token", response.Token);
+                        //that.message(response.Message);
+                        //window.location.href = '';
+                    }).fail(function (jqXHR, textStatus, errorThrown) {
+                        if (jqXHR.responseJSON) {
+                            that.message(jqXHR.responseJSON.Message);
+                        } else {
+                            that.message(textStatus + " / " + errorThrown);
+                        }
+                    });
+
+            };
+
+            
         },
         upload: function() {
             var options = new FileUploadOptions();

@@ -10,7 +10,16 @@
         activate: function () {
 
             var token = localStorage.getItem("x-brilliance-token");
-
+        },
+        removeAccount: function () {
+            var x = dlg.showMessage('Vill du verkligen ta bort ditt konto, din profil, dina meddelande och kontakter kommer att tas bort?', 'Bekräfta', ['Ja', 'Nej'], true)
+                .then(function (res) {
+                    if (res === 'Ja') {
+                        window.location.href = '#logout/remove';
+                    }
+                    
+                });
+            return false;
         },
         compositionComplete: function () {
 

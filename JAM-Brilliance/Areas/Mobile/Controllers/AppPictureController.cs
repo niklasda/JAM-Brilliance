@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using JAM.Brilliance.Areas.Mobile.Attributes;
+using JAM.Brilliance.Areas.Mobile.Models;
 using JAM.Brilliance.Areas.Mobile.Models.Response;
 using JAM.Core.Interfaces;
 using JAM.Core.Interfaces.App;
@@ -16,6 +17,14 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             : base(accountService, accountTokenDataService)
         {
             _pictureDataService = pictureDataService;
+        }
+
+        [HttpPost, ValidateToken]
+        public JsonResult UploadPictureData(PictureDataModel data)
+        {
+            var surveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+
+            return Json(surveyId);
         }
 
         [HttpGet, ValidateToken(FromUrl = true)]

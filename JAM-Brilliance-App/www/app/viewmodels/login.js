@@ -20,7 +20,7 @@
 
                 var loginModel = {
                     userName: this.userName(),
-                    password: this.password(),
+                    password: this.password()
                 }
 
                 
@@ -32,8 +32,11 @@
                         //that.message(response.Message);
                         window.location.href = '';
                     }).fail(function (jqXHR, textStatus, errorThrown) {
-                        that.message(jqXHR.responseJSON.Message);
-                        //that.message(textStatus);
+                        if (jqXHR.responseJSON) {
+                            that.message(jqXHR.responseJSON.Message);
+                        } else {
+                            that.message(textStatus + " / " + errorThrown);
+                        }
                     });
 
                 return true;

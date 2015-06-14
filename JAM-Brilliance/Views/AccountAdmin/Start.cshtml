@@ -1,4 +1,5 @@
 ﻿@using JAM.Brilliance.Models.ViewModels
+@using JAM.Core.Logic
 @using PagedList
 @using PagedList.Mvc
 @model AccountsRolesViewModel
@@ -21,11 +22,15 @@
                 <tr>
                     <td>@user.UserName</td>
                     <td>@Html.ActionLink(user.Email, "StartOne", "SurveyAdmin", new { emailFilter = user.Email }, null)</td>
-                    <td>@string.Join(", ", user.Roles)</td>
+                    <td>@string.Join(", ", user.Roles)
+                        <a href="@Url.Action("AddRole", new { userName = user.UserName, roleName = MemberRoles.MobileApp })" title="Lägg till MobileApp roll"><i class="fa fa-plus-square-o"></i></a>
+                        <a href="@Url.Action("AddRole", new { userName = user.UserName, roleName = MemberRoles.Administrator})" title="Lägg till Administrator roll"><i class="fa fa-plus-circle"></i></a>
+                        <a href="@Url.Action("AddRole", new { userName = user.UserName, roleName = MemberRoles.Member})" title="Lägg till Member roll"><i class="fa fa-plus-square"></i></a>
+                    </td>
                     <td>@user.LastActivityDate</td>
                     <td>@(user.IsApproved ? "A" : "") @(user.IsLockedOut ? "L" : "") @(user.IsOnline ? "O" : "")</td>
                     <td>@Html.ActionLink("Aktivera", "ActivateUser", new { userName = user.UserName })</td>
-                    <td>@Html.ActionLink("Spärra", "BlockUser", new { email = user.Email })</td>
+                    <td>@Html.ActionLink("Spärra", "BlockUser", new { email = user.Email })&nbsp;</td>
                     <td>@Html.ActionLink("Återställ", "ResetUserPassword", new { userName = user.UserName })</td>
                     <td>@Html.ActionLink("Skicka Igen", "ResendMail", new { userName = user.UserName })</td>
                     <td class="padded-table-cell-centered"><a href="@Url.Action("DeleteFromAccount", new { userName = user.UserName })" title="Ta bort"><i class="fa fa-trash"></i></a></td>

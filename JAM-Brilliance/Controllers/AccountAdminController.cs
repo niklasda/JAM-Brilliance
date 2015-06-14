@@ -34,6 +34,14 @@ namespace JAM.Brilliance.Controllers
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
+        public RedirectToRouteResult AddRole(string userName, string roleName)
+        {
+            _accountAdminService.AddRoleToUser(userName, roleName);
+
+            return RedirectToAction("Start");
+        }
+
+        [Authorize(Roles = MemberRoles.Administrator)]
         public ViewResult Start(int? page)
         {
             ViewBag.CurrentPageId = PageIds.DevPage;
