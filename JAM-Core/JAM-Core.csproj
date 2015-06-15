@@ -142,6 +142,7 @@
     <Compile Include="Interfaces\IMessageDataService.cs" />
     <Compile Include="Interfaces\IPictureDataService.cs" />
     <Compile Include="Interfaces\ISearchDataService.cs" />
+    <Compile Include="Interfaces\ISurveySettingsDataService.cs" />
     <Compile Include="Interfaces\ISurveyDataService.cs" />
     <Compile Include="Interfaces\IUserProfile.cs" />
     <Compile Include="Interfaces\IVisitorDataService.cs" />
@@ -171,6 +172,7 @@
     <Compile Include="Models\Picture.cs" />
     <Compile Include="Models\SearchAdvCriteria.cs" />
     <Compile Include="Models\SearchCriteria.cs" />
+    <Compile Include="Models\SurveySettings.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Models\SendMessage.cs" />
     <Compile Include="Models\Survey.cs" />
@@ -199,6 +201,7 @@
     <Compile Include="Services\MessageDataService.cs" />
     <Compile Include="Services\PictureDataService.cs" />
     <Compile Include="Services\SearchDataService.cs" />
+    <Compile Include="Services\SurveySettingsDataService.cs" />
     <Compile Include="Services\SurveyDataService.cs" />
     <Compile Include="Services\VisitorDataService.cs" />
   </ItemGroup>

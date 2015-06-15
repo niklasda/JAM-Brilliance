@@ -10,6 +10,14 @@
         activate: function () {
 
             var token = localStorage.getItem("x-brilliance-token");
+            var that = this;
+
+            http.get(brilliance.appbaseurl() + "/Mobile/AppSurvey/GetSurveySettings", '', { 'x-brilliance-token': token })
+                .then(function (response, textStatus) {
+                    that.ageMin(response.Settings.SearchAgeMin);
+                    that.ageMax(response.Settings.SearchAgeMax);
+                    that.distanceMax(response.Settings.SearchDistanceMax);
+                }).fail(brilliance.handleErrors);
         },
         removeAccount: function () {
             var x = dlg.showMessage('Vill du verkligen ta bort ditt konto, din profil, dina meddelande och kontakter kommer att tas bort?', 'Bekräfta', ['Ja', 'Nej'], true)
