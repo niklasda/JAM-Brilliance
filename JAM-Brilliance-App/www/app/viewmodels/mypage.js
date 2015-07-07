@@ -37,17 +37,17 @@
             var that = this;
 
             http.get(brilliance.appbaseurl() + "/Mobile/AppSurvey/GetMyShortSurvey", '', { 'x-brilliance-token': token })
-               .then(function (response, textStatus) {
-                   that.name(response.Survey.Name);
-                   that.postalCode(response.Survey.PostalCode);
-                   that.city(response.Survey.City);
-                   that.year(response.Survey.Year);
-                   that.isMale(response.Survey.IsMale);
-                   that.age(response.Survey.Age);
-                   that.note1(response.Survey.Note1);
-                   that.imgurl(brilliance.appbaseurl() + "/Mobile/AppPicture/MainPictureData/?token=" + token);
+                .then(function (response, textStatus) {
+                    that.name(response.Survey.Name);
+                    that.postalCode(response.Survey.PostalCode);
+                    that.city(response.Survey.City);
+                    that.year(response.Survey.Year);
+                    that.isMale(response.Survey.IsMale);
+                    that.age(response.Survey.Age);
+                    that.note1(response.Survey.Note1);
+                    that.imgurl(brilliance.appbaseurl() + "/Mobile/AppPicture/MainPictureData/?token=" + token);
 
-                   that.newPostalCode.subscribe(function (newPostalCodeValue) {
+                    that.newPostalCode.subscribe(function (newPostalCodeValue) {
                        var city = '';
                        if (newPostalCodeValue) {
                            newPostalCodeValue = newPostalCodeValue.replace(/\s+/g, '');

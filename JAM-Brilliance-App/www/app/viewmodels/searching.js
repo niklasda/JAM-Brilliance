@@ -44,23 +44,22 @@
             var postalCode = "";
 
             http.get(brilliance.appbaseurl() + "/Mobile/AppSearch/Search", 'postalCode=' + postalCode, { 'x-brilliance-token': token })
-            .then(function (response, textStatus) {
-                //that.searchResults(response.SearchResults);
-                that.searchResults2 = response.SearchResults;
+                .then(function (response, textStatus) {
+                    //that.searchResults(response.SearchResults);
+                    that.searchResults2 = response.SearchResults;
 
-                $("#carousel").slick({
-                    dots: true,
-                    speed: 500,
-                    mobileFirst: true,
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: false
-                });
+                    $("#carousel").slick({
+                        dots: true,
+                        speed: 500,
+                        mobileFirst: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: false
+                    });
 
-                setTimeout(function () { that.initCarousel(that) }, 1000);
+                    setTimeout(function () { that.initCarousel(that) }, 1000);
 
-
-            }).fail(brilliance.handleErrors);
+                }).fail(brilliance.handleErrors);
 
         },
         initCarousel: function (that) {

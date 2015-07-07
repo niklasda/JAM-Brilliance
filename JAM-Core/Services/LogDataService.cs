@@ -42,7 +42,7 @@ namespace JAM.Core.Services
 
         public void LogError(string message, Exception ex)
         {
-            _logger.WarnException(message, ex);
+            _logger.Warn(ex, message);
         }
 
         //public async void LogIpForLogin(string ip, string userName, bool success)

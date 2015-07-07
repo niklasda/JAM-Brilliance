@@ -1,0 +1,52 @@
+﻿{
+  "output": "Message",
+  "ignore": [
+    "\\Scripts\\tinymce\\",
+    "\\Scripts\\jquery-2.1.4-vsdoc.js",
+    "\\Scripts\\jquery-2.1.4.js",
+    "\\Scripts\\jquery-2.1.4.min.js",
+    "\\Scripts\\jquery-ui-1.11.4.js",
+    "\\Scripts\\jquery-ui-1.11.4.min.js",
+    "\\Scripts\\jquery.unobtrusive-ajax.js",
+    "\\Scripts\\jquery.unobtrusive-ajax.min.js",
+    "\\Scripts\\jquery.validate-vsdoc.js",
+    "\\Scripts\\jquery.validate.js",
+    "\\Scripts\\jquery.validate.min.js",
+    "\\Scripts\\jquery.validate.unobtrusive.js",
+    "\\Scripts\\jquery.validate.unobtrusive.min.js"
+  ],
+  "options": {
+    "predef": {
+      "jQuery": false,
+      "$": false
+    },
+    "ass": false,
+    "bitwise": false,
+    "browser": true,
+    "closure": false,
+    "continue": false,
+    "couch": false,
+    "debug": false,
+    "devel": false,
+    "eqeq": false,
+    "evil": false,
+    "forin": false,
+    "newcap": false,
+    "node": false,
+    "nomen": false,
+    "passfail": false,
+    "plusplus": false,
+    "regexp": false,
+    "rhino": false,
+    "unparam": false,
+    "sloppy": false,
+    "stupid": false,
+    "sub": false,
+    "todo": false,
+    "vars": false,
+    "white": false
+  },
+  "runOnSave": true,
+  "runOnBuild": true,
+  "cancelBuild": false
+}

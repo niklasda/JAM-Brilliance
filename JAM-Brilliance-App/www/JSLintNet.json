@@ -1,0 +1,43 @@
+﻿{
+  "output": "Message",
+  "ignore": [
+    "\\Scripts\\",
+    "\\slick\\",
+    "\\Scripts\\jquery.validate.unobtrusive.min.js"
+  ],
+  "options": {
+    "predef": {
+      "jQuery": false,
+      "$": false,
+      "brilliance": true
+    },
+    "ass": false,
+    "bitwise": false,
+    "browser": true,
+    "closure": false,
+    "continue": false,
+    "couch": false,
+    "debug": false,
+    "devel": true,
+    "eqeq": false,
+    "evil": false,
+    "forin": false,
+    "newcap": false,
+    "node": false,
+    "nomen": false,
+    "passfail": false,
+    "plusplus": false,
+    "regexp": false,
+    "rhino": false,
+    "unparam": false,
+    "sloppy": false,
+    "stupid": false,
+    "sub": false,
+    "todo": false,
+    "vars": false,
+    "white": false
+  },
+  "runOnSave": true,
+  "runOnBuild": true,
+  "cancelBuild": false
+}
