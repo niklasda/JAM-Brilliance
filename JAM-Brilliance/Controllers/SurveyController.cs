@@ -89,28 +89,28 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.MyPage;
 
             Survey survey = GetAllowedSurvey(surveyId);
-            var sp1vm = Mapper.Map<SurveyPage1ViewModel>(survey);
+            var sp1Vm = Mapper.Map<SurveyPage1ViewModel>(survey);
 
-            sp1vm.KidsCounts = _dataCache.Kids;
-            sp1vm.KidsWantedCounts = _dataCache.KidsWanted;
-            sp1vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
+            sp1Vm.KidsCounts = _dataCache.Kids;
+            sp1Vm.KidsWantedCounts = _dataCache.KidsWanted;
+            sp1Vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
 
-            return View(sp1vm);
+            return View(sp1Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page1(SurveyPage1ViewModel sp1vm, string direction)
+        public ActionResult Page1(SurveyPage1ViewModel sp1Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                sp1vm.PostalCode = sp1vm.PostalCode.Replace(" ", "");
-                var partSurvey = GetAllowedPartSurvey(sp1vm);
+                sp1Vm.PostalCode = sp1Vm.PostalCode.Replace(" ", "");
+                var partSurvey = GetAllowedPartSurvey(sp1Vm);
 
                 if (_surveyDataService.SavePage1(partSurvey))
                 {
-                    Task.Run(() => this._geoService.LookupAndStoreGeoCoordinates(partSurvey.SurveyId, partSurvey.PostalCode, partSurvey.City, partSurvey.Country));
+                    Task.Run(() => _geoService.LookupAndStoreGeoCoordinates(partSurvey.SurveyId, partSurvey.PostalCode, partSurvey.City, partSurvey.Country));
                 }
 
                 HttpPostedFileBase pictureFile = Request.Files["OriginalLocation"];
@@ -132,27 +132,27 @@ namespace JAM.Brilliance.Controllers
 
                         var fel = string.Format("Bilden får vara max 1500kb stor och måste vara jpeg eller png.{0}Din bild var {1}kb och {2}", Environment.NewLine, kiloLength, ftypeEnd);
                         ModelState.AddModelError("PictureDummyId", fel);
-                        sp1vm.KidsCounts = _dataCache.Kids;
-                        sp1vm.KidsWantedCounts = _dataCache.KidsWanted;
-                        sp1vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
+                        sp1Vm.KidsCounts = _dataCache.Kids;
+                        sp1Vm.KidsWantedCounts = _dataCache.KidsWanted;
+                        sp1Vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
 
-                        return View(sp1vm);
+                        return View(sp1Vm);
                     }
                 }
 
                 if (direction.Equals(PageButtons.NextPage))
                 {
-                    return RedirectToAction("Page2", new { surveyId = sp1vm.SurveyId });
+                    return RedirectToAction("Page2", new { surveyId = sp1Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page1", new { surveyId = sp1vm.SurveyId });
+                return RedirectToAction("Page1", new { surveyId = sp1Vm.SurveyId });
             }
 
-            sp1vm.KidsCounts = _dataCache.Kids;
-            sp1vm.KidsWantedCounts = _dataCache.KidsWanted;
-            sp1vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
+            sp1Vm.KidsCounts = _dataCache.Kids;
+            sp1Vm.KidsWantedCounts = _dataCache.KidsWanted;
+            sp1Vm.WhatSearchingForWhats = _dataCache.WhatSearchingForWhats;
 
-            return View(sp1vm);
+            return View(sp1Vm);
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -166,31 +166,31 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp2 = Mapper.Map<SurveyPage2ViewModel>(survey);
+            var sp2Vm = Mapper.Map<SurveyPage2ViewModel>(survey);
 
-            return View(sp2);
+            return View(sp2Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page2(SurveyPage2ViewModel sp2vm, string direction)
+        public ActionResult Page2(SurveyPage2ViewModel sp2Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                var partSurvey = GetAllowedPartSurvey(sp2vm);
+                var partSurvey = GetAllowedPartSurvey(sp2Vm);
 
                 bool ok = _surveyDataService.SavePage2(partSurvey);
 
                 if (direction.Equals(PageButtons.PreviousPage))
                 {
-                    return RedirectToAction("Page1", new { surveyId = sp2vm.SurveyId });
+                    return RedirectToAction("Page1", new { surveyId = sp2Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page3", new { surveyId = sp2vm.SurveyId });
+                return RedirectToAction("Page3", new { surveyId = sp2Vm.SurveyId });
             }
 
-            return View(sp2vm);
+            return View(sp2Vm);
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -204,30 +204,30 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp3 = Mapper.Map<SurveyPage3ViewModel>(survey);
+            var sp3Vm = Mapper.Map<SurveyPage3ViewModel>(survey);
 
-            return View(sp3);
+            return View(sp3Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page3(SurveyPage3ViewModel sp3vm, string direction)
+        public ActionResult Page3(SurveyPage3ViewModel sp3Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                var partSurvey = GetAllowedPartSurvey(sp3vm);
+                var partSurvey = GetAllowedPartSurvey(sp3Vm);
 
                 bool ok = _surveyDataService.SavePage3(partSurvey);
                 if (direction.Equals(PageButtons.PreviousPage))
                 {
-                    return RedirectToAction("Page2", new { surveyId = sp3vm.SurveyId });
+                    return RedirectToAction("Page2", new { surveyId = sp3Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page4", new { surveyId = sp3vm.SurveyId });
+                return RedirectToAction("Page4", new { surveyId = sp3Vm.SurveyId });
             }
 
-            return View(sp3vm);
+            return View(sp3Vm);
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -241,30 +241,30 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp4 = Mapper.Map<SurveyPage4ViewModel>(survey);
+            var sp4Vm = Mapper.Map<SurveyPage4ViewModel>(survey);
 
-            return View(sp4);
+            return View(sp4Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page4(SurveyPage4ViewModel sp4vm, string direction)
+        public ActionResult Page4(SurveyPage4ViewModel sp4Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                var partSurvey = GetAllowedPartSurvey(sp4vm);
+                var partSurvey = GetAllowedPartSurvey(sp4Vm);
 
                 bool ok = _surveyDataService.SavePage4(partSurvey);
                 if (direction.Equals(PageButtons.PreviousPage))
                 {
-                    return RedirectToAction("Page3", new { surveyId = sp4vm.SurveyId });
+                    return RedirectToAction("Page3", new { surveyId = sp4Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page5", new { surveyId = sp4vm.SurveyId });
+                return RedirectToAction("Page5", new { surveyId = sp4Vm.SurveyId });
             }
 
-            return View(sp4vm);
+            return View(sp4Vm);
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -278,30 +278,30 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp5 = Mapper.Map<SurveyPage5ViewModel>(survey);
+            var sp5Vm = Mapper.Map<SurveyPage5ViewModel>(survey);
 
-            return View(sp5);
+            return View(sp5Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page5(SurveyPage5ViewModel sp5vm, string direction)
+        public ActionResult Page5(SurveyPage5ViewModel sp5Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                var partSurvey = GetAllowedPartSurvey(sp5vm);
+                var partSurvey = GetAllowedPartSurvey(sp5Vm);
 
                 bool ok = _surveyDataService.SavePage5(partSurvey);
                 if (direction.Equals(PageButtons.PreviousPage))
                 {
-                    return RedirectToAction("Page4", new { surveyId = sp5vm.SurveyId });
+                    return RedirectToAction("Page4", new { surveyId = sp5Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page6", new { surveyId = sp5vm.SurveyId });
+                return RedirectToAction("Page6", new { surveyId = sp5Vm.SurveyId });
             }
 
-            return View(sp5vm);
+            return View(sp5Vm);
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -317,38 +317,38 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp6 = Mapper.Map<SurveyPage6ViewModel>(survey);
-            sp6.WantedSurvey = Mapper.Map<WantedSurveyViewModel>(wantedSurvey);
+            var sp6Vm = Mapper.Map<SurveyPage6ViewModel>(survey);
+            sp6Vm.WantedSurvey = Mapper.Map<WantedSurveyViewModel>(wantedSurvey);
 
-            sp6.WantedKidsWantedCounts = _dataCache.WantedKidsWanted;
-            sp6.Referrers = _dataCache.Referrers;
+            sp6Vm.WantedKidsWantedCounts = _dataCache.WantedKidsWanted;
+            sp6Vm.Referrers = _dataCache.Referrers;
 
-            return View(sp6);
+            return View(sp6Vm);
         }
 
         [HttpPost]
         [Authorize(Roles = MemberRoles.Member)]
         [ValidateAntiForgeryToken]
-        public ActionResult Page6(SurveyPage6ViewModel sp6vm, string direction)
+        public ActionResult Page6(SurveyPage6ViewModel sp6Vm, string direction)
         {
             if (ModelState.IsValid)
             {
-                var partSurvey = GetAllowedPartSurvey(sp6vm);
-                var wantedSurvey = GetAllowedPartWantedSurvey(sp6vm.WantedSurvey);
+                var partSurvey = GetAllowedPartSurvey(sp6Vm);
+                var wantedSurvey = GetAllowedPartWantedSurvey(sp6Vm.WantedSurvey);
 
                 bool ok = _surveyDataService.SavePage6(partSurvey, wantedSurvey);
                 if (direction.Equals(PageButtons.PreviousPage))
                 {
-                    return RedirectToAction("Page5", new { surveyId = sp6vm.SurveyId });
+                    return RedirectToAction("Page5", new { surveyId = sp6Vm.SurveyId });
                 }
 
-                return RedirectToAction("Page6", new { surveyId = sp6vm.SurveyId });
+                return RedirectToAction("Page6", new { surveyId = sp6Vm.SurveyId });
             }
 
-            sp6vm.WantedKidsWantedCounts = _dataCache.WantedKidsWanted;
-            sp6vm.Referrers = _dataCache.Referrers;
+            sp6Vm.WantedKidsWantedCounts = _dataCache.WantedKidsWanted;
+            sp6Vm.Referrers = _dataCache.Referrers;
 
-            return View(sp6vm);
+            return View(sp6Vm);
         }
 
         public RedirectToRouteResult DisableSurvey()
