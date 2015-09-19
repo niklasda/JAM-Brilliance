@@ -17,13 +17,21 @@ namespace JAM.Core.Logic
 
         public int GetSurveyId(string email)
         {
+            if (HttpContext.Current.Session == null)
+            {
+                return 0;
+            }
+
             var o = HttpContext.Current.Session[GetSessionKey(email)];
             return o != null ? (int)o : 0;
         }
 
         public void SetSurveyId(string email, int surveyId)
         {
-            HttpContext.Current.Session[GetSessionKey(email)] = surveyId;
+            if (HttpContext.Current.Session != null)
+            {
+                HttpContext.Current.Session[GetSessionKey(email)] = surveyId;
+            }
         }
 
         private string GetSessionKey(string email)

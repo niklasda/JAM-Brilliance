@@ -24,7 +24,7 @@ namespace JAM.Core.Services
         public string GetCurrentUserEmail()
         {
             var user = Membership.GetUser();
-            return user.Email;
+            return user != null ? user.Email : "";
         }
 
         public void SetUserComment(MembershipUser user, string cultureCode, string realName)
@@ -66,13 +66,18 @@ namespace JAM.Core.Services
         public string GetCurrentUserCommentRealName()
         {
             var user = Membership.GetUser();
-            var parts = user.Comment.Split(new[] { Constants.CommentSeparator }, StringSplitOptions.None);
-            if (parts.Length == 2)
+            if (user != null && !string.IsNullOrEmpty(user.Comment))
             {
-                return parts[1];
+                var parts = user.Comment.Split(new[] {Constants.CommentSeparator}, StringSplitOptions.None);
+                if (parts.Length == 2)
+                {
+                    return parts[1];
+                }
+
+                return user.Comment;
             }
 
-            return user.Comment;
+            return string.Empty;
         }
 
         public string GetUserName(string email)
