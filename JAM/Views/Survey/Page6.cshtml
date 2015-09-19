@@ -1,0 +1,158 @@
+﻿@using JAM.Core.Logic
+@using JAM.Models.ViewModels
+@model SurveyPage6ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+
+        <fieldset>
+            <legend>Den jag söker</legend>
+            <fieldset>
+                <legend>Eftersökt längd</legend>
+                <div class="editor-label">
+                    @Html.HiddenFor(model => model.SurveyId)
+                    @Html.EditorFor(model => model.WantedSurvey.Is150)
+                    @Html.LabelFor(model => model.WantedSurvey.Is150)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.Is150)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.Is160)
+                    @Html.LabelFor(model => model.WantedSurvey.Is160)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.Is160)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.Is170)
+                    @Html.LabelFor(model => model.WantedSurvey.Is170)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.Is170)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.Is180)
+                    @Html.LabelFor(model => model.WantedSurvey.Is180)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.Is180)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.Is190)
+                    @Html.LabelFor(model => model.WantedSurvey.Is190)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.Is190)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Eftersökt ålder</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.WantedSurvey.AgeMin)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.WantedSurvey.AgeMin) år
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.AgeMin)
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.WantedSurvey.AgeMax)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.WantedSurvey.AgeMax) år
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.AgeMax)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Barn</legend>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.WantedKidsWantedCountId)
+                    @Html.DropDownListFor(model => model.WantedKidsWantedCountId, new SelectList(Model.WantedKidsWantedCounts, "WantedKidWantedCountId", "Name", Model.WantedKidsWantedCountId))
+                    @Html.ValidationMessageFor(model => model.WantedKidsWantedCountId)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Eftersökt kroppstyp</legend>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsBodySlim)
+                    @Html.LabelFor(model => model.WantedSurvey.IsBodySlim)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsBodySlim)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsBodyAverage)
+                    @Html.LabelFor(model => model.WantedSurvey.IsBodyAverage)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsBodyAverage)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsBodyAthletic)
+                    @Html.LabelFor(model => model.WantedSurvey.IsBodyAthletic)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsBodyAthletic)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsBodyChubby)
+                    @Html.LabelFor(model => model.WantedSurvey.IsBodyChubby)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsBodyChubby)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsBodyHeavy)
+                    @Html.LabelFor(model => model.WantedSurvey.IsBodyHeavy)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsBodyHeavy)
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Eftersökta intressen</legend>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbySport)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbySport)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbySport)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbyMusic)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbyMusic)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbyMusic)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbyNature)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbyNature)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbyNature)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbyCulture)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbyCulture)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbyCulture)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbyFriends)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbyFriends)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbyFriends)
+                </div>
+                <div class="editor-label">
+                    @Html.EditorFor(model => model.WantedSurvey.IsHobbyTech)
+                    @Html.LabelFor(model => model.WantedSurvey.IsHobbyTech)
+                    @Html.ValidationMessageFor(model => model.WantedSurvey.IsHobbyTech)
+                </div>
+            </fieldset>
+        </fieldset>
+
+        <fieldset>
+            <legend>Medlemskap</legend>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.ReferrerId)
+                @Html.DropDownListFor(model => model.ReferrerId, new SelectList(Model.Referrers, "ReferrerId", "Name", Model.ReferrerId))
+                @Html.ValidationMessageFor(model => model.ReferrerId)
+            </div>
+
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 6/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.PreviousPage" type="submit">
+                        <i class="fa fa-chevron-left"></i> Förra
+                    </button>
+                    <button name="direction" value="@PageButtons.SavePage" type="submit">
+                        Spara <i class="fa fa-save"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

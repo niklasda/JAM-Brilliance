@@ -1,0 +1,351 @@
+﻿@using JAM.Core.Logic
+@using JAM.Models.ViewModels
+@model SurveyPage3ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Träning</legend>
+            <div class="editor-label">
+                @Html.HiddenFor(model => model.SurveyId)
+                @Html.CheckBoxFor(model => model.IsExcerNot, new { autofocus = "" })
+                @Html.LabelFor(model => model.IsExcerNot)
+                @Html.ValidationMessageFor(model => model.IsExcerNot)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsExcerSome)
+                @Html.LabelFor(model => model.IsExcerSome)
+                @Html.ValidationMessageFor(model => model.IsExcerSome)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsExcerRegular)
+                @Html.LabelFor(model => model.IsExcerRegular)
+                @Html.ValidationMessageFor(model => model.IsExcerRegular)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsExcerAlways)
+                @Html.LabelFor(model => model.IsExcerAlways)
+                @Html.ValidationMessageFor(model => model.IsExcerAlways)
+            </div>
+        </fieldset>
+
+    <fieldset class="break-print-page">
+        <legend>Religion</legend>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelAdventist)
+            @Html.LabelFor(model => model.IsRelAdventist)
+            @Html.ValidationMessageFor(model => model.IsRelAdventist)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelAgnostic)
+            @Html.LabelFor(model => model.IsRelAgnostic)
+            @Html.ValidationMessageFor(model => model.IsRelAgnostic)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelSpiritual)
+            @Html.LabelFor(model => model.IsRelSpiritual)
+            @Html.ValidationMessageFor(model => model.IsRelSpiritual)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelAnglican)
+            @Html.LabelFor(model => model.IsRelAnglican)
+            @Html.ValidationMessageFor(model => model.IsRelAnglican)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelAtheist)
+            @Html.LabelFor(model => model.IsRelAtheist)
+            @Html.ValidationMessageFor(model => model.IsRelAtheist)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelBaptist)
+            @Html.LabelFor(model => model.IsRelBaptist)
+            @Html.ValidationMessageFor(model => model.IsRelBaptist)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelHindu)
+            @Html.LabelFor(model => model.IsRelHindu)
+            @Html.ValidationMessageFor(model => model.IsRelHindu)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelBuddhist)
+            @Html.LabelFor(model => model.IsRelBuddhist)
+            @Html.ValidationMessageFor(model => model.IsRelBuddhist)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelJewish)
+            @Html.LabelFor(model => model.IsRelJewish)
+            @Html.ValidationMessageFor(model => model.IsRelJewish)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelCatholic)
+            @Html.LabelFor(model => model.IsRelCatholic)
+            @Html.ValidationMessageFor(model => model.IsRelCatholic)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelChistian)
+            @Html.LabelFor(model => model.IsRelChistian)
+            @Html.ValidationMessageFor(model => model.IsRelChistian)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelMethodist)
+            @Html.LabelFor(model => model.IsRelMethodist)
+            @Html.ValidationMessageFor(model => model.IsRelMethodist)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelMormon)
+            @Html.LabelFor(model => model.IsRelMormon)
+            @Html.ValidationMessageFor(model => model.IsRelMormon)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelMuslim)
+            @Html.LabelFor(model => model.IsRelMuslim)
+            @Html.ValidationMessageFor(model => model.IsRelMuslim)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelOrtodox)
+            @Html.LabelFor(model => model.IsRelOrtodox)
+            @Html.ValidationMessageFor(model => model.IsRelOrtodox)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelPingst)
+            @Html.LabelFor(model => model.IsRelPingst)
+            @Html.ValidationMessageFor(model => model.IsRelPingst)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelProtestant)
+            @Html.LabelFor(model => model.IsRelProtestant)
+            @Html.ValidationMessageFor(model => model.IsRelProtestant)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelTao)
+            @Html.LabelFor(model => model.IsRelTao)
+            @Html.ValidationMessageFor(model => model.IsRelTao)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.IsRelOther)
+            @Html.LabelFor(model => model.IsRelOther)
+            @Html.ValidationMessageFor(model => model.IsRelOther)
+        </div>
+    </fieldset>
+
+        <fieldset>
+            <legend>Religionsutövning</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelPracticing)
+                @Html.LabelFor(model => model.IsRelPracticing)
+                @Html.ValidationMessageFor(model => model.IsRelPracticing)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelSomewhat)
+                @Html.LabelFor(model => model.IsRelSomewhat)
+                @Html.ValidationMessageFor(model => model.IsRelSomewhat)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRelNotPracticing)
+                @Html.LabelFor(model => model.IsRelNotPracticing)
+                @Html.ValidationMessageFor(model => model.IsRelNotPracticing)
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Inkomst <i class="fa fa-money"></i></legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncomeLess)
+                @Html.LabelFor(model => model.IsIncomeLess)
+                @Html.ValidationMessageFor(model => model.IsIncomeLess)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncome1)
+                @Html.LabelFor(model => model.IsIncome1)
+                @Html.ValidationMessageFor(model => model.IsIncome1)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncome2)
+                @Html.LabelFor(model => model.IsIncome2)
+                @Html.ValidationMessageFor(model => model.IsIncome2)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncome3)
+                @Html.LabelFor(model => model.IsIncome3)
+                @Html.ValidationMessageFor(model => model.IsIncome3)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncome4)
+                @Html.LabelFor(model => model.IsIncome4)
+                @Html.ValidationMessageFor(model => model.IsIncome4)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncome5)
+                @Html.LabelFor(model => model.IsIncome5)
+                @Html.ValidationMessageFor(model => model.IsIncome5)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsIncomeMore)
+                @Html.LabelFor(model => model.IsIncomeMore)
+                @Html.ValidationMessageFor(model => model.IsIncomeMore)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Tobaksvanor</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacQuitting)
+                @Html.LabelFor(model => model.IsTobacQuitting)
+                @Html.ValidationMessageFor(model => model.IsTobacQuitting)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacCigar)
+                @Html.LabelFor(model => model.IsTobacCigar)
+                @Html.ValidationMessageFor(model => model.IsTobacCigar)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacRegularly)
+                @Html.LabelFor(model => model.IsTobacRegularly)
+                @Html.ValidationMessageFor(model => model.IsTobacRegularly)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacParty)
+                @Html.LabelFor(model => model.IsTobacParty)
+                @Html.ValidationMessageFor(model => model.IsTobacParty)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacSnus)
+                @Html.LabelFor(model => model.IsTobacSnus)
+                @Html.ValidationMessageFor(model => model.IsTobacSnus)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsTobacNot)
+                @Html.LabelFor(model => model.IsTobacNot)
+                @Html.ValidationMessageFor(model => model.IsTobacNot)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Alkoholvanor</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsAlcNot)
+                @Html.LabelFor(model => model.IsAlcNot)
+                @Html.ValidationMessageFor(model => model.IsAlcNot)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsAlcLittle)
+                @Html.LabelFor(model => model.IsAlcLittle)
+                @Html.ValidationMessageFor(model => model.IsAlcLittle)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsAlcSocially)
+                @Html.LabelFor(model => model.IsAlcSocially)
+                @Html.ValidationMessageFor(model => model.IsAlcSocially)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsAlcMuch)
+                @Html.LabelFor(model => model.IsAlcMuch)
+                @Html.ValidationMessageFor(model => model.IsAlcMuch)
+            </div>
+            <!-- ********************************************************************************************
+                -->
+        </fieldset>
+
+        <fieldset class="break-print-page">
+            <legend>Mest nöjd med</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiArms)
+                @Html.LabelFor(model => model.IsPleWiArms)
+                @Html.ValidationMessageFor(model => model.IsPleWiArms)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiChest)
+                @Html.LabelFor(model => model.IsPleWiChest)
+                @Html.ValidationMessageFor(model => model.IsPleWiChest)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiLegs)
+                @Html.LabelFor(model => model.IsPleWiLegs)
+                @Html.ValidationMessageFor(model => model.IsPleWiLegs)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiFeet)
+                @Html.LabelFor(model => model.IsPleWiFeet)
+                @Html.ValidationMessageFor(model => model.IsPleWiFeet)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiNeck)
+                @Html.LabelFor(model => model.IsPleWiNeck)
+                @Html.ValidationMessageFor(model => model.IsPleWiNeck)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiHands)
+                @Html.LabelFor(model => model.IsPleWiHands)
+                @Html.ValidationMessageFor(model => model.IsPleWiHands)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiHair)
+                @Html.LabelFor(model => model.IsPleWiHair)
+                @Html.ValidationMessageFor(model => model.IsPleWiHair)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiSmile)
+                @Html.LabelFor(model => model.IsPleWiSmile)
+                @Html.ValidationMessageFor(model => model.IsPleWiSmile)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiLips)
+                @Html.LabelFor(model => model.IsPleWiLips)
+                @Html.ValidationMessageFor(model => model.IsPleWiLips)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiMuscles)
+                @Html.LabelFor(model => model.IsPleWiMuscles)
+                @Html.ValidationMessageFor(model => model.IsPleWiMuscles)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiBelly)
+                @Html.LabelFor(model => model.IsPleWiBelly)
+                @Html.ValidationMessageFor(model => model.IsPleWiBelly)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiEars)
+                @Html.LabelFor(model => model.IsPleWiEars)
+                @Html.ValidationMessageFor(model => model.IsPleWiEars)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiEyes)
+                @Html.LabelFor(model => model.IsPleWiEyes)
+                @Html.ValidationMessageFor(model => model.IsPleWiEyes)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiButt)
+                @Html.LabelFor(model => model.IsPleWiButt)
+                @Html.ValidationMessageFor(model => model.IsPleWiButt)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPleWiCalf)
+                @Html.LabelFor(model => model.IsPleWiCalf)
+                @Html.ValidationMessageFor(model => model.IsPleWiCalf)
+            </div>
+            <!-- ******************************************************************************************-->
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 3/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.PreviousPage" type="submit">
+                        <i class="fa fa-chevron-left"></i> Förra
+                    </button>
+                    <button name="direction" value="@PageButtons.NextPage" type="submit">
+                        Nästa <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

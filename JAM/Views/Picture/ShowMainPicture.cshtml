@@ -1,0 +1,11 @@
+﻿@using JAM.Models.ViewModels;
+@model ShowPictureViewModel
+
+
+
+<div>
+    <br />
+    <img style="max-width: 500px;" src="@Url.Action("MainPictureDataFor", new { surveyId = Model.OwnerSurveyId })" />
+    <br />
+    <br />
+</div>

@@ -19,15 +19,17 @@ using System.Configuration;
 using System.Web.Mvc;
 
 using JAM.Core.Interfaces;
-using JAM.Core.Logic;
+
 using JAM.Core.Services;
 using JAM;
+using JAM.Core.Logic;
 using JAM.DependencyResolution;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
 using StructureMap;
 
 using WebActivatorEx;
+using Constants = JAM.Logic.Constants;
 
 [assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
 [assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
@@ -45,7 +47,7 @@ namespace JAM
 
         public static void Start()
         {
-            var connString = "sdf"; //ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
+            var connString = ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
             var storageConnString = "sdf"; //ConfigurationManager.ConnectionStrings[Constants.StorageConnectionStringName].ConnectionString;
 
             IContainer container = IoC.Initialize();

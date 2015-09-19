@@ -1,0 +1,443 @@
+﻿@using JAM.Core.Logic
+@using JAM.Models.ViewModels
+@model SurveyPage4ViewModel
+@section scripts {
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+}
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        @Html.AntiForgeryToken()
+        <fieldset>
+            <legend>Klädstil</legend>
+            <div class="editor-label">
+                @Html.HiddenFor(model => model.SurveyId)
+                @Html.CheckBoxFor(model => model.IsDressBoheme, new { autofocus = "" })
+                @Html.LabelFor(model => model.IsDressBoheme)
+                @Html.ValidationMessageFor(model => model.IsDressBoheme)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressBusiness)
+                @Html.LabelFor(model => model.IsDressBusiness)
+                @Html.ValidationMessageFor(model => model.IsDressBusiness)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressEthnic)
+                @Html.LabelFor(model => model.IsDressEthnic)
+                @Html.ValidationMessageFor(model => model.IsDressEthnic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressClassic)
+                @Html.LabelFor(model => model.IsDressClassic)
+                @Html.ValidationMessageFor(model => model.IsDressClassic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressFashion)
+                @Html.LabelFor(model => model.IsDressFashion)
+                @Html.ValidationMessageFor(model => model.IsDressFashion)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressRock)
+                @Html.LabelFor(model => model.IsDressRock)
+                @Html.ValidationMessageFor(model => model.IsDressRock)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressSophisticated)
+                @Html.LabelFor(model => model.IsDressSophisticated)
+                @Html.ValidationMessageFor(model => model.IsDressSophisticated)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressSport)
+                @Html.LabelFor(model => model.IsDressSport)
+                @Html.ValidationMessageFor(model => model.IsDressSport)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsDressTrend)
+                @Html.LabelFor(model => model.IsDressTrend)
+                @Html.ValidationMessageFor(model => model.IsDressTrend)
+            </div>
+            <!-- *******************************************************************************************-->
+        </fieldset>
+
+        <fieldset>
+            <legend>Kroppsdekorationer</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyArtNever)
+                @Html.LabelFor(model => model.IsBodyArtNever)
+                @Html.ValidationMessageFor(model => model.IsBodyArtNever)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyArtVisible)
+                @Html.LabelFor(model => model.IsBodyArtVisible)
+                @Html.ValidationMessageFor(model => model.IsBodyArtVisible)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyArtHidden)
+                @Html.LabelFor(model => model.IsBodyArtHidden)
+                @Html.ValidationMessageFor(model => model.IsBodyArtHidden)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyArtPiercing)
+                @Html.LabelFor(model => model.IsBodyArtPiercing)
+                @Html.ValidationMessageFor(model => model.IsBodyArtPiercing)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsBodyArtAsk)
+                @Html.LabelFor(model => model.IsBodyArtAsk)
+                @Html.ValidationMessageFor(model => model.IsBodyArtAsk)
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Romantik</legend>
+            <!-- ******************************************************************************************** -->
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRomanticVery)
+                @Html.LabelFor(model => model.IsRomanticVery)
+                @Html.ValidationMessageFor(model => model.IsRomanticVery)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRomantic)
+                @Html.LabelFor(model => model.IsRomantic)
+                @Html.ValidationMessageFor(model => model.IsRomantic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRomanticLittle)
+                @Html.LabelFor(model => model.IsRomanticLittle)
+                @Html.ValidationMessageFor(model => model.IsRomanticLittle)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsRomanticNot)
+                @Html.LabelFor(model => model.IsRomanticNot)
+                @Html.ValidationMessageFor(model => model.IsRomanticNot)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Syn på äktenskap</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageHoly)
+                @Html.LabelFor(model => model.IsMarriageHoly)
+                @Html.ValidationMessageFor(model => model.IsMarriageHoly)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageVeryImportant)
+                @Html.LabelFor(model => model.IsMarriageVeryImportant)
+                @Html.ValidationMessageFor(model => model.IsMarriageVeryImportant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageImportant)
+                @Html.LabelFor(model => model.IsMarriageImportant)
+                @Html.ValidationMessageFor(model => model.IsMarriageImportant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageLessImportant)
+                @Html.LabelFor(model => model.IsMarriageLessImportant)
+                @Html.ValidationMessageFor(model => model.IsMarriageLessImportant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageUnImportant)
+                @Html.LabelFor(model => model.IsMarriageUnImportant)
+                @Html.ValidationMessageFor(model => model.IsMarriageUnImportant)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMarriageNotAgain)
+                @Html.LabelFor(model => model.IsMarriageNotAgain)
+                @Html.ValidationMessageFor(model => model.IsMarriageNotAgain)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Politisk ståndpunkt</legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticVeryConservative)
+                @Html.LabelFor(model => model.IsPoliticVeryConservative)
+                @Html.ValidationMessageFor(model => model.IsPoliticVeryConservative)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticConservative)
+                @Html.LabelFor(model => model.IsPoliticConservative)
+                @Html.ValidationMessageFor(model => model.IsPoliticConservative)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticMiddle)
+                @Html.LabelFor(model => model.IsPoliticMiddle)
+                @Html.ValidationMessageFor(model => model.IsPoliticMiddle)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticLiberal)
+                @Html.LabelFor(model => model.IsPoliticLiberal)
+                @Html.ValidationMessageFor(model => model.IsPoliticLiberal)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticVeryLiberal)
+                @Html.LabelFor(model => model.IsPoliticVeryLiberal)
+                @Html.ValidationMessageFor(model => model.IsPoliticVeryLiberal)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticNonConformist)
+                @Html.LabelFor(model => model.IsPoliticNonConformist)
+                @Html.ValidationMessageFor(model => model.IsPoliticNonConformist)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsPoliticOther)
+                @Html.LabelFor(model => model.IsPoliticOther)
+                @Html.ValidationMessageFor(model => model.IsPoliticOther)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset class="break-print-page">
+            <legend>Favoritmusik <i class="fa fa-music"></i></legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicNewAge)
+                @Html.LabelFor(model => model.IsMusicNewAge)
+                @Html.ValidationMessageFor(model => model.IsMusicNewAge)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicBlues)
+                @Html.LabelFor(model => model.IsMusicBlues)
+                @Html.ValidationMessageFor(model => model.IsMusicBlues)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicCountry)
+                @Html.LabelFor(model => model.IsMusicCountry)
+                @Html.ValidationMessageFor(model => model.IsMusicCountry)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicHits)
+                @Html.LabelFor(model => model.IsMusicHits)
+                @Html.ValidationMessageFor(model => model.IsMusicHits)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicDisco)
+                @Html.LabelFor(model => model.IsMusicDisco)
+                @Html.ValidationMessageFor(model => model.IsMusicDisco)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicElectronica)
+                @Html.LabelFor(model => model.IsMusicElectronica)
+                @Html.ValidationMessageFor(model => model.IsMusicElectronica)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicEthnic)
+                @Html.LabelFor(model => model.IsMusicEthnic)
+                @Html.ValidationMessageFor(model => model.IsMusicEthnic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicFilm)
+                @Html.LabelFor(model => model.IsMusicFilm)
+                @Html.ValidationMessageFor(model => model.IsMusicFilm)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicFolk)
+                @Html.LabelFor(model => model.IsMusicFolk)
+                @Html.ValidationMessageFor(model => model.IsMusicFolk)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicFunk)
+                @Html.LabelFor(model => model.IsMusicFunk)
+                @Html.ValidationMessageFor(model => model.IsMusicFunk)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicGospel)
+                @Html.LabelFor(model => model.IsMusicGospel)
+                @Html.ValidationMessageFor(model => model.IsMusicGospel)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicMetal)
+                @Html.LabelFor(model => model.IsMusicMetal)
+                @Html.ValidationMessageFor(model => model.IsMusicMetal)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicHipHop)
+                @Html.LabelFor(model => model.IsMusicHipHop)
+                @Html.ValidationMessageFor(model => model.IsMusicHipHop)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicJazz)
+                @Html.LabelFor(model => model.IsMusicJazz)
+                @Html.ValidationMessageFor(model => model.IsMusicJazz)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicClassic)
+                @Html.LabelFor(model => model.IsMusicClassic)
+                @Html.ValidationMessageFor(model => model.IsMusicClassic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicLatin)
+                @Html.LabelFor(model => model.IsMusicLatin)
+                @Html.ValidationMessageFor(model => model.IsMusicLatin)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicMusical)
+                @Html.LabelFor(model => model.IsMusicMusical)
+                @Html.ValidationMessageFor(model => model.IsMusicMusical)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicOpera)
+                @Html.LabelFor(model => model.IsMusicOpera)
+                @Html.ValidationMessageFor(model => model.IsMusicOpera)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicPop)
+                @Html.LabelFor(model => model.IsMusicPop)
+                @Html.ValidationMessageFor(model => model.IsMusicPop)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicRnB)
+                @Html.LabelFor(model => model.IsMusicRnB)
+                @Html.ValidationMessageFor(model => model.IsMusicRnB)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicRock)
+                @Html.LabelFor(model => model.IsMusicRock)
+                @Html.ValidationMessageFor(model => model.IsMusicRock)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicReggae)
+                @Html.LabelFor(model => model.IsMusicReggae)
+                @Html.ValidationMessageFor(model => model.IsMusicReggae)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicSoul)
+                @Html.LabelFor(model => model.IsMusicSoul)
+                @Html.ValidationMessageFor(model => model.IsMusicSoul)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMusicSynth)
+                @Html.LabelFor(model => model.IsMusicSynth)
+                @Html.ValidationMessageFor(model => model.IsMusicSynth)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+
+        <fieldset>
+            <legend>Favoritfilmer <i class="fa fa-film"></i></legend>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieAction)
+                @Html.LabelFor(model => model.IsMovieAction)
+                @Html.ValidationMessageFor(model => model.IsMovieAction)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieAnimation)
+                @Html.LabelFor(model => model.IsMovieAnimation)
+                @Html.ValidationMessageFor(model => model.IsMovieAnimation)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieAdventure)
+                @Html.LabelFor(model => model.IsMovieAdventure)
+                @Html.ValidationMessageFor(model => model.IsMovieAdventure)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieDocumentary)
+                @Html.LabelFor(model => model.IsMovieDocumentary)
+                @Html.ValidationMessageFor(model => model.IsMovieDocumentary)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieDrama)
+                @Html.LabelFor(model => model.IsMovieDrama)
+                @Html.ValidationMessageFor(model => model.IsMovieDrama)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieErotic)
+                @Html.LabelFor(model => model.IsMovieErotic)
+                @Html.ValidationMessageFor(model => model.IsMovieErotic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieFantasy)
+                @Html.LabelFor(model => model.IsMovieFantasy)
+                @Html.ValidationMessageFor(model => model.IsMovieFantasy)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieHistoric)
+                @Html.LabelFor(model => model.IsMovieHistoric)
+                @Html.ValidationMessageFor(model => model.IsMovieHistoric)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieIndependent)
+                @Html.LabelFor(model => model.IsMovieIndependent)
+                @Html.ValidationMessageFor(model => model.IsMovieIndependent)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieComedy)
+                @Html.LabelFor(model => model.IsMovieComedy)
+                @Html.ValidationMessageFor(model => model.IsMovieComedy)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieShort)
+                @Html.LabelFor(model => model.IsMovieShort)
+                @Html.ValidationMessageFor(model => model.IsMovieShort)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieWar)
+                @Html.LabelFor(model => model.IsMovieWar)
+                @Html.ValidationMessageFor(model => model.IsMovieWar)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieCrime)
+                @Html.LabelFor(model => model.IsMovieCrime)
+                @Html.ValidationMessageFor(model => model.IsMovieCrime)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieManga)
+                @Html.LabelFor(model => model.IsMovieManga)
+                @Html.ValidationMessageFor(model => model.IsMovieManga)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieMusic)
+                @Html.LabelFor(model => model.IsMovieMusic)
+                @Html.ValidationMessageFor(model => model.IsMovieMusic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieRomantic)
+                @Html.LabelFor(model => model.IsMovieRomantic)
+                @Html.ValidationMessageFor(model => model.IsMovieRomantic)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieThriller)
+                @Html.LabelFor(model => model.IsMovieThriller)
+                @Html.ValidationMessageFor(model => model.IsMovieThriller)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieSciFi)
+                @Html.LabelFor(model => model.IsMovieSciFi)
+                @Html.ValidationMessageFor(model => model.IsMovieSciFi)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieHorror)
+                @Html.LabelFor(model => model.IsMovieHorror)
+                @Html.ValidationMessageFor(model => model.IsMovieHorror)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieCartoon)
+                @Html.LabelFor(model => model.IsMovieCartoon)
+                @Html.ValidationMessageFor(model => model.IsMovieCartoon)
+            </div>
+            <div class="editor-label">
+                @Html.EditorFor(model => model.IsMovieWestern)
+                @Html.LabelFor(model => model.IsMovieWestern)
+                @Html.ValidationMessageFor(model => model.IsMovieWestern)
+            </div>
+            <!-- ******************************************************************************************** -->
+        </fieldset>
+        if (!Model.IsReadOnly)
+        {
+            <fieldset>
+                <legend>Sida 4/6</legend>
+                <div class="editor-label">
+                    <button name="direction" value="@PageButtons.PreviousPage" type="submit">
+                        <i class="fa fa-chevron-left"></i> Förra
+                    </button>
+                    <button name="direction" value="@PageButtons.NextPage" type="submit">
+                        Nästa <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </fieldset>
+        }
+    }
+</div>

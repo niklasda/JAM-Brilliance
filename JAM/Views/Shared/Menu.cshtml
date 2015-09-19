@@ -1,5 +1,5 @@
-﻿@using JAM.Logic
-@using Resources
+﻿@using JAM.App_GlobalResources
+@using JAM.Logic
 
 <table width="100%" id="main-nav" class="container">
     <tr>
@@ -8,7 +8,7 @@
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Start ? "active" : "")">@Html.ActionLink(@Global.Menu_Start, "Start", "Home")</li>
-                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Survery ? "active" : "")">@Html.ActionLink(@Global.Menu_Signup, "Create", "Survey")</li>
+                        <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Survery ? "active" : "")">@Html.ActionLink(@Global.Menu_Signup, "Page1", "Survey")</li>
                         <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Prices ? "active" : "")">@Html.ActionLink(@Global.Menu_Prices, "Prices", "Home")</li>
                         <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Process ? "active" : "")">@Html.ActionLink(@Global.Menu_Process, "Process", "Home")</li>
                         <li class="nav-item @(ViewBag.CurrentPageId == PageIds.Faq ? "active" : "")">@Html.ActionLink(@Global.Menu_Faq, "Faq", "Home")</li>

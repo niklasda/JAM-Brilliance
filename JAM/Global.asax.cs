@@ -22,6 +22,8 @@ namespace JAM
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            MapperConfig.CreateAutoMaps();
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)
