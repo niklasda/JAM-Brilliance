@@ -12,7 +12,7 @@ namespace JAM.Brilliance
                         "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/JamTheme.css",
+                      "~/Content/JamThemeBig.css",
                       "~/Content/Menu.css",
                       "~/Content/PagedList.css",
                       "~/Content/themes/base/all.css",

@@ -45,7 +45,6 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             return Json(response, JsonRequestBehavior.AllowGet);
         }
 
-
         [HttpGet, ValidateToken]
         public JsonResult GetSurveySettings()
         {
@@ -69,5 +68,29 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             var response = new SurveySettingsModel { Success = true, Message = "OK", Settings = ssvm };
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+        //[HttpPost, ValidateToken]
+        //public JsonResult SetSurveySettings(SurveySettingsModel model)
+        //{
+        //    var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+        //    var ok = _surveySettingsDataService.SetSurveySettings(model);
+        //    var ssvm = Mapper.Map<SurveySettingsViewModel>(surveySettings);
+        //    if (ssvm != null)
+        //    {
+        //        var survey = _surveyDataService.GetSurvey(selfSurveyId);
+        //        var ssvm2 = Mapper.Map<ShortSurveyViewModel>(survey);
+        //        ssvm = new SurveySettingsViewModel();
+        //        ssvm.SearchAgeMin = ssvm2.Age - 18 ?? 25;
+        //        ssvm.SearchAgeMax = ssvm2.Age + 18 ?? 50;
+
+        //        ssvm.SearchAgeMin = Math.Max(ssvm.SearchAgeMin, 18);
+        //        ssvm.SearchAgeMax = Math.Min(ssvm.SearchAgeMax, ssvm.SearchAgeMin + 1);
+
+        //        ssvm.SearchDistanceMax = 50;
+        //    }
+
+        //    var response = new SurveySettingsModel { Success = true, Message = "OK", Settings = ssvm };
+        //    return Json(response, JsonRequestBehavior.AllowGet);
+        //}
     }
 }

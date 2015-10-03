@@ -41,12 +41,6 @@
                             <li class="nav-item @(Model.CurrentPageId == PageIds.Register ? "active" : "")">@Html.ActionLink("Registrera dig!", "Register", "Account")</li>
                         }
 
-                        <li class="nav-item">
-                            <div id="flags">
-                                <a href="@Url.Action("Swedish", "Home")"><img width="28" title="Svenska" alt="Svenska" src='@Url.Content(Constants.Flags.SwedishFlag)' /></a>
-                                <a href="@Url.Action("English", "Home")"><img width="28" title="English" alt="English" src='@Url.Content(Constants.Flags.EnglishFlag)' /></a>
-                            </div>
-                        </li>
                         @if (Model.IsAdmin)
                         {
                             <li class="nav-item @(Model.CurrentPageId == PageIds.DevPage ? "active" : "")">
