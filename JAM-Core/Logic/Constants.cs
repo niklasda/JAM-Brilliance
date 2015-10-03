@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public const string Title = "Brilliance";
+        public const string Title = "Sparkle";
 
         public const string DateTimeFormat = "MMM-dd HH:mm";
 
