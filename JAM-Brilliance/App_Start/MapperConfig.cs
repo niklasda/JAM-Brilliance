@@ -32,6 +32,7 @@ namespace JAM.Brilliance
             Mapper.CreateMap<Survey, SurveyPage5ViewModel>().ReverseMap();
             Mapper.CreateMap<Survey, SurveyPage6ViewModel>().ReverseMap();
 
+            Mapper.CreateMap<SurveySettings, SurveySettingsViewModel>();
             Mapper.CreateMap<WantedSurveyViewModel, WantedSurvey>().ReverseMap();
             Mapper.CreateMap<PictureViewModel, Picture>().ReverseMap();
         }

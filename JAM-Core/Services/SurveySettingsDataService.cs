@@ -33,5 +33,9 @@ namespace JAM.Core.Services
             }
         }
 
+        public bool SetSurveySettings(SurveySettings surveySettings)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

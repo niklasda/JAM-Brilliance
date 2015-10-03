@@ -5,5 +5,7 @@ namespace JAM.Core.Interfaces
     public interface ISurveySettingsDataService
     {
         SurveySettings GetSurveySettings(int surveyId);
+
+        bool SetSurveySettings(SurveySettings surveySettings);
     }
 }
