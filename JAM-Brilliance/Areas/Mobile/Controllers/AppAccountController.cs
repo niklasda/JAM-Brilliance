@@ -66,6 +66,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                 if (createStatus == MembershipCreateStatus.Success && user != null)
                 {
                     AccountService.MakeUserMobileApp(model.UserName);
+                    CreateExtraUserSurvey(model);
 
                     Response.StatusCode = (int)HttpStatusCode.OK;
                     response = new StatusModel { Success = true, Message = "OK" };
@@ -92,13 +93,6 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             return Json(new StatusModel { Success = true, Message = "OK" });
         }
 
-        //[HttpGet]
-        //public JsonResult Test()
-        //{
-        //    var userName = AccountService.GetUserName("nd@nida.se");
-        //    return Json(userName, JsonRequestBehavior.AllowGet);
-        //}
-
         [HttpGet, Authorize(Roles = MemberRoles.Administrator)]
         public JsonResult CreateExtraUsers()
         {
@@ -107,8 +101,6 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                 "Anna", "Bertil", "Carl", "David", "Erik", "Filip", "Gunnar", "Harald", "Ivan", "Jan",
                 "Karin", "Louise", "Maria", "Nils", "Ove", "Per", "Rikard", "Stina", "Tor", "Urban", "Vera", "Walter", "Yngve", "Östen"
             };
-
-            Random rnd = new Random(DateTime.Now.Millisecond);
 
             MembershipCreateStatus createStatus;
 
@@ -135,26 +127,32 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                 if (createStatus == MembershipCreateStatus.Success && user != null)
                 {
                     AccountService.MakeUserMobileApp(model.UserName);
+                   CreateExtraUserSurvey(model);
                 }
-                
-                
-                SurveyPage1ViewModel sp1vm = new SurveyPage1ViewModel();
-                sp1vm.Name = string.Format("{0} {0}sson", name);
-                sp1vm.Height = rnd.Next(150,202);
-                sp1vm.Weight = rnd.Next(60,130);
-                sp1vm.Birth = new DateTime(rnd.Next(1940, 1994), rnd.Next(1, 12), rnd.Next(1, 27));
-                sp1vm.Email = email;
-                sp1vm.PostalCode = postal.PostalCode;
-                sp1vm.City = postal.City;
-                sp1vm.Note1 = "Extra";
-                sp1vm.WhatSearchingForWhatId = i % 2 == 0 ? 2 : 4;
-
-                Survey sp1 = Mapper.Map<Survey>(sp1vm);
-
-                _surveyDataService.SavePage1(sp1);
             }
 
             return Json(new StatusModel { Success = true, Message = "OK" }, JsonRequestBehavior.AllowGet);
+        }
+
+        private void CreateExtraUserSurvey(SignupModel model)
+        {
+            Random rnd = new Random(DateTime.Now.Millisecond);
+            PostalCodeInfo postal = _postalCodeDataService.GetPostalCodeInfo(model.PostalCode);
+
+            SurveyPage1ViewModel sp1vm = new SurveyPage1ViewModel();
+            sp1vm.Name = string.Format("{0} {0}sson", model.UserName);
+            sp1vm.Height = rnd.Next(150, 202);
+            sp1vm.Weight = rnd.Next(60, 130);
+            sp1vm.Birth = new DateTime(rnd.Next(1940, 1994), rnd.Next(1, 12), rnd.Next(1, 27));
+            sp1vm.Email = model.Email;
+            sp1vm.PostalCode = model.PostalCode;
+            sp1vm.City = postal.City;
+            sp1vm.Note1 = "Extra";
+            sp1vm.WhatSearchingForWhatId = model.AmMan ? 2 : 4;
+
+            Survey sp1 = Mapper.Map<Survey>(sp1vm);
+
+            _surveyDataService.SavePage1(sp1);
         }
 
         private PostalCodeInfo GetRandomPostalCode()
