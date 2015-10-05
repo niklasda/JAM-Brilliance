@@ -1,7 +1,6 @@
 "use strict";
 var pnr = [
-    { nr: '186 00', city: 'Vallentuna', muni: 'Stockholm	', county: 'Vallentuna	', lat: 59.5344, lng: 18.0776 },
-    { nr: '186 00', city: 'Vallentuna', muni: 'Stockholm	', county: 'Vallentuna	', lat: 59.5344, lng: 18.0776 }
+    {  }
 ];
 
 var brilliance = {
