@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'plugins/http', 'plugins/dialog', 'knockout', 'durandal/app', 'jqm', 'jqui'], function (router, http, dlg, ko, app, jqm, jqui) {
+﻿define(['plugins/router', 'plugins/http', 'plugins/dialog', 'knockout', 'durandal/app', 'jquery', 'jqui'], function (router, http, dlg, ko, app, jquery, jqui) {
     "use strict";
 
     return {

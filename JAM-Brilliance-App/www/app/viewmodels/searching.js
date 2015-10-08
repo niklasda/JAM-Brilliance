@@ -1,4 +1,4 @@
-﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'jqm', 'slick'], function (router, http, ko, app, jqm, slick) {
+﻿define(['plugins/router', 'plugins/http', 'knockout', 'durandal/app', 'jquery', 'slick'], function (router, http, ko, app, jquery, slick) {
     "use strict";
 
     return {

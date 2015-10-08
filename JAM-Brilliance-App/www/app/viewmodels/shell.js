@@ -13,14 +13,7 @@
             return false;
         }*/,
         activate: function () {
-            $(document).on("mobileinit", function () {
-                $.mobile.loader.prototype.options.text = "";
-                //$.mobile.loader.prototype.options.textOnly = true;
-                //$.mobile.loader.prototype.options.textVisible = false;
-                //$.mobile.loader.prototype.options.theme = "a";
-                //$.mobile.loader.prototype.options.html = "";
-            });
-
+            
             var token = localStorage.getItem("x-brilliance-token");
             if (token && token.length === 36) {
                 this.validToken(true);
