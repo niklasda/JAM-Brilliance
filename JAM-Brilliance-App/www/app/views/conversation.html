@@ -1,7 +1,7 @@
 ﻿<section>
     <h2>
-        <a href="#conversations" data-ajax="false" style="background: rgba(0, 0, 0, 0.6); color: white;" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i></a>
-        <a data-ajax="false" data-bind="attr: { href: '/#contact/' + otherSurveyId }">
+        <a href="#conversations" style="background: rgba(0, 0, 0, 0.6); color: white;" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i></a>
+        <a data-bind="attr: { href: '/#contact/' + otherSurveyId }">
             <span data-bind="text: otherSurveyName"></span>
         </a>
     </h2>
@@ -21,7 +21,7 @@
             </tr>
             <tr data-bind="if: FromSurveyId==$parent.otherSurveyId">
                 <td>
-                    <a data-ajax="false" data-bind="attr: { href: '#contact/' + $parent.otherSurveyId }">
+                    <a data-bind="attr: { href: '#contact/' + $parent.otherSurveyId }">
                         <img width="50" src="../../Content/images/icon.png" style="float:left;" />
                     </a>
                     <div data-bind='html: BodyAsHtml' class="conversation-other" style="margin-left: 10px"></div>
