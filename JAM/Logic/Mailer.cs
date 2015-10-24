@@ -7,8 +7,13 @@ using JAM.Models;
 
 namespace JAM.Logic
 {
-    //public static class Mailer
-    //{
+    public static class Mailer
+    {
+        public static string BuildHtmlText(int packageId, int surveyid)
+        {
+     //   string message = BuildText(packageId, id);
+            return string.Format("Hej {0}.{1}{2}", "name", Environment.NewLine, "message");
+        }
     //    internal const int PlatinumId = 3;
     //    internal const int GoldId = 2;
     //    internal const int BaseId = 1;
@@ -159,5 +164,5 @@ namespace JAM.Logic
     //            return false;
     //        }
     //    }
-    //}
+    }
 }

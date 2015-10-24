@@ -37,6 +37,15 @@ namespace JAM.Controllers
         }
 
         [Authorize(Roles = MemberRoles.Member)]
+        [OutputCache(VaryByParam = "surveyId", Duration = 30)]
+        public FileResult MyPictureData(int surveyId)
+        {
+            Picture picture = _pictureDataService.GetMainPictureFor(surveyId);
+            // TODO
+            return CheckPicture(picture);
+        }
+
+        [Authorize(Roles = MemberRoles.Member)]
         [OutputCache(VaryByParam = "surveyId,idx", Duration = 30)]
         public FileResult OtherPictureDataFor(int surveyId, int idx)
         {
