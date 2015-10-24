@@ -334,6 +334,7 @@
     <Content Include="Content\images\flags\Swedish.png" />
     <Content Include="Content\images\flags\English.png" />
     <Content Include="Content\images\ja\about_us.jpg" />
+    <Content Include="Content\images\app\appstores.png" />
     <Content Include="Content\images\ja\coaching.jpg" />
     <Content Include="Content\images\ja\dating1.jpg" />
     <Content Include="Content\images\ja\dating3.jpg" />
