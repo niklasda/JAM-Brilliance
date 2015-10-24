@@ -29,11 +29,11 @@ namespace JAM.Brilliance.Controllers
             return View();
         }
 
-        public ViewResult About()
-        {
-            ViewBag.CurrentPageId = PageIds.About;
-            return View();
-        }
+        //public ViewResult About()
+        //{
+        //    ViewBag.CurrentPageId = PageIds.About;
+        //    return View();
+        //}
 
         [Authorize(Roles = MemberRoles.Member)]
         public ActionResult MyActions()
@@ -66,32 +66,32 @@ namespace JAM.Brilliance.Controllers
             return RedirectToAction("SendMessageToUs", "Message");
         }
 
-        public ViewResult Coaching()
-        {
-            ViewBag.CurrentPageId = PageIds.Coaching;
-            return View();
-        }
+        //public ViewResult Coaching()
+        //{
+        //    ViewBag.CurrentPageId = PageIds.Coaching;
+        //    return View();
+        //}
 
-        public ViewResult Sharpen()
-        {
-            ViewBag.CurrentPageId = PageIds.Sharpen;
-            return View();
-        }
+        //public ViewResult Sharpen()
+        //{
+        //    ViewBag.CurrentPageId = PageIds.Sharpen;
+        //    return View();
+        //}
 
-        public ViewResult Terms()
-        {
-            ViewBag.CurrentPageId = PageIds.Register;
-            return View();
-        }
+        //public ViewResult Terms()
+        //{
+        //    ViewBag.CurrentPageId = PageIds.Register;
+        //    return View();
+        //}
 
-        public RedirectToRouteResult Danish()
-        {
-            const string CultureCode = "da";
-            HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
-            _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
+        //public RedirectToRouteResult Danish()
+        //{
+        //    const string CultureCode = "da";
+        //    HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
+        //    _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
 
-            return StartPage();
-        }
+        //    return StartPage();
+        //}
 
         public RedirectToRouteResult StartPage()
         {
@@ -103,32 +103,32 @@ namespace JAM.Brilliance.Controllers
             return RedirectToAction("Start");
         }
 
-        public RedirectToRouteResult Swedish()
-        {
-            const string CultureCode = "sv";
-            HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
-            _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
+        //public RedirectToRouteResult Swedish()
+        //{
+        //    const string CultureCode = "sv";
+        //    HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
+        //    _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
 
-            return StartPage();
-        }
+        //    return StartPage();
+        //}
 
-        public RedirectToRouteResult English()
-        {
-            const string CultureCode = "en";
-            HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
-            _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
+        //public RedirectToRouteResult English()
+        //{
+        //    const string CultureCode = "en";
+        //    HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
+        //    _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
 
-            return StartPage();
-        }
+        //    return StartPage();
+        //}
 
-        public RedirectToRouteResult Arabic()
-        {
-            const string CultureCode = "ar";
-            HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
-            _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
+        //public RedirectToRouteResult Arabic()
+        //{
+        //    const string CultureCode = "ar";
+        //    HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, CultureCode));
+        //    _accountService.UpdateCurrentUserCommentCultureCode(CultureCode);
 
-            return StartPage();
-        }
+        //    return StartPage();
+        //}
 
         public RedirectResult Matchmaking()
         {
