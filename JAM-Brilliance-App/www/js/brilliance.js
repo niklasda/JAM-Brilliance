@@ -11,7 +11,7 @@ var brilliance = {
         if (!app && document.URL.indexOf("localhost") > -1) {
             return "http://localhost:45562/";
         } else {
-            return "https://brilliance.se/";
+            return "https://sparkle-dating.azurewebsites.net/";
         }
     },
 
