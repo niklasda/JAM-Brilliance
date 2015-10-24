@@ -65,12 +65,14 @@
                     .then(function (response, textStatus) {
                         
                         that.message(response.Message);
+                        window.location.href = '#signup4';
+                       // return true;
                         //                  window.location.href = '';
                     }).fail(function (jqXHR, textStatus, errorThrown) {
                         that.message(jqXHR.responseJSON.Message);
+                      //  return false;
                     });
 
-                return true;
             } else {
                 result.showAllMessages();
                 return false;

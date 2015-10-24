@@ -28,17 +28,18 @@
             </div>
             <div class="form-group">
                 <label for="terms">Godkänn Villkor*</label> <a href="#terms">Läs villkoren</a>
-                <br />
+                <br/>
                 <input id="terms" type="checkbox" class="form-control" style="width: 70px;" data-bind="checked: termsAccepted">
-                <br />
-
+                <br/>
+            </div>
+            <div>
+                <span data-bind="text: message" style="padding-left: 10px"></span>
             </div>
         </div>
         <div>
-            <span data-bind="text: message" style="padding-left: 10px"></span>
             <br />
             <a href="#signup2" class="btn btn-default transparent-button" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i> F&ouml;rra</a>
-            <a href="#signup4" class="btn btn-default transparent-button" data-bind="click: onClick">Klar <i class="fa fa-angellist"></i></a>
+            <a href="#signup3" class="btn btn-default transparent-button" data-bind="click: onClick">Klar <i class="fa fa-angellist"></i></a>
 
             <br />
         </div>

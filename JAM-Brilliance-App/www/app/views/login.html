@@ -14,17 +14,15 @@
         </div>
         <div class="form-group">
             <label for="password">Lösenord</label>
-            <input id="password" type="password" class="form-control" placeholder="L&ouml;senord" data-bind="value: password" />
-            <br />
+            <input id="password" type="password" class="form-control" placeholder="L&ouml;senord" data-bind="value: password"/>
+        </div>
+        <div>
+            <span data-bind="text: message" style="padding-left: 10px"></span>
         </div>
     </div>
 
     <div class="form-group">
-        <a href="#login" class="btn btn-default" data-bind="click: onLoginClick">Logga in <i class="fa fa-arrow-right"></i></a>
-
+        <a href="#login" class="btn btn-default transparent-button" data-bind="click: onLoginClick">Logga in <i class="fa fa-arrow-right"></i></a>
         <br />
-
-        Response: <span data-bind="text : message"></span>
-
     </div>
 </section>

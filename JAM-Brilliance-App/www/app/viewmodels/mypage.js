@@ -14,7 +14,7 @@
         imgurl: ko.observable(),
         editable: ko.observable(false),
         newPostalCode: ko.observable(),
-        newLookedupCity: ko.observable(""),
+        newLookedupCity: ko.observable(),
 
         getCityFromPostalCode: function (postalCode) {
             var city = '';
@@ -35,6 +35,8 @@
 
             var token = localStorage.getItem("x-brilliance-token");
             var that = this;
+
+            that.editable(false);
 
             http.get(brilliance.appbaseurl() + "/Mobile/AppSurvey/GetMyShortSurvey", '', { 'x-brilliance-token': token })
                 .then(function (response, textStatus) {

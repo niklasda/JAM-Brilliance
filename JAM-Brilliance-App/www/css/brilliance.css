@@ -27,26 +27,32 @@ nav {
 }
 
 .transparent-button {
-     background-color: rgba(0, 0, 0, 0.6);
-      color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
 }
+
+    .transparent-button:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: lightgrey;
+    }
+
 .label-input-area {
-     background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
+
 .nice-table-body tr {
     line-height: 35px;
     margin: 0px;
     padding: 0px;
-    
 }
 
     .nice-table-body tr:hover {
         background-color: slategray;
     }
 
-    .nice-table-body a {
-        color: lightgrey;
-    }
+.nice-table-body a {
+    color: lightgrey;
+}
 
 
 .conversation-table {

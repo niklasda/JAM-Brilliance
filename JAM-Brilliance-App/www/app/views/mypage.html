@@ -27,7 +27,7 @@
         </div>
 
         <div data-bind="if: editable">
-            <div style="width: 30%">
+            <div style="width: 80%">
                 <span>Nytt postnummer:</span> <span data-bind="text: newLookedupCity"></span><br />
                 <input class="form-control" data-bind="value: newPostalCode, valueUpdate: 'afterkeydown'" /><br />
 
@@ -37,7 +37,7 @@
                 <a class="btn btn-default" data-bind="click: upload">Ladd upp bild</a>
 
             </div>
-            <a class="btn btn-default" data-bind="click: save">Spara</a>
+            <a class="btn btn-default transparent-button" data-bind="click: save">Spara</a>
 
         </div>
 
