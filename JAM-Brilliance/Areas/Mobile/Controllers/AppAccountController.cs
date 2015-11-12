@@ -98,8 +98,8 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
         {
             string[] names =
             {
-                "Anna", "Bertil", "Carl", "David", "Erik", "Filip", "Gunnar", "Harald", "Ivan", "Jan",
-                "Karin", "Louise", "Maria", "Nils", "Ove", "Per", "Rikard", "Stina", "Tor", "Urban", "Vera", "Walter", "Yngve", "Östen"
+                "Anna", "Bertil", "Cecilia", "David", "Erika", "Filip", "Gunnel", "Harald", "Iris", "Jan",
+                "Karin", "Lars", "Maria", "Nils", "Olga", "Per", "Rianna", "Sven", "Therese", "Urban", "Vera", "Walter", "Yvonne", "Östen"
             };
 
             MembershipCreateStatus createStatus;
@@ -111,10 +111,10 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                 var email = string.Format("{0}@{1}.se", name, postal.City).ToLower();
                 SignupModel model = new SignupModel()
                 {
-                    AmMan = i % 2 == 0,
-                    AmWoman = i % 2 != 0,
-                    WantMan = i % 2 != 0,
-                    WantWoman = i % 2 == 0,
+                    AmMan = i % 2 != 0,
+                    AmWoman = i % 2 == 0,
+                    WantMan = i % 2 == 0,
+                    WantWoman = i % 2 != 0,
                     Country = "",
                     UserName = string.Format("{0}{1}", name, i),
                     Password = string.Format("{0}_{1}_{0}_{1}", name, i),
@@ -140,7 +140,14 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             PostalCodeInfo postal = _postalCodeDataService.GetPostalCodeInfo(model.PostalCode);
 
             SurveyPage1ViewModel sp1vm = new SurveyPage1ViewModel();
-            sp1vm.Name = string.Format("{0} {0}sson", model.UserName);
+            if (model.AmMan)
+            {
+                sp1vm.Name = string.Format("{0} {0}sson", model.UserName);
+            }
+            else
+            {
+                sp1vm.Name = string.Format("{0} {0}dotter", model.UserName);
+            }
             sp1vm.Height = rnd.Next(150, 202);
             sp1vm.Weight = rnd.Next(60, 130);
             sp1vm.Birth = new DateTime(rnd.Next(1940, 1994), rnd.Next(1, 12), rnd.Next(1, 27));

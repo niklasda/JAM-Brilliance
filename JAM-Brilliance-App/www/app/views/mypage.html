@@ -16,6 +16,9 @@
                 <span>Födelseår: </span><span data-bind="text: year"></span><br />
                 <span data-bind="if: isMale">Kön: Man</span>
                 <span data-bind="ifnot: isMale">Kön: Kvinna</span>
+                <br/>
+                <span data-bind="if: isMale">Söker: Kvinna</span>
+                <span data-bind="ifnot: isMale">Söker: Man</span>
                 <br />
                 <span data-bind="text: age"></span><span> år</span><br />
                 <span data-bind="text: note1"></span><br />
@@ -30,7 +33,6 @@
             <div style="width: 80%">
                 <span>Nytt postnummer:</span> <span data-bind="text: newLookedupCity"></span><br />
                 <input class="form-control" data-bind="value: newPostalCode, valueUpdate: 'afterkeydown'" /><br />
-
             </div>
             <div>
                 <input type="file" data-bind="event: { change: function() { uploadImage($element.files[0]) } }" /> 

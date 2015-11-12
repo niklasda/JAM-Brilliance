@@ -19,7 +19,14 @@ namespace JAM.Core.Models
 
         public DateTime LastActionDate { get; set; }
 
-        public string LastActionDateFormatted { get { return LastActionDate.ToString("dd-MMM hh:mm"); } }
+        public string LastActionDateFormatted
+        {
+            get
+            {
+                int diff = (int)(DateTime.Now - LastActionDate).TotalHours;
+                return string.Format("{0}h", diff);
+            }
+        }
 
     }
 }

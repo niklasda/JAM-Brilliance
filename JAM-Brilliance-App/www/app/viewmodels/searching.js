@@ -21,13 +21,24 @@
                 OtherSurveyId: surveyId
             };
 
+            $("#prof_" + surveyId).fadeOut("fast", function() {
+                $("#prof_" + surveyId).removeClass('fa-user-plus');
+            });
+
+
             http.put(brilliance.appbaseurl() + "/Mobile/AppContactivity/PutNewFavourite", data, { 'x-brilliance-token': token })
                    .then(function (response, textStatus) {
+
+                       $("#prof_" + surveyId).addClass('fa-check');
+                       $("#prof_" + surveyId).fadeIn();
+
                        //that.message(response.Message);
                        //window.location.href = '';
                    }).fail(function (jqXHR, textStatus, errorThrown) {
                        //that.message(jqXHR.responseJSON.Message);
                        //that.message(textStatus);
+                       $("#prof_" + surveyId).addClass('fa-user-plus');
+                       $("#prof_" + surveyId).fadeIn();
                    });
         },
         startConversation: function (surveyId) {
