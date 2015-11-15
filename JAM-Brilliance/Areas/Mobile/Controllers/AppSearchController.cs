@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using JAM.Brilliance.Areas.Mobile.Attributes;
@@ -42,6 +43,12 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             IEnumerable<SearchResult> surveysFound = _searchDataService.SimplerSearch(sc);
 
             IList<SearchResultViewModel> srvm = Mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(surveysFound);
+
+            int nbrOfExistingHits = 0;
+            if (int.TryParse(postalCode, out nbrOfExistingHits))
+            {
+                srvm = srvm.Skip(nbrOfExistingHits).Take(1).ToList();
+            }
 
             var response = new SearchResultModel { Success = true, Message = "OK", SearchResults = srvm };
             return Json(response, JsonRequestBehavior.AllowGet);
