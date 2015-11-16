@@ -51,6 +51,17 @@
                 infinite: false
             });
 
+            var that = this;
+
+            $("#carousel").on("afterChange", function (event, aslick, currentSlide) {
+                if (aslick.slideCount - 1 === currentSlide) {
+                    //alert('sista träffen');
+                    $("#lastSearchHit").text('laddar fler...');
+
+                    that.loadAndShowSearchHits(aslick.slideCount - 1);
+                }
+            });
+
             this.loadAndShowSearchHits(0);
 
         },
@@ -75,13 +86,15 @@
                 }).fail(brilliance.handleErrors);
         },
         initCarousel: function (that) {
+            var lastCount = $("#carousel").slick("getSlick").slideCount;
+
             if (!that.searchResults || that.searchResults.length === 0) {
-                $("#carousel").slick("slickRemove", 0);
+                $("#carousel").slick("slickRemove", lastCount - 1);
                 $("#carousel").slick("slickAdd", "<div><h3>Inga sökträffar</h3></div>");
             } else {
-                var lastCount = $("#carousel").slick("getSlick").slideCount;
-                $("#carousel").slick("slickRemove", lastCount - 1);
 
+            //    var lastCount = $("#carousel").slick("getSlick").slideCount;
+                $("#carousel").slick("slickRemove", lastCount - 1);
 
                 that.searchResults.forEach(function (item) {
 
@@ -109,14 +122,7 @@
                 });
 
                 $("#carousel").slick("slickAdd", "<div><h3>Inga fler sökresultat!</h3><div id='lastSearchHit'></div></div>");
-                $("#carousel").on("afterChange", function (event, aslick, currentSlide) {
-                    if (aslick.slideCount - 1 === currentSlide) {
-                        //alert('sista träffen');
-                        $("#lastSearchHit").text('laddar fler...');
 
-                        that.loadAndShowSearchHits(aslick.slideCount - 1);
-                    }
-                });
             }
         }
     };
