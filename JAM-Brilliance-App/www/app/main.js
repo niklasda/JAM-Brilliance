@@ -4,7 +4,7 @@ requirejs.config({
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
         'transitions': '../Scripts/durandal/transitions',
-        'knockout': '../Scripts/knockout-3.3.0',
+        'knockout': '../Scripts/knockout-3.4.0',
         'knockout-validation': '../Scripts/knockout.validation',
         'bootstrap': '../Scripts/bootstrap',
         'jquery': '../Scripts/jquery-2.1.4',
