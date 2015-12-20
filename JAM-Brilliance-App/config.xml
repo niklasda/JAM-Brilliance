@@ -2,7 +2,7 @@
 <widget id="se.sparkledating.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Sparkle</name>
     <description>Sparkle Dating.</description>
-    <author email="brilliancedating@gmail.com" href="http://sparkle-datig.com">Sparkle Dating</author>
+    <author email="sparkledating@gmail.com" href="http://sparkle-dating.com">Sparkle Dating</author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
     <preference name="phonegap-version" value="3.7.0" />

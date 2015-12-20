@@ -1,0 +1,40 @@
+﻿<section>
+    <h2>
+        <a href="#signup1" style="background: rgba(0, 0, 0, 0.6); color: white;" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i></a>
+        Urval
+    </h2>
+    <div>
+        <br />
+
+        <div class="label-input-area">
+            <div class="form-group">
+
+                <label for="country" onclick="">Välj land</label>
+                <br />
+                <select id="country" class="form-control" data-bind="options: countries"></select>
+
+            </div>
+
+            <div class="form-group">
+                <label for="postal-code">postnummer*</label><span data-bind="text: lookedupCity" style="padding-left: 10px;"></span>
+                <br />
+                <input id="postal-code" type="number" class="form-control" placeholder="Postnummer" data-bind="value: postalCode, valueUpdate: 'afterkeydown'">
+
+            </div>
+            <div class="form-group">
+                <label for="birthyear">Födelseår*</label>
+                <br />
+                <input id="birthyear" type="number" class="form-control" placeholder="Födelseår (åååå)" data-bind="value: birthYear, valueUpdate: 'afterkeydown'">
+                <br />
+
+            </div>
+        </div>
+        <div class="form-group">
+
+            <a href="#signup1" class="btn btn-default transparent-button" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i> F&ouml;rra</a>
+            <a href="#signup3" class="btn btn-default transparent-button" data-bind="click: onClick">N&auml;sta <i class="fa fa-arrow-right"></i></a>
+
+            <br />
+        </div>
+    </div>
+</section>

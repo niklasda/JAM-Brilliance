@@ -1,0 +1,47 @@
+﻿<section>
+    <h2>Min sida</h2>
+    <br />
+
+    <div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; ">
+        <div style="float: left; padding-right: 20px; ">
+
+            <img width="130" title="" data-bind="attr: { src: imgurl }" />
+
+        </div>
+        <div>
+            <div>
+
+                <span data-bind="text: name"></span><br />
+                <span data-bind="text: postalCode"></span> <span data-bind="text: city"></span><br />
+                <span>Födelseår: </span><span data-bind="text: year"></span><br />
+                <span data-bind="if: isMale">Kön: Man</span>
+                <span data-bind="ifnot: isMale">Kön: Kvinna</span>
+                <br/>
+                <span data-bind="if: isMale">Söker: Kvinna</span>
+                <span data-bind="ifnot: isMale">Söker: Man</span>
+                <br />
+                <span data-bind="text: age"></span><span> år</span><br />
+                <span data-bind="text: note1"></span><br />
+            </div>
+            <br />
+            <div data-bind="ifnot: editable">
+                <a class="btn btn-default transparent-button" data-bind="click: edit">Ändra <i class="fa fa-pencil"></i></a>
+            </div>
+        </div>
+
+        <div data-bind="if: editable">
+            <div style="width: 80%">
+                <span>Nytt postnummer:</span> <span data-bind="text: newLookedupCity"></span><br />
+                <input class="form-control" data-bind="value: newPostalCode, valueUpdate: 'afterkeydown'" /><br />
+            </div>
+            <div>
+                <input type="file" data-bind="event: { change: function() { uploadImage($element.files[0]) } }" /> 
+                <a class="btn btn-default" data-bind="click: upload">Ladd upp bild</a>
+
+            </div>
+            <a class="btn btn-default transparent-button" data-bind="click: save">Spara</a>
+
+        </div>
+
+    </div>
+</section>

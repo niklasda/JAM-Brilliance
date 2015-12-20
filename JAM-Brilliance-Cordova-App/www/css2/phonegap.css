@@ -1,0 +1,46 @@
+﻿@charset "utf-8";
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+body {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: black;
+    background-image: url(../images/black_bg_couple_v.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: lightgrey;
+}
+
+.validationMessage {
+    color: red;
+}
+
+/* Portrait layout (default) */
+.app {
+    height: 100vh;
+    padding: 0px; /* image height is 200px (bottom 20px are overlapped with text) */
+    margin: 0px; /* offset vertical: half of image height and text area height */
+    /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        padding: 0px; /* padding-top + padding-bottom + text area = image height */
+        margin: 0px; /* offset vertical: half of image height */
+        /* offset horizontal: half of image width and text area width */
+    }
+    body {
+        background-image: url(../images/black_bg_couple_h.png);
+    }
+}
+
+.site-logo {
+    float: left;
+    display: block;
+    padding-left: 10px;
+}

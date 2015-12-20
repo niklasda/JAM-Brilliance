@@ -1,0 +1,29 @@
+﻿<section>
+    <h2>Inställningar</h2>
+    <br />
+
+    <div style="background-color: rgba(0, 0, 0, 0.7); padding: 20px; ">
+        <div class="form-group">
+            Ålder (<span id="agerange-min-text" data-bind="text: ageMin"></span><span> - </span><span id="agerange-max-text" data-bind="text: ageMax"></span>) år
+        </div>
+        <div class="form-group">
+            <div id="slider-agerange" style="max-width: 80%"></div><br />
+        </div>
+        <div class="form-group">
+            Avstånd: <span id="distancerange-max-text" data-bind="text: distanceMax"></span> km
+        </div>
+        <div class="form-group">
+            <div id="slider-distancerange" style="max-width: 80%"></div><br />
+        </div>
+        <div>
+
+            <br /><br />
+            <a class="btn btn-default transparent-button" href="#logout/logout" style="">Logga ut <i class="fa fa-sign-out"></i></a>
+            &nbsp;&nbsp;&nbsp;
+            <a class="btn btn-default transparent-button" href="#logout/deactivate" style="">Göm profil <i class="fa fa-toggle-off"></i></a>
+            &nbsp;&nbsp;&nbsp;
+            <a class="btn btn-default transparent-button" href="#logout/remove" style="float: right;" data-bind="click: removeAccount">Radera konto <i class="fa fa-remove"></i></a>
+            <br /><br />
+        </div>
+    </div>
+</section>

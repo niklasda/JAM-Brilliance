@@ -1,0 +1,47 @@
+﻿<section>
+    <h2>
+        <a href="#signup2" style="background: rgba(0, 0, 0, 0.6); color: white;" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i></a>
+        Inloggning
+    </h2>
+    <div>
+        <br />
+        <div class="label-input-area">
+            <div class="form-group">
+                <label for="username">användarnamn*</label>
+                <br />
+                <input id="username" type="text" class="form-control" placeholder="Anv&auml;ndarnamn" data-bind="value: username, valueUpdate: 'afterkeydown'">
+
+            </div>
+
+            <div class="form-group">
+                <label for="user-id">e-post*</label>
+                <br />
+                <input id="user-id" type="email" class="form-control" placeholder="e-post" data-bind="value: email, valueUpdate: 'afterkeydown'">
+
+            </div>
+            <div class="form-group">
+                <label for="password">lösenord*</label>
+                <br />
+                <input id="password" type="password" class="form-control" placeholder="L&ouml;senord" data-bind="value: password, valueUpdate: 'afterkeydown'">
+                <br />
+
+            </div>
+            <div class="form-group">
+                <label for="terms">Godkänn Villkor*</label> <a href="#terms">Läs villkoren</a>
+                <br/>
+                <input id="terms" type="checkbox" class="form-control" style="width: 70px;" data-bind="checked: termsAccepted">
+                <br/>
+            </div>
+            <div>
+                <span data-bind="text: message" style="padding-left: 10px"></span>
+            </div>
+        </div>
+        <div>
+            <br />
+            <a href="#signup2" class="btn btn-default transparent-button" data-bind="click: onBackClick"><i class="fa fa-arrow-left"></i> F&ouml;rra</a>
+            <a href="#signup3" class="btn btn-default transparent-button" data-bind="click: onClick">Klar <i class="fa fa-angellist"></i></a>
+
+            <br />
+        </div>
+    </div>
+</section>

@@ -1,0 +1,28 @@
+﻿<section>
+    <h2>
+        <a href="#home" style="background: rgba(0, 0, 0, 0.6); color: white;"><i class="fa fa-arrow-left"></i></a>
+        Logga in
+    </h2>
+    <div class="label-input-area">
+        <br />
+        <div class="form-group">
+            <br />
+
+            <label for="username">Användarnamn</label>
+            <input id="username" type="text" class="form-control" placeholder="Anv&auml;ndarnamn" data-bind="value: userName" />
+
+        </div>
+        <div class="form-group">
+            <label for="password">Lösenord</label>
+            <input id="password" type="password" class="form-control" placeholder="L&ouml;senord" data-bind="value: password"/>
+        </div>
+        <div>
+            <span data-bind="text: message" style="padding-left: 10px"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <a href="#login" class="btn btn-default transparent-button" data-bind="click: onLoginClick">Logga in <i class="fa fa-arrow-right"></i></a>
+        <br />
+    </div>
+</section>

@@ -1,0 +1,24 @@
+﻿<section>
+    <h2>Sök</h2>
+    <br />
+    <br />
+
+    <div class="form-group label-input-area">
+        <label for="searchpostal">Postnummer</label><span data-bind="text: lookedupCity" style="padding-left: 10px;"></span>
+        <br />
+        <input id="searchpostal" type="number" class="form-control" data-bind="value: postalCode, valueUpdate: 'afterkeydown'" />
+        
+    </div>
+    <div class="form-group label-input-area">
+        <span>Baserat på din angivna ålder och postnummer </span>
+        <span data-bind="text: myPostalCode" style=""></span> 
+        <span data-bind="text: myCity" style=""></span> 
+        <span data-bind="text: age" style=""></span><span> år</span>
+    </div>
+    <div class="form-group">
+        <a class="btn btn-default" data-bind="click: search, enable: postalCode">Sök</a>
+
+        <a class="btn btn-default" data-bind="click: searchClose">i närheten</a>
+    </div>
+
+</section>
