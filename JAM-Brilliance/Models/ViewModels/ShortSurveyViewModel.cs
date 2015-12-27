@@ -12,7 +12,6 @@ namespace JAM.Brilliance.Models.ViewModels
         public string Name { get; set; }
 
         [StringLength(250)]
-        [UIHint("tinymce_readonly"), AllowHtml]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Profiltext")]
         public string Note1 { get; set; }

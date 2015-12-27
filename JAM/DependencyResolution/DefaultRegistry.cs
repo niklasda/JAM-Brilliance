@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using JAM.Core.Interfaces;
+using StructureMap;
 
 namespace JAM.DependencyResolution
 {

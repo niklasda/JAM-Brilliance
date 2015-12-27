@@ -16,6 +16,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using JAM.Core.Interfaces;
+using StructureMap;
 
 namespace JAM.Brilliance.DependencyResolution
 {
@@ -26,6 +27,7 @@ namespace JAM.Brilliance.DependencyResolution
     {
         public DefaultRegistry()
         {
+            
             Scan(scan =>
                 {
                     scan.TheCallingAssembly();

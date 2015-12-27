@@ -1,7 +1,6 @@
 ﻿{
   "output": "Message",
   "ignore": [
-    "\\Scripts\\tinymce\\",
     "\\Scripts\\jquery-2.1.4-vsdoc.js",
     "\\Scripts\\jquery-2.1.4.js",
     "\\Scripts\\jquery-2.1.4.min.js",

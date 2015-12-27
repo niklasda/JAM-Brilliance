@@ -19,8 +19,6 @@
                         {
                             <li class="nav-item @(Model.CurrentPageId == PageIds.Start ? "active" : "")">@Html.ActionLink(@Global.Menu_Start, "Start", "Home")</li>
                             <li class="nav-item @(Model.CurrentPageId == PageIds.Search ? "active" : "")">@Html.ActionLink(@Global.Menu_Search, "Search", "Search") <i class="fa fa-search"></i></li>
-                            <li class="nav-item @(Model.CurrentPageId == PageIds.Coaching ? "active" : "")">@Html.ActionLink(@Global.Menu_Coaching, "Coaching", "Home")</li>
-                            <li class="nav-item @(Model.CurrentPageId == PageIds.Sharpen ? "active" : "")">@Html.ActionLink(@Global.Menu_Sharpen, "Sharpen", "Home")</li>
                             <li class="nav-item @(Model.CurrentPageId == PageIds.Contact ? "active" : "")">@Html.ActionLink(@Global.Menu_ContactUs, "Contact", "Home")</li>
                             <li class="nav-item @(Model.CurrentPageId == PageIds.MyPage ? "active" : "")">
                                 @Html.ActionLink("Min profil", "MyShortDetails", "Survey")

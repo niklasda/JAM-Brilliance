@@ -115,7 +115,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.2.2\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog.Web, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
@@ -128,16 +128,16 @@
     <Reference Include="PagedList.Mvc">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="StructureMap, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.dll</HintPath>
+    <Reference Include="StructureMap, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="StructureMap.Net4, Version=3.1.6.186, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\structuremap.3.1.6.186\lib\net40\StructureMap.Net4.dll</HintPath>
+    <Reference Include="StructureMap.Net4, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StructureMap.Web, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\structuremap.web.3.1.6.186\lib\net40\StructureMap.Web.dll</HintPath>
+      <HintPath>..\packages\structuremap.web.4.0.0.315\lib\net40\StructureMap.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -430,50 +430,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\tinymce\license.txt" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cool.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-cry.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-frown.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-smile.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-wink.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\img\smiley-yell.gif" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.js" />
-    <Content Include="Scripts\tinymce\plugins\emoticons\plugin.min.js" />
-    <Content Include="Scripts\tinymce\skins\lightgray\content.inline.min.css" />
-    <Content Include="Scripts\tinymce\skins\lightgray\content.min.css" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.svg" />
-    <Content Include="Scripts\tinymce\skins\lightgray\img\anchor.gif" />
-    <Content Include="Scripts\tinymce\skins\lightgray\img\loader.gif" />
-    <Content Include="Scripts\tinymce\skins\lightgray\img\object.gif" />
-    <Content Include="Scripts\tinymce\skins\lightgray\img\trans.gif" />
-    <Content Include="Scripts\tinymce\skins\lightgray\skin.ie7.min.css" />
-    <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
-    <Content Include="Scripts\tinymce\themes\modern\theme.js" />
-    <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
-    <Content Include="Scripts\tinymce\tinymce.js" />
-    <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.json" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
-    <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
-    <Content Include="Scripts\tinymce\langs\readme.md" />
     <None Include="Settings.StyleCop" />
     <Content Include="sitemap.xml">
       <SubType>Designer</SubType>
@@ -553,8 +510,6 @@
     <Content Include="Views\Account\ChangeNewPassword.cshtml" />
     <Content Include="Views\Account\ChangeNewPasswordSuccess.cshtml" />
     <Content Include="Views\Account\ReminderSent.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\tinymce_basic.cshtml" />
-    <Content Include="Views\Shared\EditorTemplates\tinymce_readonly.cshtml" />
     <Content Include="Views\MaintenanceAdmin\Start.cshtml" />
     <Content Include="Views\Home\MyActions.cshtml" />
     <Content Include="Views\MessageAdmin\ReadConversation.cshtml" />

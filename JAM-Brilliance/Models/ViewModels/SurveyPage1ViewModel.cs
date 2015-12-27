@@ -48,7 +48,6 @@ namespace JAM.Brilliance.Models.ViewModels
         //// public string Phone { get; set; }
         
         [StringLength(2000)]
-        [UIHint("tinymce_basic"), AllowHtml]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Min profiltext")]
         public string Note1 { get; set; }
