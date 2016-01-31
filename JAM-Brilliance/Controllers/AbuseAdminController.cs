@@ -17,10 +17,12 @@ namespace JAM.Brilliance.Controllers
     public class AbuseAdminController : Controller
     {
         private readonly IAbuseAdminDataService _abuseAdminDataService;
+        private readonly IMapper _mapper;
 
-        public AbuseAdminController(IAbuseAdminDataService abuseAdminDataService)
+        public AbuseAdminController(IAbuseAdminDataService abuseAdminDataService, IMapper mapper)
         {
             _abuseAdminDataService = abuseAdminDataService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
@@ -29,7 +31,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.DevPage;
 
             IEnumerable<AbuseReport> reports = _abuseAdminDataService.GetAllAbuseReports();
-            var rvms = Mapper.Map<IEnumerable<AbuseReport>, IList<AbuseReportViewModel>>(reports);
+            var rvms = _mapper.Map<IEnumerable<AbuseReport>, IList<AbuseReportViewModel>>(reports);
             var srvms = rvms.OrderByDescending(x => x.ReportDate);
 
             var pageNumber = page ?? 1;

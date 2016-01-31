@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 using System.Web.Security;
-
+using AutoMapper;
 using JAM.Core.Interfaces;
 using JAM.Core.Interfaces.Admin;
 using JAM.Core.Logic;
@@ -13,8 +13,8 @@ namespace JAM.Core.Services.Admin
     {
         private readonly IDataCache _dataCache;
 
-        public AccountAdminService(IDataCache dataCache)
-            : base(dataCache)
+        public AccountAdminService(IDataCache dataCache, IMapper mapper)
+            : base(dataCache, mapper)
         {
             _dataCache = dataCache;
         }

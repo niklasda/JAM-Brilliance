@@ -19,12 +19,14 @@ namespace JAM.Brilliance.Controllers
         private readonly ISurveyDataService _surveyDataService;
         private readonly IFavouriteDataService _favouriteDataService;
         private readonly IDiagnosticsService _diagnosticsService;
+        private readonly IMapper _mapper;
 
-        public FavouriteController(ISurveyDataService surveyDataService, IFavouriteDataService favouriteDataService, IDiagnosticsService diagnosticsService)
+        public FavouriteController(ISurveyDataService surveyDataService, IFavouriteDataService favouriteDataService, IDiagnosticsService diagnosticsService, IMapper mapper)
         {
             _surveyDataService = surveyDataService;
             _favouriteDataService = favouriteDataService;
             _diagnosticsService = diagnosticsService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -92,7 +94,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             IEnumerable<Favourite> fms = _favouriteDataService.GetFavourites(surveyId);
-            var fvms = Mapper.Map<IEnumerable<Favourite>, IList<FavouriteViewModel>>(fms);
+            var fvms = _mapper.Map<IEnumerable<Favourite>, IList<FavouriteViewModel>>(fms);
 
             IEnumerable<FavouriteViewModel> smvms = fvms.OrderBy(x => x.OtherName);
             return smvms;
@@ -103,7 +105,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             IEnumerable<Favourite> fms = _favouriteDataService.GetFans(surveyId);
-            var fvms = Mapper.Map<IEnumerable<Favourite>, IList<FavouriteViewModel>>(fms);
+            var fvms = _mapper.Map<IEnumerable<Favourite>, IList<FavouriteViewModel>>(fms);
 
             IEnumerable<FavouriteViewModel> smvms = fvms.OrderBy(x => x.SelfName);
             return smvms;

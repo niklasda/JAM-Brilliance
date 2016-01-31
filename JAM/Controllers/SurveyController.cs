@@ -34,8 +34,9 @@ namespace JAM.Controllers
         private readonly IVisitorDataService _historyService;
         private readonly IGeoService _geoService;
         private readonly IDataCache _dataCache;
+        private readonly IMapper _mapper;
 
-        public SurveyController(ISurveyDataService surveyDataService, ISurveyAdminDataService surveyAdminDataService, IPictureDataService pictureDataService, IAccountService accountService, IVisitorDataService visitorDataService, IGeoService geoService, IDataCache dataCache)
+        public SurveyController(ISurveyDataService surveyDataService, ISurveyAdminDataService surveyAdminDataService, IPictureDataService pictureDataService, IAccountService accountService, IVisitorDataService visitorDataService, IGeoService geoService, IDataCache dataCache, IMapper mapper)
         {
             _pictureDataService = pictureDataService;
             _surveyDataService = surveyDataService;
@@ -44,13 +45,14 @@ namespace JAM.Controllers
             _historyService = visitorDataService;
             _geoService = geoService;
             _dataCache = dataCache;
+            _mapper = mapper;
 
             //opts.LinkToFirstPageFormat = "&larr;&larr; Först";
             //opts.LinkToPreviousPageFormat = "&larr; Förra";
             //opts.LinkToNextPageFormat = "Nästa &rarr;";
             //opts.LinkToLastPageFormat = "Sista &rarr;&rarr;";
 
-           // ViewData["PagedListRenderOptions"] = opts;
+            // ViewData["PagedListRenderOptions"] = opts;
         }
 
         public ViewResult Index(string sortOrder, string searchString, int? page)
@@ -367,7 +369,7 @@ namespace JAM.Controllers
             ViewBag.CurrentPageId = PageIds.Survery;
 
             Survey survey = GetAllowedSurvey(surveyId);
-            var sp1Vm = Mapper.Map<SurveyPage1ViewModel>(survey);
+            var sp1Vm = _mapper.Map<SurveyPage1ViewModel>(survey);
 
             sp1Vm.KidsCounts = _dataCache.Kids;
             sp1Vm.KidsWantedCounts = _dataCache.KidsWanted;
@@ -442,7 +444,7 @@ namespace JAM.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp2Vm = Mapper.Map<SurveyPage2ViewModel>(survey);
+            var sp2Vm = _mapper.Map<SurveyPage2ViewModel>(survey);
 
             return View(sp2Vm);
         }
@@ -480,7 +482,7 @@ namespace JAM.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp3Vm = Mapper.Map<SurveyPage3ViewModel>(survey);
+            var sp3Vm = _mapper.Map<SurveyPage3ViewModel>(survey);
 
             return View(sp3Vm);
         }
@@ -502,7 +504,7 @@ namespace JAM.Controllers
 
         private Survey GetAllowedPartSurvey(SurveyViewModelBase spxvm)
         {
-            var partSurvey = Mapper.Map<Survey>(spxvm);
+            var partSurvey = _mapper.Map<Survey>(spxvm);
 
             if (!User.IsInRole(MemberRoles.Administrator))
             {

@@ -23,7 +23,7 @@ namespace JAM
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            MapperConfig.CreateAutoMaps();
+         //   MapperConfig.CreateAutoMaps();
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)

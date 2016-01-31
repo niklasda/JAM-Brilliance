@@ -15,10 +15,12 @@ namespace JAM.Core.Services
     public class AccountService : IAccountService
     {
         private readonly IDataCache _dataCache;
+        private readonly IMapper _mapper;
 
-        public AccountService(IDataCache dataCache)
+        public AccountService(IDataCache dataCache, IMapper mapper)
         {
-            _dataCache = dataCache;            
+            _dataCache = dataCache;
+            _mapper = mapper;
         }
 
         public string GetCurrentUserEmail()
@@ -102,7 +104,7 @@ namespace JAM.Core.Services
         public IEnumerable<Account> GetOnlineUsers(ISurveyDataService surveyDataService)
         {
             MembershipUserCollection accounts = Membership.GetAllUsers();
-            IList<Account> ams = Mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
+            IList<Account> ams = _mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
 
             var onlineUsers = ams.Where(x => x.IsOnline).ToList();
 

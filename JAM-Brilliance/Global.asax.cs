@@ -23,7 +23,7 @@ namespace JAM.Brilliance
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            MapperConfig.CreateAutoMaps();
+            //MapperConfig.CreateAutoMaps();
         }
 
         protected void Session_Start(object sender, EventArgs e)

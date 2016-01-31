@@ -18,7 +18,7 @@
 using System.Configuration;
 using System.Web.Configuration;
 using System.Web.Mvc;
-
+using AutoMapper;
 using JAM.Core.Interfaces;
 using JAM.Core.Logic;
 using JAM.Core.Services;
@@ -49,11 +49,14 @@ namespace JAM.Brilliance
             var connString = WebConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
             var storageConnString = WebConfigurationManager.ConnectionStrings[Constants.StorageConnectionStringName].ConnectionString;
 
+            var autoMapper = MapperConfig.CreateAutoMapper();
+
             IContainer container = IoC.Initialize();
             container.Configure(x =>
             {
                 x.For<IUserProfile>().Singleton().Use<UserProfile>();
                 x.For<IDataCache>().Singleton().Use<DataCache>();
+                x.For<IMapper>().Singleton().Use(autoMapper);
 
                 x.For<IDataStorageConfigurationService>()
                     .Use<DataStorageConfigurationService>()

@@ -19,13 +19,15 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
         private readonly IDiagnosticsService _diagnosticsService;
         private readonly IPostalCodeDataService _postalCodeDataService;
         private readonly ISurveyDataService _surveyDataService;
+        private readonly IMapper _mapper;
 
-        public AppAccountController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, IDiagnosticsService diagnosticsService, IPostalCodeDataService postalCodeDataService, ISurveyDataService surveyDataService)
+        public AppAccountController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, IDiagnosticsService diagnosticsService, IPostalCodeDataService postalCodeDataService, ISurveyDataService surveyDataService, IMapper mapper)
             : base(accountService, accountTokenDataService)
         {
             _diagnosticsService = diagnosticsService;
             _postalCodeDataService = postalCodeDataService;
             _surveyDataService = surveyDataService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -157,7 +159,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             sp1vm.Note1 = "Extra";
             sp1vm.WhatSearchingForWhatId = model.AmMan ? 2 : 4;
 
-            Survey sp1 = Mapper.Map<Survey>(sp1vm);
+            Survey sp1 = _mapper.Map<Survey>(sp1vm);
 
             _surveyDataService.SavePage1(sp1);
         }

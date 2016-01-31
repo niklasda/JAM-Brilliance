@@ -13,12 +13,14 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
     {
         private readonly ISurveyDataService _surveyDataService;
         private readonly ISurveySettingsDataService _surveySettingsDataService;
+        private readonly IMapper _mapper;
 
-        public AppSurveyController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, ISurveyDataService surveyDataService, ISurveySettingsDataService surveySettingsDataService)
+        public AppSurveyController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, ISurveyDataService surveyDataService, ISurveySettingsDataService surveySettingsDataService, IMapper mapper)
             : base(accountService, accountTokenDataService)
         {
             _surveyDataService = surveyDataService;
             _surveySettingsDataService = surveySettingsDataService;
+            _mapper = mapper;
         }
 
         [HttpGet, ValidateToken]
@@ -27,7 +29,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             int otherSurveyId = id;
             var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
             var survey = _surveyDataService.GetSurvey(otherSurveyId);
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
 
             var response = new SurveyModel { Success = true, Message = "OK", Survey = ssvm };
             return Json(response, JsonRequestBehavior.AllowGet);
@@ -39,7 +41,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
         {
             var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
             var survey = _surveyDataService.GetSurvey(selfSurveyId);
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
 
             var response = new SurveyModel { Success = true, Message = "OK", Survey = ssvm };
             return Json(response, JsonRequestBehavior.AllowGet);
@@ -50,11 +52,11 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
         {
             var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
             var surveySettings = _surveySettingsDataService.GetSurveySettings(selfSurveyId);
-            var ssvm = Mapper.Map<SurveySettingsViewModel>(surveySettings);
+            var ssvm = _mapper.Map<SurveySettingsViewModel>(surveySettings);
             if (ssvm != null)
             {
                 var survey = _surveyDataService.GetSurvey(selfSurveyId);
-                var ssvm2 = Mapper.Map<ShortSurveyViewModel>(survey);
+                var ssvm2 = _mapper.Map<ShortSurveyViewModel>(survey);
                 ssvm = new SurveySettingsViewModel();
                 ssvm.SearchAgeMin = ssvm2.Age - 18 ?? 25;
                 ssvm.SearchAgeMax = ssvm2.Age + 18 ?? 50;

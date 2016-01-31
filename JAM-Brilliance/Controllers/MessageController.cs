@@ -26,8 +26,9 @@ namespace JAM.Brilliance.Controllers
         private readonly IDiagnosticsService _diagnosticsService;
         private readonly IEmailService _emailService;
         private readonly IDataCache _dataCache;
+        private readonly IMapper _mapper;
 
-        public MessageController(ISurveyDataService surveyDataService, IMessageDataService messageDataService, IVisitorDataService visitorDataService, IFavouriteDataService favouriteDataService, IAccountService accountService, IDiagnosticsService diagnosticsService, IEmailService emailService, IDataCache dataCache)
+        public MessageController(ISurveyDataService surveyDataService, IMessageDataService messageDataService, IVisitorDataService visitorDataService, IFavouriteDataService favouriteDataService, IAccountService accountService, IDiagnosticsService diagnosticsService, IEmailService emailService, IDataCache dataCache, IMapper mapper)
         {
             _surveyDataService = surveyDataService;
             _messageDataService = messageDataService;
@@ -37,6 +38,7 @@ namespace JAM.Brilliance.Controllers
             _diagnosticsService = diagnosticsService;
             _emailService = emailService;
             _dataCache = dataCache;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -108,7 +110,7 @@ namespace JAM.Brilliance.Controllers
                     mvm.ToSurveyId = _dataCache.SupportAnonSurveyId;
                 }
 
-                var m = Mapper.Map<SendMessage>(mvm);
+                var m = _mapper.Map<SendMessage>(mvm);
                 var ok = _messageDataService.SendMessage(m);
             }
 
@@ -145,7 +147,7 @@ namespace JAM.Brilliance.Controllers
                 int surveyId = _surveyDataService.GetCurrentUserSurveyId();
                 mvm.FromSurveyId = surveyId;
                 mvm.IsFromAnonymous = mvm.FromSurveyId == _dataCache.AnonSurveyId;
-                var m = Mapper.Map<SendMessage>(mvm);
+                var m = _mapper.Map<SendMessage>(mvm);
 
                 if (_messageDataService.SendMessage(m))
                 {
@@ -195,7 +197,7 @@ namespace JAM.Brilliance.Controllers
 
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
             SendMessage sm = _messageDataService.ReadMessage(surveyId, messageId);
-            var smvm = Mapper.Map<SendMessageViewModel>(sm);
+            var smvm = _mapper.Map<SendMessageViewModel>(sm);
             return View(smvm);
         }
 
@@ -206,7 +208,7 @@ namespace JAM.Brilliance.Controllers
 
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
             SendMessage sm = _messageDataService.ReadMessage(surveyId, messageId);
-            var smvm = Mapper.Map<SendMessageViewModel>(sm);
+            var smvm = _mapper.Map<SendMessageViewModel>(sm);
             smvm.IsSentMessage = true;
             return View("ReadMessage", smvm);
         }
@@ -218,7 +220,7 @@ namespace JAM.Brilliance.Controllers
             if (action.Equals(PageButtons.DeleteMessage))
             {
                 int surveyId = _surveyDataService.GetCurrentUserSurveyId();
-                var sm = Mapper.Map<SendMessage>(smvm);
+                var sm = _mapper.Map<SendMessage>(smvm);
                 if (sm.ToSurveyId == surveyId)
                 {
                     _messageDataService.DeleteMessage(sm.MessageId, surveyId);
@@ -227,7 +229,7 @@ namespace JAM.Brilliance.Controllers
             else if (action.Equals(PageButtons.ReplyToMessage))
             {
                 int surveyId = _surveyDataService.GetCurrentUserSurveyId();
-                var sm = Mapper.Map<SendMessage>(smvm);
+                var sm = _mapper.Map<SendMessage>(smvm);
                 if (sm.ToSurveyId == surveyId)
                 {
                     return RedirectToAction("ReplyToMessage", new { messageId = sm.MessageId });
@@ -243,7 +245,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             var sm = _messageDataService.ReadMessage(surveyId, messageId);
-            var smvm = Mapper.Map<SendMessageViewModel>(sm);
+            var smvm = _mapper.Map<SendMessageViewModel>(sm);
 
             smvm.FromSurveyId = sm.ToSurveyId;
             smvm.FromName = sm.ToName;
@@ -299,7 +301,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             var rm = _messageDataService.GetReceivedMessages(surveyId);
-            var rmvm = Mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
+            var rmvm = _mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
 
             IEnumerable<SendMessageViewModel> smvms = rmvm.OrderByDescending(x => x.SendDate);
             return smvms;
@@ -310,7 +312,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             var rm = _messageDataService.GetSentMessages(surveyId);
-            var rmvm = Mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
+            var rmvm = _mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
 
             IEnumerable<SendMessageViewModel> smvms = rmvm.OrderByDescending(x => x.SendDate);
             return smvms;

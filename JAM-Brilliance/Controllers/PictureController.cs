@@ -19,12 +19,14 @@ namespace JAM.Brilliance.Controllers
         private readonly IPictureDataService _pictureDataService;
         private readonly ISurveyDataService _surveyDataService;
         private readonly IDiagnosticsService _diagnosticsService;
+        private readonly IMapper _mapper;
 
-        public PictureController(ISurveyDataService surveyDataService, IPictureDataService pictureDataService, IDiagnosticsService diagnosticsService)
+        public PictureController(ISurveyDataService surveyDataService, IPictureDataService pictureDataService, IDiagnosticsService diagnosticsService, IMapper mapper)
         {
             _pictureDataService = pictureDataService;
             _surveyDataService = surveyDataService;
             _diagnosticsService = diagnosticsService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -131,7 +133,7 @@ namespace JAM.Brilliance.Controllers
             _diagnosticsService.ThrowUnlessSurveyComplete();
 
             var pms = _pictureDataService.GetPictures(surveyId);
-            var pvms = Mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pms);
+            var pvms = _mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pms);
 
             var mpvm = new MyPicturesViewModel();
             mpvm.Pictures = pvms;
@@ -166,7 +168,7 @@ namespace JAM.Brilliance.Controllers
             }
 
             var pms = _pictureDataService.GetPictures(surveyId);
-            var pvms = Mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pms);
+            var pvms = _mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pms);
 
             var mpvm = new MyPicturesViewModel();
             mpvm.Pictures = pvms;

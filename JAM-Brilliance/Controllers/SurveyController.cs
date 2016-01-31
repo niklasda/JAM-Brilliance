@@ -21,8 +21,8 @@ namespace JAM.Brilliance.Controllers
         private readonly IVisitorDataService _historyService;
         private readonly IGeoService _geoService;
         private readonly IDataCache _dataCache;
-
-        public SurveyController(ISurveyDataService surveyDataService, IPictureDataService pictureDataService, IAccountService accountService, IVisitorDataService visitorDataService, IGeoService geoService, IDataCache dataCache)
+        private readonly IMapper _mapper;
+        public SurveyController(ISurveyDataService surveyDataService, IPictureDataService pictureDataService, IAccountService accountService, IVisitorDataService visitorDataService, IGeoService geoService, IDataCache dataCache, IMapper mapper)
         {
             _pictureDataService = pictureDataService;
             _surveyDataService = surveyDataService;
@@ -30,6 +30,7 @@ namespace JAM.Brilliance.Controllers
             _historyService = visitorDataService;
             _geoService = geoService;
             _dataCache = dataCache;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
@@ -40,12 +41,12 @@ namespace JAM.Brilliance.Controllers
             Survey survey = _surveyDataService.GetSurvey(surveyId);
 
             var svm = new SurveyViewModel();
-            svm.Page1 = Mapper.Map<SurveyPage1ViewModel>(survey);
-            svm.Page2 = Mapper.Map<SurveyPage2ViewModel>(survey);
-            svm.Page3 = Mapper.Map<SurveyPage3ViewModel>(survey);
-            svm.Page4 = Mapper.Map<SurveyPage4ViewModel>(survey);
-            svm.Page5 = Mapper.Map<SurveyPage5ViewModel>(survey);
-            svm.Page6 = Mapper.Map<SurveyPage6ViewModel>(survey);
+            svm.Page1 =_mapper.Map<SurveyPage1ViewModel>(survey);
+            svm.Page2 =_mapper.Map<SurveyPage2ViewModel>(survey);
+            svm.Page3 =_mapper.Map<SurveyPage3ViewModel>(survey);
+            svm.Page4 =_mapper.Map<SurveyPage4ViewModel>(survey);
+            svm.Page5 =_mapper.Map<SurveyPage5ViewModel>(survey);
+            svm.Page6 =_mapper.Map<SurveyPage6ViewModel>(survey);
             svm.SetAsReadOnly();
 
             svm.Page1.KidsCounts = _dataCache.Kids;
@@ -65,7 +66,7 @@ namespace JAM.Brilliance.Controllers
             Task.Run(() => _historyService.AddVisitor(new HistoryEntry { SelfSurveyId = selfSurveyId, OtherSurveyId = surveyId }));
 
             var survey = _surveyDataService.GetSurvey(surveyId);
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
             ssvm.LastActivityDate = _accountService.GetCurrentUserLastActivity(survey.Email);
 
             return View(ssvm);
@@ -77,7 +78,7 @@ namespace JAM.Brilliance.Controllers
             HttpContext.Response.Cookies.Set(new HttpCookie(Constants.CultureCookieName, _accountService.GetCurrentUserCommentCultureCode()));
 
             var survey = _surveyDataService.GetCurrentUserSurvey();
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
             ssvm.LastActivityDate = _accountService.GetCurrentUserLastActivity(survey.Email);
             
             return View(ssvm);
@@ -89,7 +90,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.MyPage;
 
             Survey survey = GetAllowedSurvey(surveyId);
-            var sp1Vm = Mapper.Map<SurveyPage1ViewModel>(survey);
+            var sp1Vm = _mapper.Map<SurveyPage1ViewModel>(survey);
 
             sp1Vm.KidsCounts = _dataCache.Kids;
             sp1Vm.KidsWantedCounts = _dataCache.KidsWanted;
@@ -166,7 +167,7 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp2Vm = Mapper.Map<SurveyPage2ViewModel>(survey);
+            var sp2Vm = _mapper.Map<SurveyPage2ViewModel>(survey);
 
             return View(sp2Vm);
         }
@@ -204,7 +205,7 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp3Vm = Mapper.Map<SurveyPage3ViewModel>(survey);
+            var sp3Vm = _mapper.Map<SurveyPage3ViewModel>(survey);
 
             return View(sp3Vm);
         }
@@ -241,7 +242,7 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp4Vm = Mapper.Map<SurveyPage4ViewModel>(survey);
+            var sp4Vm = _mapper.Map<SurveyPage4ViewModel>(survey);
 
             return View(sp4Vm);
         }
@@ -278,7 +279,7 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp5Vm = Mapper.Map<SurveyPage5ViewModel>(survey);
+            var sp5Vm = _mapper.Map<SurveyPage5ViewModel>(survey);
 
             return View(sp5Vm);
         }
@@ -317,8 +318,8 @@ namespace JAM.Brilliance.Controllers
                 return RedirectToAction("Page1", new { surveyId = surveyId });
             }
 
-            var sp6Vm = Mapper.Map<SurveyPage6ViewModel>(survey);
-            sp6Vm.WantedSurvey = Mapper.Map<WantedSurveyViewModel>(wantedSurvey);
+            var sp6Vm = _mapper.Map<SurveyPage6ViewModel>(survey);
+            sp6Vm.WantedSurvey = _mapper.Map<WantedSurveyViewModel>(wantedSurvey);
 
             sp6Vm.WantedKidsWantedCounts = _dataCache.WantedKidsWanted;
             sp6Vm.Referrers = _dataCache.Referrers;
@@ -382,7 +383,7 @@ namespace JAM.Brilliance.Controllers
 
         private Survey GetAllowedPartSurvey(SurveyViewModelBase spxvm)
         {
-            var partSurvey = Mapper.Map<Survey>(spxvm);
+            var partSurvey = _mapper.Map<Survey>(spxvm);
 
             if (!User.IsInRole(MemberRoles.Administrator))
             {
@@ -413,7 +414,7 @@ namespace JAM.Brilliance.Controllers
 
         private WantedSurvey GetAllowedPartWantedSurvey(WantedSurveyViewModel wsvm)
         {
-            var wantedSurvey = Mapper.Map<WantedSurvey>(wsvm);
+            var wantedSurvey = _mapper.Map<WantedSurvey>(wsvm);
 
             if (!User.IsInRole(MemberRoles.Administrator))
             {

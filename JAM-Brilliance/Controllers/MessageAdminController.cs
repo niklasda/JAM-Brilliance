@@ -20,13 +20,15 @@ namespace JAM.Brilliance.Controllers
         private readonly ISurveyAdminDataService _surveyAdminDataService;
         private readonly IEmailService _emailService;
         private readonly IDataCache _dataCache;
+        private readonly IMapper _mapper;
 
-        public MessageAdminController(IMessageAdminDataService messageAdminDataService, ISurveyAdminDataService surveyAdminDataService, IEmailService emailService, IDataCache dataCache)
+        public MessageAdminController(IMessageAdminDataService messageAdminDataService, ISurveyAdminDataService surveyAdminDataService, IEmailService emailService, IDataCache dataCache, IMapper mapper)
         {
             _messageAdminDataService = messageAdminDataService;
             _surveyAdminDataService = surveyAdminDataService;
             _emailService = emailService;
             _dataCache = dataCache;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
@@ -42,7 +44,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.DevPage;
 
             Conversation cm = _messageAdminDataService.ReadConversation(messageId);
-            var cvm = Mapper.Map<Conversation, ConversationViewModel>(cm);
+            var cvm = _mapper.Map<Conversation, ConversationViewModel>(cm);
 
             return View(cvm);
         }
@@ -66,7 +68,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.DevPage;
 
             SendMessage sm = _messageAdminDataService.ReadSupportMessage(messageId);
-            var smvm = Mapper.Map<SendMessageViewModel>(sm);
+            var smvm = _mapper.Map<SendMessageViewModel>(sm);
             return View(smvm);
         }
 
@@ -77,7 +79,7 @@ namespace JAM.Brilliance.Controllers
             if (action.Equals(PageButtons.DeleteMessage))
             {
                 int surveyId = _surveyAdminDataService.GetCurrentUserSurveyId();
-                var sm = Mapper.Map<SendMessage>(smvm);
+                var sm = _mapper.Map<SendMessage>(smvm);
                 if (sm.ToSurveyId == surveyId)
                 {
                     _messageAdminDataService.DeleteMessage(sm.MessageId, surveyId);
@@ -86,7 +88,7 @@ namespace JAM.Brilliance.Controllers
             else if (action.Equals(PageButtons.ReplyToMessage))
             {
                 int surveyId = _surveyAdminDataService.GetCurrentUserSurveyId();
-                var sm = Mapper.Map<SendMessage>(smvm);
+                var sm = _mapper.Map<SendMessage>(smvm);
                 if (sm.ToSurveyId == surveyId || (User.IsInRole(MemberRoles.Administrator) && (sm.ToSurveyId == _dataCache.SupportSurveyId || sm.ToSurveyId == _dataCache.SupportAnonSurveyId)))
                 {
                     return RedirectToAction("ReplyToMessage", new { messageId = sm.MessageId });
@@ -100,7 +102,7 @@ namespace JAM.Brilliance.Controllers
         public ViewResult ReplyToMessage(int messageId)
         {
             var sm = _messageAdminDataService.ReadSupportMessage(messageId);
-            var smvm = Mapper.Map<SendMessageViewModel>(sm);
+            var smvm = _mapper.Map<SendMessageViewModel>(sm);
 
             smvm.FromSurveyId = sm.ToSurveyId;
             smvm.FromName = sm.ToName;
@@ -141,7 +143,7 @@ namespace JAM.Brilliance.Controllers
 
             if (ModelState.IsValid)
             {
-                var m = Mapper.Map<SendMessage>(mvm);
+                var m = _mapper.Map<SendMessage>(mvm);
 
                 if (m.ToSurveyId == _dataCache.BroadcastSurveyId)
                 {
@@ -165,7 +167,7 @@ namespace JAM.Brilliance.Controllers
         private IEnumerable<SendMessageViewModel> GetSortedSupportMessages(int surveyId)
         {
             var rm = _messageAdminDataService.GetReceivedMessages(surveyId);
-            var rmvm = Mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
+            var rmvm = _mapper.Map<IEnumerable<SendMessage>, IList<SendMessageViewModel>>(rm);
 
             IEnumerable<SendMessageViewModel> smvms = rmvm.OrderByDescending(x => x.SendDate);
             return smvms;

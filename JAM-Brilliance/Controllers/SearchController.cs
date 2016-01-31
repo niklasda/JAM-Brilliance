@@ -19,12 +19,14 @@ namespace JAM.Brilliance.Controllers
         private readonly ISearchDataService _searchDataService;
         private readonly ISurveyDataService _surveyDataService;
         private readonly IDiagnosticsService _diagnosticsService;
+        private readonly IMapper _mapper;
 
-        public SearchController(ISearchDataService searchDataService, ISurveyDataService surveyDataService, IDiagnosticsService diagnosticsService)
+        public SearchController(ISearchDataService searchDataService, ISurveyDataService surveyDataService, IDiagnosticsService diagnosticsService, IMapper mapper)
         {
             _searchDataService = searchDataService;
             _surveyDataService = surveyDataService;
             _diagnosticsService = diagnosticsService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -47,12 +49,12 @@ namespace JAM.Brilliance.Controllers
 
             if (ModelState.IsValid)
             {
-                var sc = Mapper.Map<SearchCriteria>(scvm);
+                var sc = _mapper.Map<SearchCriteria>(scvm);
                 var survey = _surveyDataService.GetCurrentUserSurvey();
 
                 IEnumerable<SearchResult> srs = _searchDataService.SimpleSearch(sc, survey);
 
-                var srvms = Mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(srs);
+                var srvms = _mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(srs);
                 if (srvms.Count > 0)
                 {
                     TempData[Constants.SearchResultTempDataName] = srvms;
@@ -103,12 +105,12 @@ namespace JAM.Brilliance.Controllers
         {
             if (ModelState.IsValid)
             {
-                var sac = Mapper.Map<SearchAdvCriteria>(sacvm);
+                var sac = _mapper.Map<SearchAdvCriteria>(sacvm);
                 var survey = _surveyDataService.GetCurrentUserSurvey();
 
                 IEnumerable<SearchResult> srs = _searchDataService.AdvancedSearch(sac, survey);
 
-                var srvms = Mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(srs);
+                var srvms = _mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(srs);
 
                 return View("SearchResult", srvms);
             }

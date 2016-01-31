@@ -24,8 +24,9 @@ namespace JAM.Brilliance.Controllers
         private readonly IEmailDataService _mailDataService;
         private readonly ILogDataService _logDataService;
         private readonly IDiagnosticsService _diagnosticsService;
+        private readonly IMapper _mapper;
 
-        public AccountController(ISurveyDataService surveyDataService, IAccountService accountService, IEmailService mailService, IEmailDataService mailDataService, ILogDataService logDataService, IDiagnosticsService diagnosticsService)
+        public AccountController(ISurveyDataService surveyDataService, IAccountService accountService, IEmailService mailService, IEmailDataService mailDataService, ILogDataService logDataService, IDiagnosticsService diagnosticsService, IMapper mapper)
         {
             _accountService = accountService;
             _surveyDataService = surveyDataService;
@@ -33,6 +34,7 @@ namespace JAM.Brilliance.Controllers
             _mailDataService = mailDataService;
             _logDataService = logDataService;
             _diagnosticsService = diagnosticsService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -374,7 +376,7 @@ namespace JAM.Brilliance.Controllers
         {
             IEnumerable<Account> usersOnline = _accountService.GetOnlineUsers(_surveyDataService);
             usersOnline = usersOnline.OrderBy(x => x.UserName);
-            var avms = Mapper.Map<IEnumerable<Account>, IList<AccountViewModel>>(usersOnline);
+            var avms = _mapper.Map<IEnumerable<Account>, IList<AccountViewModel>>(usersOnline);
 
             return avms;
         }

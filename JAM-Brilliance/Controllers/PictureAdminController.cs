@@ -22,13 +22,15 @@ namespace JAM.Brilliance.Controllers
         private readonly IAbuseAdminDataService _abuseAdminDataService;
         private readonly IMessageDataService _messageDataService;
         private readonly IDataCache _dataCache;
+        private readonly IMapper _mapper;
 
-        public PictureAdminController(IPictureAdminDataService pictureAdminDataService, IAbuseAdminDataService abuseAdminDataService, IMessageDataService messageDataService, IDataCache dataCache)
+        public PictureAdminController(IPictureAdminDataService pictureAdminDataService, IAbuseAdminDataService abuseAdminDataService, IMessageDataService messageDataService, IDataCache dataCache, IMapper mapper)
         {
             _pictureAdminDataService = pictureAdminDataService;
             _abuseAdminDataService = abuseAdminDataService;
             _messageDataService = messageDataService;
             _dataCache = dataCache;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
@@ -37,7 +39,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.DevPage;
 
             IEnumerable<Picture> pics = _pictureAdminDataService.GetUnapprovedPictures();
-            var pvms = Mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pics);
+            var pvms = _mapper.Map<IEnumerable<Picture>, IList<PictureViewModel>>(pics);
             var spvms = pvms.OrderBy(x => x.UploadDate);
 
             var pageNumber = page ?? 1;

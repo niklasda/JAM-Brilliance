@@ -23,14 +23,16 @@ namespace JAM.Brilliance.Controllers
         private readonly IEmailDataService _mailDataService;
         private readonly ILogDataService _logDataService;
         private readonly ISurveyAdminDataService _surveyAdminDataService;
+        private readonly IMapper _mapper;
 
-        public AccountAdminController(IAccountAdminService accountAdminService, IEmailService mailService, IEmailDataService mailDataService, ILogDataService logDataService, ISurveyAdminDataService surveyAdminDataService)
+        public AccountAdminController(IAccountAdminService accountAdminService, IEmailService mailService, IEmailDataService mailDataService, ILogDataService logDataService, ISurveyAdminDataService surveyAdminDataService, IMapper mapper)
         {
             _accountAdminService = accountAdminService;
             _mailService = mailService;
             _mailDataService = mailDataService;
             _logDataService = logDataService;
             _surveyAdminDataService = surveyAdminDataService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Administrator)]
@@ -57,8 +59,8 @@ namespace JAM.Brilliance.Controllers
             }
 
             MembershipUserCollection accounts = Membership.GetAllUsers();
-            var ams = Mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
-            var avms = Mapper.Map<IList<Account>, IList<AccountViewModel>>(ams);
+            var ams = _mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
+            var avms = _mapper.Map<IList<Account>, IList<AccountViewModel>>(ams);
             var savms = avms.OrderBy(x => x.UserName);
 
             foreach (var avm in savms)
@@ -90,8 +92,8 @@ namespace JAM.Brilliance.Controllers
         public ViewResult StartOne(string emailfilter)
         {
             MembershipUserCollection accounts = Membership.FindUsersByEmail(emailfilter);
-            var ams = Mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
-            var avms = Mapper.Map<IList<Account>, IList<AccountViewModel>>(ams);
+            var ams = _mapper.Map<MembershipUserCollection, IList<Account>>(accounts);
+            var avms = _mapper.Map<IList<Account>, IList<AccountViewModel>>(ams);
             foreach (var avm in avms)
             {
                 avm.Roles = Roles.GetRolesForUser(avm.UserName);
@@ -168,7 +170,7 @@ namespace JAM.Brilliance.Controllers
                 survey.City = "Ingen profil";
             }
 
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
             ssvm.Note1 = user.Email;
 
             return View("Delete", ssvm);
@@ -196,7 +198,7 @@ namespace JAM.Brilliance.Controllers
             ViewBag.CurrentPageId = PageIds.DevPage;
 
             IEnumerable<LogEntry> lems = _logDataService.GetSortedLogEntries();
-            var levms = Mapper.Map<IEnumerable<LogEntry>, IList<LogEntryViewModel>>(lems);
+            var levms = _mapper.Map<IEnumerable<LogEntry>, IList<LogEntryViewModel>>(lems);
 
             var pageNumber = page ?? 1;
             var onePageOfLogEntries = levms.ToPagedList(pageNumber, Constants.PageSize);

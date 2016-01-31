@@ -17,7 +17,7 @@
 
 using System.Configuration;
 using System.Web.Mvc;
-
+using AutoMapper;
 using JAM.Core.Interfaces;
 
 using JAM.Core.Services;
@@ -50,11 +50,14 @@ namespace JAM
             var connString = ConfigurationManager.ConnectionStrings[Constants.ConnectionStringName].ConnectionString;
             var storageConnString = "sdf"; //ConfigurationManager.ConnectionStrings[Constants.StorageConnectionStringName].ConnectionString;
 
+            var autoMapper = MapperConfig.CreateAutoMapper();
+
             IContainer container = IoC.Initialize();
             container.Configure(x =>
             {
                 x.For<IUserProfile>().Singleton().Use<UserProfile>();
                 x.For<IDataCache>().Singleton().Use<DataCache>();
+                x.For<IMapper>().Singleton().Use(autoMapper);
 
                 x.For<IDataStorageConfigurationService>()
                     .Use<DataStorageConfigurationService>()

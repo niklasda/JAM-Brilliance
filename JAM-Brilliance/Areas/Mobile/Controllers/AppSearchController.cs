@@ -16,12 +16,13 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
     {
         private readonly ISearchDataService _searchDataService;
         private readonly ISurveyDataService _surveyDataService;
-
-        public AppSearchController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, ISearchDataService searchDataService, ISurveyDataService surveyDataService)
+        private readonly IMapper _mapper;
+        public AppSearchController(IAccountService accountService, IAccountTokenDataService accountTokenDataService, ISearchDataService searchDataService, ISurveyDataService surveyDataService, IMapper mapper)
             : base(accountService, accountTokenDataService)
         {
             _searchDataService = searchDataService;
             _surveyDataService = surveyDataService;
+            _mapper = mapper;
         }
 
         [HttpGet, ValidateToken]
@@ -30,7 +31,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             //int otherSurveyId = id;
             var selfSurveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
             var survey = _surveyDataService.GetSurvey(selfSurveyId);
-            var ssvm = Mapper.Map<ShortSurveyViewModel>(survey);
+            var ssvm = _mapper.Map<ShortSurveyViewModel>(survey);
 
             SearchCriteria sc = new SearchCriteria();
             sc.AgeMin = Math.Max(ssvm.Age - 10 ?? 30, 20);
@@ -42,7 +43,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
 
             IEnumerable<SearchResult> surveysFound = _searchDataService.SimplerSearch(sc);
 
-            IList<SearchResultViewModel> srvm = Mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(surveysFound);
+            IList<SearchResultViewModel> srvm = _mapper.Map<IEnumerable<SearchResult>, IList<SearchResultViewModel>>(surveysFound);
 
             int nbrOfExistingHits = 0;
             if (int.TryParse(postalCode, out nbrOfExistingHits))

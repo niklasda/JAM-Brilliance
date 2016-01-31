@@ -19,12 +19,14 @@ namespace JAM.Brilliance.Controllers
         private readonly ISurveyDataService _surveyDataService;
         private readonly IVisitorDataService _visitorDataService;
         private readonly IDiagnosticsService _diagnosticsService;
+        private readonly IMapper _mapper;
 
-        public VisitorController(ISurveyDataService surveyDataService, IVisitorDataService visitorDataService, IDiagnosticsService diagnosticsService)
+        public VisitorController(ISurveyDataService surveyDataService, IVisitorDataService visitorDataService, IDiagnosticsService diagnosticsService, IMapper mapper)
         {
             _surveyDataService = surveyDataService;
             _visitorDataService = visitorDataService;
             _diagnosticsService = diagnosticsService;
+            _mapper = mapper;
         }
 
         [Authorize(Roles = MemberRoles.Member)]
@@ -64,7 +66,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             IEnumerable<HistoryEntry> hms = _visitorDataService.GetVisitors(surveyId);
-            var hvms = Mapper.Map<IEnumerable<HistoryEntry>, IList<HistoryEntryViewModel>>(hms);
+            var hvms = _mapper.Map<IEnumerable<HistoryEntry>, IList<HistoryEntryViewModel>>(hms);
 
             IEnumerable<HistoryEntryViewModel> smvms = hvms.OrderByDescending(x => x.LastVisitDate);
             return smvms;
@@ -75,7 +77,7 @@ namespace JAM.Brilliance.Controllers
             int surveyId = _surveyDataService.GetCurrentUserSurveyId();
 
             IEnumerable<HistoryEntry> hms = _visitorDataService.GetVisits(surveyId);
-            var hvms = Mapper.Map<IEnumerable<HistoryEntry>, IList<HistoryEntryViewModel>>(hms);
+            var hvms = _mapper.Map<IEnumerable<HistoryEntry>, IList<HistoryEntryViewModel>>(hms);
 
             IEnumerable<HistoryEntryViewModel> smvms = hvms.OrderByDescending(x => x.LastVisitDate);
             return smvms;
