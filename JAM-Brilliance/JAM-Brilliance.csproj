@@ -412,7 +412,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.eot" />
-    <None Include="Properties\PublishProfiles\JAM-Brilliance Azure.pubxml">
+    <None Include="Properties\PublishProfiles\JAM-Sparkle Azure.pubxml">
       <SubType>Designer</SubType>
     </None>
     <Content Include="Scripts\ja\JamListTools.js" />

@@ -27,6 +27,16 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             return Json(surveyId);
         }
 
+        [HttpPost, ValidateToken]
+        public JsonResult UploadPictureData2()
+        {
+            var f = Request.Files[0];
+
+            var surveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+
+            return Json(surveyId);
+        }
+
         [HttpGet, ValidateToken(FromUrl = true)]
         public FileResult MainPictureDataFor(int id, Guid token)
         {

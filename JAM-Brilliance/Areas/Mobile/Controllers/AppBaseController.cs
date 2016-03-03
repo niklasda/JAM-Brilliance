@@ -36,7 +36,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                 }
                 else
                 {
-                    tokenSent = filterContext.HttpContext.Request.Headers["x-brilliance-token"];
+                    tokenSent = filterContext.HttpContext.Request.Headers["x-sparkle-token"];
                 }
 
                 Guid token;
