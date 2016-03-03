@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 using JAM.Brilliance.Areas.Mobile.Attributes;
 using JAM.Brilliance.Areas.Mobile.Models;
@@ -19,20 +21,35 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             _pictureDataService = pictureDataService;
         }
 
+        //[HttpPost, ValidateToken]
+        //public JsonResult UploadPictureData(PictureDataModel data)
+        //{
+        //    var surveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+
+        //    return Json(surveyId);
+        //}
+
         [HttpPost, ValidateToken]
-        public JsonResult UploadPictureData(PictureDataModel data)
+        public JsonResult UploadPictureData()
         {
             var surveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
 
-            return Json(surveyId);
-        }
+            HttpPostedFileBase f = Request.Files["NewPicture"];
+            if (f != null)
+            {
 
-        [HttpPost, ValidateToken]
-        public JsonResult UploadPictureData2()
-        {
-            var f = Request.Files[0];
+                using (BinaryReader sr = new BinaryReader(f.InputStream))
+                {
+                    byte[] d = sr.ReadBytes(f.ContentLength);
 
-            var surveyId = AccountTokenDataService.GetSurveyIdForToken(Token);
+                    var p = new Picture();
+                    p.ThePicture = d;
+                    p.SurveyId = surveyId;
+
+                    int i = _pictureDataService.SaveMainPicture(p);
+                }
+            }
+            
 
             return Json(surveyId);
         }
