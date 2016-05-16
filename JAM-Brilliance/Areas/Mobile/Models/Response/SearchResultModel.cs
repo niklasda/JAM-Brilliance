@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using JAM.Brilliance.Models.ViewModels;
-using JAM.Core.Models;
 
 namespace JAM.Brilliance.Areas.Mobile.Models.Response
 {

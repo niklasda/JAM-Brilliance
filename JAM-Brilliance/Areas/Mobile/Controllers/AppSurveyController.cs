@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using AutoMapper;
 using JAM.Brilliance.Areas.Mobile.Attributes;
+using JAM.Brilliance.Areas.Mobile.Models;
 using JAM.Brilliance.Areas.Mobile.Models.Response;
 using JAM.Brilliance.Models.ViewModels;
 using JAM.Core.Interfaces;
@@ -70,6 +71,14 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
             var response = new SurveySettingsModel { Success = true, Message = "OK", Settings = ssvm };
             return Json(response, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpPost, ValidateToken]
+        public JsonResult SetSurveyPostalCode(UpdateSurveyModel surveyUpdate)
+        {
+            var response = new StatusModel { Success = true, Message = "OK" };
+            return Json(response, JsonRequestBehavior.AllowGet);
+        }
+
 
         //[HttpPost, ValidateToken]
         //public JsonResult SetSurveySettings(SurveySettingsModel model)

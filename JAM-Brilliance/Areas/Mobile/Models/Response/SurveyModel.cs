@@ -1,5 +1,4 @@
 ﻿using JAM.Brilliance.Models.ViewModels;
-using JAM.Core.Models;
 
 namespace JAM.Brilliance.Areas.Mobile.Models.Response
 {

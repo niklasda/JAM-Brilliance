@@ -45,6 +45,7 @@ namespace JAM.Brilliance.Areas.Mobile.Controllers
                     var p = new Picture();
                     p.ThePicture = d;
                     p.SurveyId = surveyId;
+                    p.ContentType = "image/png";
 
                     int i = _pictureDataService.SaveMainPicture(p);
                 }

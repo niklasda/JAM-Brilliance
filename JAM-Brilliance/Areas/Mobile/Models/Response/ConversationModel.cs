@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using JAM.Core.Models;
+﻿using JAM.Core.Models;
 
 namespace JAM.Brilliance.Areas.Mobile.Models.Response
 {
